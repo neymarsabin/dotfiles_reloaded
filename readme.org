@@ -1,4 +1,58 @@
-#+TITLE: Dotfiles 
+#+TITLE: Dotfiles Reloaded
+#+DESCRIPTION: My latest gathering of org-mode files
+#+DATE: 2017:01:25
+#+AUTHOR: neymarsabin
+#+EMAIL: reddevil.sabin@gmail.com
 
 
+* Introduction
+	My Experiments with dotfiles continues.... \\
+	Folder Structure:
+	#+BEGIN_EXAMPLE
+   | /mnt/hackit/codeds/dotfiles/ |              |                  |         |
+   | ├──                          | dots         |                  |         |
+   | │                            | ├──          | emacs            |         |
+   | │                            | │            | ├──              | Cask    |
+   | │                            | │            | └──              | init.el |
+   | │                            | ├──          | i3config         |         |
+   | │                            | ├──          | mplayer.conf     |         |
+   | │                            | ├──          | tmux             |         |
+   | │                            | └──          | Xresources       |         |
+   | ├──                          | readme.org   |                  |         |
+   | ├──                          | scripts      |                  |         |
+   | │                            | ├──          | emacs.sh         |         |
+   | │                            | ├──          | i3.sh            |         |
+   | │                            | ├──          | mplayer.sh       |         |
+   | │                            | ├──          | pacman.sh        |         |
+   | │                            | ├──          | tmux.sh          |         |
+   | │                            | ├──          | touch-and-key.sh |         |
+   | │                            | ├──          | Xresources.sh    |         |
+   | │                            | └──          | zsh.sh           |         |
+   | └──                          | shellrc      |                  |         |
+   |                              |              |                  |         |
+   | 3                            | directories, | 16               | files   |
+	#+END_EXAMPLE
+
+	- *dots* is the folder which contains configurations files for the applications.
+	- *scripts* is the folder which contains the scripts which is source'd everytime shell reloads
+	- ~shellrc~ is script which runs those scripts
+
+* IDEAS FROM
+	- [[https://github.com/thapakzi/kutto_kodalo][thapkazi(milan) dai]]'s configurations
+
+* How To 
+	- in your .zshrc or .bashrc 
+		#+BEGIN_SRC bash 
+		export config_dir=/mnt/hackit/codeds/dotfiles/dots
+		#+END_SRC
+		//
+		#+BEGIN_QUOTE
+		*$config_dir* is the variable which holds the configuration files( notice the *dots* folder)
+		#+END_QUOTE
+
+	- reload *shellrc* script file everytime configuration file changes 
+
+* Application specific documentation
+****** TODO 
+		 	 	
 
