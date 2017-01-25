@@ -36,11 +36,9 @@
 	- *dots* is the folder which contains configurations files for the applications.
 	- *scripts* is the folder which contains the scripts which is source'd everytime shell reloads
 	- ~shellrc~ is script which runs the scripts inside */dotfiles/scripts* folder
-	- ~shellrc~ is script which runs those scripts
-
 
 * IDEAS FROM
-	- [[https://github.com/thapakzi/kutto_kodalo][thapkazi(milan) dai]]'s configurations
+	- [[https://github.com/thapakzi/kutto_kodalo][thapakazi(milan) dai]]'s configurations
 
 * How To 
 	- in your .zshrc or .bashrc 
