@@ -251,7 +251,7 @@
 (global-set-key (kbd "C-c C-k") 'compile)
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;;my real web projects
+;;my blogging setup
 (setq org-publish-project-alist
       '(("blog"
          :base-directory "/mnt/hackit/codeds/orgblog/posts"
@@ -261,3 +261,8 @@
          :publishing-function (org-html-publish-to-html)
          :html-preamble nil
          :html-postamble nil )))
+
+;;reload emacs without closing emacs
+(defun reload-user-init-file()
+	(interactive)
+	(load-file user-init-file))

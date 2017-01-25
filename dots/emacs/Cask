@@ -24,3 +24,6 @@
 (depends-on "dockerfile-mode")
 (depends-on "cask-mode")
 (depends-on "cyberpunk-theme")
+(depends-on "php-mode")
+(depends-on "haskell-mode")
+(depends-on "ada-mode")

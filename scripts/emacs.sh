@@ -5,9 +5,10 @@ cp $config_dir/emacs/* ~/.emacs.d/
 
 ### cask reload garna laai yo hai 
 function cask_reload {
+		typeset current_dir=$PWD
     cd ~/.emacs.d/
 		cask
-		cd 
+		cd $current_dir
 }
 
 # j gareni emacs//// from milan dai's config
@@ -16,3 +17,5 @@ alias emasc='emacs'
 alias emcas='emacs'
 alias emcsa='emacs'
 alias meacs='emacs'
+
+
