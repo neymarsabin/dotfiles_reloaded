@@ -234,7 +234,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 
 # set the wallpaper always
-exec_always feh --bg-scale /home/neymar/Desktop/pink-floyd.png
+exec_always feh --bg-scale /home/neymar/Desktop/solarized.png
 
 # start compton also
 #exec_always --no-startup-id compton --config ~/.config/compton.conf -b --vsync opengl 
