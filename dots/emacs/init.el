@@ -2,6 +2,10 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
+;;org mode initialize latest
+(add-to-list 'load-path "~/.emacs.d/org/org-mode/lisp")
+
+
 ;;projectile mode global mode
 (projectile-global-mode)
 (projectile-rails-global-mode)
@@ -262,7 +266,12 @@
          :html-preamble nil
          :html-postamble nil )))
 
-;;reload emacs without closing emacs
+;;reload emacs without closing 
 (defun reload-user-init-file()
 	(interactive)
 	(load-file user-init-file))
+
+;; adding mode-icons 
+(add-to-list 'load-path "/mnt/hackit/codeds/github-repos/mode-icons/")
+(require 'mode-icons)
+(mode-icons-mode)

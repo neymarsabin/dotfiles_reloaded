@@ -1,6 +1,7 @@
 (source gnu)
 (source melpa)
 
+(depends-on "org")
 (depends-on "bind-key")
 (depends-on "expand-region")
 (depends-on "ace-jump-mode")
@@ -27,3 +28,5 @@
 (depends-on "php-mode")
 (depends-on "haskell-mode")
 (depends-on "ada-mode")
+(depends-on "all-the-icons")
+(depends-on "tabbar")
