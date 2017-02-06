@@ -136,6 +136,8 @@ assign [class="Gnome-terminal"] $workspace3
 #load telegram also in autostart feature 
 assign [class="Telegram"] $workspace9
 
+# always start mplayer in floating mode(no tiling)
+for_window [class="MPlayer"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
