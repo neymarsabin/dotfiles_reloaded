@@ -97,12 +97,12 @@ bindsym $mod+a focus parent
 set $workspace1 "1: Firefox"
 set $workspace2 "2: Emacs"
 set $workspace3 "3: Terminal"
-set $workspace4 "4: Files"
-set $workspace5 "5: Telegram"
+set $workspace4 "4: Ranger"
+set $workspace5 "5: Walker"
 set $workspace6 "6: Mplayer"
 set $workspace7 "7: Ruby"
 set $workspace8 "8: Bash"
-set $workspace9 "9: Org-mode"
+set $workspace9 "9: Telegram"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -138,6 +138,10 @@ assign [class="Telegram"] $workspace9
 
 # always start mplayer in floating mode(no tiling)
 for_window [class="MPlayer"] floating enable
+for_window [class="0/1 - DownThemAll"] floating enable
+for_window [class="Screengrab"] floating enable
+for_window [class="Lxappearance"] floating enable
+for_window [class="Simplescreenrecorder"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
