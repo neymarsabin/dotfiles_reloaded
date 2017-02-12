@@ -264,3 +264,7 @@ bindsym $mod+n move workspace to output right
 
 # focus follows mouse disable
 focus_follows_mouse yes
+
+# moving to scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
