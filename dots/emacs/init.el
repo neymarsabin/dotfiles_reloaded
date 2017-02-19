@@ -48,6 +48,9 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1))
 (display-battery-mode t)
+(unless (display-graphic-p)
+	(menu-bar-mode -1)
+	)
 
 ;;marking and selection
 (transient-mark-mode t)
@@ -58,7 +61,8 @@
 (electric-pair-mode)
 
 ;; setting font sizes 
-(set-frame-font "monaco-14")
+;; (set-frame-font "monaco-11")
+(set-frame-font "Mono-14")
 
 ;; wrapping made better
 (global-visual-line-mode t)
@@ -82,30 +86,6 @@
 
 ;;default tabe width 
 (setq-default tab-width 2)
-
-;;aliases for yes and no 
-(fset 'yes-or-no 'y-or-n)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-	 ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-enabled-themes (quote (wombat)))
- '(custom-safe-themes
-	 (quote
-		("c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" default)))
- '(package-selected-packages
-	 (quote
-		(ace-jump-mode flx-ido browse-kill-ring expand-region))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;;expand region mode
 (global-set-key (kbd "C-o") 'er/expand-region)
@@ -151,14 +131,6 @@
 		(kill-region (line-beginning-position) (line-beginning-position 2))))
 (global-set-key [remap kill-region] 'cut-line-or-region)
 
-;;adding hook for org mode
-;; (add-hook 'org-mode-hook (lambda()
-;; 													 set (make-local-variable 'electric-indent-functions)
-;; 													 (list (lambda(arg) 'no-indent))))
-;; (setq org-src-fontify-natively t)
-
-
-
 ;; ;;FLX ido
 (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
 (defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
@@ -180,11 +152,13 @@
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
 
+
 ;;emmet mode and hooks 
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 (add-hook 'web-mode-hook 'emmet-mode) ;; enable emmet's abbreviation in web mode as well
 (add-hook 'php-mode-hook 'emmet-mode) ;; enable html mode and php mode alongside
+
 
 ;;Revealjs settings
 (require 'ox-reveal)
@@ -195,12 +169,13 @@
 'org-babel-load-languages
 '((python . t)
   (C . t)
+	(css . t)
   (calc . t)
   (latex . t)
   (java . t)
   (ruby . t)
   (scheme . t)
-  (sh . t)
+  (shell . t)
   (sqlite . t)
   (js . t)))
 
@@ -208,11 +183,6 @@
 
 ;;org agenda 
 (define-key global-map "\C-ca" 'org-agenda)
-
-;;custom org mode templates 
-(add-to-list 'org-structure-template-alist
-             '("C" "#+begin_html \n <div class=\"code-block\"> \n #+end_html \n #+begin_src ?\n\n #+end_src \n #+begin_html \n </div> \n #+end_html" ))
-
 
 ;; ;;org mode for blogging and stuffs
 ;; (setq org-publish-project-alist
@@ -244,7 +214,7 @@
 ;; 				))
 
 ;;load theme 
-(load-theme 'wombat t)
+(load-theme 'solarized-light t)
 
 ;;basic key bindings
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -272,6 +242,50 @@
 	(load-file user-init-file))
 
 ;; adding mode-icons 
-(add-to-list 'load-path "/mnt/hackit/codeds/github-repos/mode-icons/")
-(require 'mode-icons)
-(mode-icons-mode)
+;; (add-to-list 'load-path "/mnt/hackit/codeds/github-repos/mode-icons/")
+;; (require 'mode-icons)
+;; (mode-icons-mode)
+
+;; org latex class
+(with-eval-after-load 'ox-latex
+(add-to-list 'org-latex-classes
+        '("article"
+          "\\documentclass[10pt,article,oneside]{memoir}"
+          ("\\chapter{%s}" . "\\chapter*{%s}")
+          ("\\section{%s}" . "\\section*{%s}")
+          ("\\subsection{%s}" . "\\subsection*{%s}")       
+          ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+          ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+        ))
+(with-eval-after-load 'ox-latex
+   (add-to-list 'org-latex-classes
+                '("report"
+                  "\\documentclass{report}"
+                  ("\\chapter{%s}" . "\\chapter*{%s}")
+                  ("\\section{%s}" . "\\section*{%s}")
+                  ("\\subsection{%s}" . "\\subsection*{%s}")
+                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+
+;; find files faster with the recent files packages
+;; so i copied this code from masteringemacs.org
+;; (require 'recentf)
+
+;; ;; get rid of `find-file-read-only' and replace it with something
+;; ;; more useful.
+;; (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+
+;; ;; enable recent files mode.
+;; (recentf-mode t)
+
+;; ; 50 files ought to be enough.
+;; (setq recentf-max-saved-items 50)
+
+;; (defun ido-recentf-open ()
+;;   "Use `ido-completing-read' to \\[find-file] a recent file"
+;;   (interactive)
+;;   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+;;       (message "Opening file...")
+;;     (message "Aborting")))
+
+;;set global highlight line with cursor
+(global-hl-line-mode t)

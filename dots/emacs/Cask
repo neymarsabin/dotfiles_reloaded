@@ -30,3 +30,9 @@
 (depends-on "ada-mode")
 (depends-on "all-the-icons")
 (depends-on "tabbar")
+(depends-on "docker")
+(depends-on "ox-pandoc")
+(depends-on "better-shell")
+(depends-on "org-bullets")
+(depends-on "solarized-theme")
+
