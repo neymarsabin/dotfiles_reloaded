@@ -64,11 +64,11 @@ set -g status-interval 4
 #set -g status-left "#(~/.battery/tmux-battery/Battery/battery -t)"
 #set -g status-right "" 
 
-# navigate through windows in tmux using SHIFT
-bind -n S-Left  previous-window
-bind -n S-Right next-window
-bind-key -n C-t new-window
-bind-key -n C-w kill-window
+# navigate through windows 
+ bind -n C-u  previous-window
+ bind -n C-o next-window
+ bind-key -n C-t new-window
+ bind-key -n C-w kill-window
 
 
 
