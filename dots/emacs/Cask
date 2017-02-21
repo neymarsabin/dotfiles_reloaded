@@ -35,4 +35,5 @@
 (depends-on "better-shell")
 (depends-on "org-bullets")
 (depends-on "solarized-theme")
-
+(depends-on "ansible")
+(depends-on "powerline")

@@ -214,7 +214,7 @@
 ;; 				))
 
 ;;load theme 
-(load-theme 'solarized-light t)
+(load-theme 'monokai t)
 
 ;;basic key bindings
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -289,3 +289,6 @@
 
 ;;set global highlight line with cursor
 (global-hl-line-mode t)
+
+;;enable powerline themes
+(poweline-default-theme)
