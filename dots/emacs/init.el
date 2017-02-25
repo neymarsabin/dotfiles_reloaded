@@ -177,7 +177,8 @@
   (scheme . t)
   (shell . t)
   (sqlite . t)
-  (js . t)))
+  (js . t)
+  (dot . t)))
 
  (require 'ox-ioslide)
 
@@ -291,4 +292,26 @@
 (global-hl-line-mode t)
 
 ;;enable powerline themes
-(poweline-default-theme)
+(powerline-default-theme )
+
+;;thanks to whattheemacsd.com ;; now i can move into buffers more easily
+(global-set-key (kbd "C-S-n")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (next-line 5))))
+
+(global-set-key (kbd "C-S-p")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (previous-line 5))))
+
+(global-set-key (kbd "C-S-f")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (forward-char 5))))
+
+(global-set-key (kbd "C-S-b")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (backward-char 5))))
+
