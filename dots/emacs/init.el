@@ -315,3 +315,22 @@
                   (interactive)
                   (ignore-errors (backward-char 5))))
 
+;; again from whattheemacsd.com moving lines up and down
+(defun move-line-down ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines 1))
+    (forward-line)
+    (move-to-column col)))
+
+(defun move-line-up ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines -1))
+    (move-to-column col)))
+(global-set-key (kbd "<C-S-up>") 'move-line-up)
+(global-set-key (kbd "<C-S-down>") 'move-line-down)
