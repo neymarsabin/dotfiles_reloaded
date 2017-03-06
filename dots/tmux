@@ -70,5 +70,7 @@ set -g status-interval 4
  bind-key -n C-t new-window
  bind-key -n C-w kill-window
 
-
+# set status-keys as emacs
+set-option -g status-keys "emacs"
+set-option -g default-terminal "screen-256color"
 
