@@ -215,7 +215,9 @@
 ;; 				))
 
 ;;load theme 
-(load-theme 'monokai t)
+(load-theme 'wombat t)
+
+
 
 ;;basic key bindings
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -289,7 +291,8 @@
 ;;     (message "Aborting")))
 
 ;;set global highlight line with cursor
-(global-hl-line-mode t)
+;;(global-hl-line-mode nil)
+
 
 ;;enable powerline themes
 (powerline-default-theme )
@@ -334,3 +337,14 @@
     (move-to-column col)))
 (global-set-key (kbd "<C-S-up>") 'move-line-up)
 (global-set-key (kbd "<C-S-down>") 'move-line-down)
+
+;; going evil on everything rite now
+;;(evil-mode 1)
+
+;;starting the server at the time of emacs start
+(require 'server)
+(unless (server-running-p)
+	(server-start))
+
+
+

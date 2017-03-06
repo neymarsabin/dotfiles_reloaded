@@ -38,3 +38,4 @@
 (depends-on "ansible")
 (depends-on "powerline")
 (depends-on "plantuml-mode")
+(depends-on "evil")
