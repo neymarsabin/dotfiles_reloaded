@@ -21,10 +21,15 @@ alias ...= 'cd ../../'
 alias cp='cp -i'
 # remove command made interactive
 alias rm='rm -i'
-
+#mv command with interactive
+alias mv='mv -i'
 # bundle to b
 alias b='bundle'
 alias be='bundle exec'
+
+
+# some git aliases
+alias glol='git log --oneline --all --graph --decorate'
 
 
 
@@ -40,14 +45,20 @@ alias be='bundle exec'
 #for emacs dependency manager cask
 export PATH="/home/neymar/.cask/bin:$PATH"
 
+#for rvm and stuffs
+
 
 # my configs directory
 export config_dir="/mnt/hackit/codeds/dotfiles/dots"
 
-############ some useful functions #############
 
-#run php server 
-function php-server {
-    php -S localhost:8000 -t $1
+############ some useful functions #############
+function mount_usb {
+		sudo mount -o gid=users,fmask=113,dmask=002 $1 /mnt/pendrive_is_on_high
 }
+
+function umount_usb {
+    sudo umount /mnt/pendrive_is_on_high
+}
+
 
