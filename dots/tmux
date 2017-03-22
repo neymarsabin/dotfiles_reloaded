@@ -74,3 +74,10 @@ set -g status-interval 4
 set-option -g status-keys "emacs"
 set-option -g default-terminal "screen-256color"
 
+# plugin manager and plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+# to start tmux plugin manager 
+run '~/.tmux/plugins/tpm/tpm'

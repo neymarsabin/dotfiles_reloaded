@@ -7,7 +7,7 @@ cp $config_dir/emacs/* ~/.emacs.d/
 function cask_reload {
 		typeset current_dir=$PWD
     cd ~/.emacs.d/
-		cask
+		cask --verbose
 		cd $current_dir
 }
 
