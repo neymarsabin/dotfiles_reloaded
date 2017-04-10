@@ -190,29 +190,25 @@
 ;;       '(
 ;; 				("org-neymarsabin"
 ;;           ;; Path to your org files.
-;;           :base-directory "/mnt/hackit/codeds/github-website/org-web-site/org/"
+;; 				 :base-directory "/mnt/hackit/codeds/orgblog/posts"
+;; 				 ;; :base-directory "/mnt/hackit/codeds/github-website/org-web-site/org/"
 ;;           :base-extension "org"
-
 ;;           ;; Path to your Jekyll project.
-;;           :publishing-directory "/mnt/hackit/codeds/github-website/org-web-site/jekyll/"
+;;           :publishing-directory "/mnt/hackit/codeds/jekyll/space/_posts"
 ;;           :recursive t
 ;; 					:publishing-function org-html-publish-to-html
 ;;           :headline-levels 4 
 ;;           :html-extension "html"
 ;; 					:body-only t
 ;; 					)
-
-
 ;; 				("org-static-sabin"
-;;           :base-directory "/mnt/hackit/codeds/github-website/org-web-site/org/"
+;;           :base-directory "/mnt/hackit/codeds/orgblog/posts"
 ;;           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
-;;           :publishing-directory "/mnt/hackit/codeds/github-website/org-web-site/"
+;;           :publishing-directory "/mnt/hackit/codeds/orgblog"
 ;;           :recursive t
 ;;           :publishing-function org-publish-attachment)
-
-;; 				("sabin" :components ("org-neymarsabin" "org-static-sabin"))
-				
-;; 				))
+;; 				("helloworld" :components ("org-neymarsabin" "org-static-sabin"))
+;;  				))
 
 ;;load theme 
 (load-theme 'wombat t)
@@ -237,7 +233,15 @@
          :publishing-directory "/mnt/hackit/codeds/orgblog/html"
          :publishing-function (org-html-publish-to-html)
          :html-preamble nil
-         :html-postamble nil )))
+         :html-postamble nil )
+			("static"
+				 :base-directory "/mnt/hackit/codeds/orgblog/"
+				 :html-extension "html"
+				 :base-extension "org"
+				 :publishing-directory "/mnt/hackit/codeds/orgblog"
+				 :publishing-function(org-html-publish-to-html)
+				 :html-preamble nil
+				 :html-postamble nil )))
 
 ;;reload emacs without closing 
 (defun reload-user-init-file()
@@ -347,4 +351,79 @@
 	(server-start))
 
 
+;; toggle split window
+(defun toggle-window-split ()
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+	     (next-win-buffer (window-buffer (next-window)))
+	     (this-win-edges (window-edges (selected-window)))
+	     (next-win-edges (window-edges (next-window)))
+	     (this-win-2nd (not (and (<= (car this-win-edges)
+					 (car next-win-edges))
+				     (<= (cadr this-win-edges)
+					 (cadr next-win-edges)))))
+	     (splitter
+	      (if (= (car this-win-edges)
+		     (car (window-edges (next-window))))
+		  'split-window-horizontally
+		'split-window-vertically)))
+	(delete-other-windows)
+	(let ((first-win (selected-window)))
+	  (funcall splitter)
+	  (if this-win-2nd (other-window 1))
+	  (set-window-buffer (selected-window) this-win-buffer)
+	  (set-window-buffer (next-window) next-win-buffer)
+	  (select-window first-win)
+	  (if this-win-2nd (other-window 1))))))
+
+(define-key ctl-x-4-map "t" 'toggle-window-split)
+
+
+;; writing cover letters using emacs org mode and latex
+(add-to-list 'load-path "/home/neymar/.emacs.d/koma")
+(eval-after-load 'ox '(require 'ox-koma-letter))
+
+;; for org mode latex
+(add-to-list 'org-latex-classes
+             '("bjmarticle"
+               "\\documentclass{article}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{graphicx}
+\\usepackage{longtable}
+\\usepackage{hyperref}
+\\usepackage{natbib}
+\\usepackage{amssymb}
+\\usepackage{amsmath}
+\\usepackage{geometry}
+\\geometry{a4paper,left=14.32mm,top=19mm,right=14.32mm,bottom=43mm}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;; For disqus commenting system configuration 
+;; (setq site-domain "neymarsabin.me")
+;; ;; configure site-baseurl to "/directory/" if the site is inside a subdirectory.  Otherwise set it to  "/"
+;; (setq site-baseurl "/html/" )
+;; ;; your disqus name
+;; ;;(setq disqus-shortname "snarvaez-com-ar-libertad")
+
+;; (defun basename (path)
+;;   (file-name-nondirectory (directory-file-name path)))
+
+
+;; ;; function to simply replace a regular expression in the output
+;; (defun my-final-filter(output backend info)
+;;   ;; inside org exports,  file variable containts a string with the full path of the output file
+;;   (setq page-url  (basename file) )
+;;   (setq output  (replace-regexp-in-string  "{{my_site_domain}}" site-domain output ))
+;;   (setq output  (replace-regexp-in-string  "{{my_site_baseurl}}" site-baseurl output ))
+;;   (setq output  (replace-regexp-in-string  "{{my_page_url}}" page-url  output ))
+;;   output
+;; )
+
+;; (setq org-export-filter-final-output-functions  '(my-final-filter) )
 
