@@ -94,15 +94,15 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # setting variables for workspaces
-set $workspace1 "1: Firefox"
-set $workspace2 "2: Emacs"
-set $workspace3 "3: Terminal"
-set $workspace4 "4: Ranger"
-set $workspace5 "5: Walker"
-set $workspace6 "6: Mplayer"
-set $workspace7 "7: Ruby"
+set $workspace1 "1: Firefox "
+set $workspace2 "2: Emacs "
+set $workspace3 "3: Terminal "
+set $workspace4 "4: Ranger "
+set $workspace5 "5: Walker "
+set $workspace6 "6: Mplayer "
+set $workspace7 "7: Ruby "
 set $workspace8 "8: Bash"
-set $workspace9 "9: Telegram"
+set $workspace9 "9: Telegram "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -129,12 +129,14 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # automatically load in specific workspace
-assign [class="Firefox"] $workspace1
+assign [class="Firefox "] $workspace1
 assign [class="Emacs"] $workspace2
 assign [class="Gnome-terminal"] $workspace3
 #assign [class="Nautilus"] $workspace4
 #load telegram also in autostart feature 
 assign [class="Telegram"] $workspace9
+assign [class="discord"] $workspace8
+assign [class="Mplayer"] $workspace5
 
 # always start mplayer in floating mode(no tiling)
 for_window [class="MPlayer"] floating enable
@@ -142,7 +144,9 @@ for_window [class="0/1 - DownThemAll"] floating enable
 for_window [class="Screengrab"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Simplescreenrecorder"] floating enable
-
+for_window [class="sun-awt-X11-XFramePeer"] floating enable
+for_window [class="gui"] floating enable
+for_window [class="Label"] floating enable
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -198,9 +202,7 @@ client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-col
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
 #start rofi ( application launcher)
-bindsym $mod+d exec rofi -show window -lines 5 # -eh 2 -width 50 -padding 50 -opacity "90" -bw 0 -bc "$bg-color" -bg "#2f343f" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -now 
-bindsym $mod+Shift+d exec rofi -show run
-
+bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -fullscreen -padding 200 -font "Monaco 18" -opacity 90
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -208,8 +210,8 @@ bar {
 				#status_command ~/.config/i3/conky-i3bar.sh
 				position top
 				tray_output eDP1
-				mode hide
-				hidden_state hide
+# 				mode hide
+# 				hidden_state hide
 				modifier Mod4
 				
 
@@ -275,3 +277,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # doing some sutff about hide statsubar
+
+
+# compton
+exec_always compton -f 

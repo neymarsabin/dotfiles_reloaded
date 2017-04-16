@@ -39,3 +39,7 @@
 (depends-on "powerline")
 (depends-on "plantuml-mode")
 (depends-on "evil")
+(depends-on "emacsql-mysql")
+(depends-on "neotree")
+(depends-on "markdown-mode")
+(depends-on "markdown-preview-mode")

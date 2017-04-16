@@ -4,6 +4,9 @@
 
 ###### some aliases #################
 
+# alias for Discord app
+alias discord='/mnt/hackit/codeds/Discord/Discord'
+
 #basic navigation of my folders to aliases 
 alias codeds='cd /mnt/hackit/codeds ' 
 alias suta='sudo systemctl start suspend.target'
@@ -44,6 +47,9 @@ alias glol='git log --oneline --all --graph --decorate'
 
 #for emacs dependency manager cask
 export PATH="/home/neymar/.cask/bin:$PATH"
+export EDITOR="emacsclient -nw"
+# exporting path for jruby exectuionals
+export PATH="/mnt/hackit/codeds/jruby/jruby-9.1.8.0/bin:$PATH"
 
 #for rvm and stuffs
 

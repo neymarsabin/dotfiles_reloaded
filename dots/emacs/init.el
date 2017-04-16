@@ -50,6 +50,7 @@
 (display-battery-mode t)
 (unless (display-graphic-p)
 	(menu-bar-mode -1)
+	(global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 	)
 
 ;;marking and selection
