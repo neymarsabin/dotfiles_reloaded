@@ -9,28 +9,31 @@
 	My Experiments with dotfiles continues.... \\
 	Folder Structure:
 	#+BEGIN_EXAMPLE
-   | /mnt/hackit/codeds/dotfiles/ |              |                  |         |
-   | ├──                          | dots         |                  |         |
-   | │                            | ├──          | emacs            |         |
-   | │                            | │            | ├──              | Cask    |
-   | │                            | │            | └──              | init.el |
-   | │                            | ├──          | i3config         |         |
-   | │                            | ├──          | mplayer.conf     |         |
-   | │                            | ├──          | tmux             |         |
-   | │                            | └──          | Xresources       |         |
-   | ├──                          | readme.org   |                  |         |
-   | ├──                          | scripts      |                  |         |
-   | │                            | ├──          | emacs.sh         |         |
-   | │                            | ├──          | i3.sh            |         |
-   | │                            | ├──          | mplayer.sh       |         |
-   | │                            | ├──          | pacman.sh        |         |
-   | │                            | ├──          | tmux.sh          |         |
-   | │                            | ├──          | touch-and-key.sh |         |
-   | │                            | ├──          | Xresources.sh    |         |
-   | │                            | └──          | zsh.sh           |         |
-   | └──                          | shellrc      |                  |         |
-   |                              |              |                  |         |
-   | 3                            | directories, | 16               | files   |
+	| 0   |              |                    |         |
+	| ├── | dots         |                    |         |
+	| │   | ├──          | emacs              |         |
+	| │   | │            | ├──                | Cask    |
+	| │   | │            | └──                | init.el |
+	| │   | ├──          | i3blocks.conf      |         |
+	| │   | ├──          | i3config           |         |
+	| │   | ├──          | mplayer.conf       |         |
+	| │   | ├──          | mplayer_input.conf |         |
+	| │   | ├──          | tmux               |         |
+	| │   | └──          | Xresources         |         |
+	| ├── | readme.org   |                    |         |
+	| ├── | scripts      |                    |         |
+	| │   | ├──          | emacs.sh           |         |
+	| │   | ├──          | i3.sh              |         |
+	| │   | ├──          | mplayer.sh         |         |
+	| │   | ├──          | pacman.sh          |         |
+	| │   | ├──          | sendemail.sh       |         |
+	| │   | ├──          | tmux.sh            |         |
+	| │   | ├──          | touch-and-key.sh   |         |
+	| │   | ├──          | Xresources.sh      |         |
+	| │   | └──          | zsh.sh             |         |
+	| └── | shellrc      |                    |         |
+	|     |              |                    |         |
+	| 3   | directories, | 19                 | files   |
 	#+END_EXAMPLE
 
 	- *dots* is the folder which contains configurations files for the applications.
@@ -41,14 +44,16 @@
 	- [[https://github.com/thapakzi/kutto_kodalo][thapakazi(milan) dai]]'s configurations
 
 * How To 
-	- in your .zshrc or .bashrc 
+	- In your .zshrc or .bashrc 
 		#+BEGIN_SRC sh
       export config_dir=/mnt/hackit/codeds/dotfiles/dots
 		#+END_SRC
 
-	- reload *shellrc* script file everytime configuration file changes 
+	- reload *shellrc* script file everytime configuration file changes or do:-
+		#+BEGIN_SRC sh 
+		exec $SHELL
+		#+END_SRC
 
-* Application specific documentation
-****** TODO 
+
 		 	 	
 

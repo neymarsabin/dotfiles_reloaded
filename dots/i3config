@@ -147,6 +147,8 @@ for_window [class="Simplescreenrecorder"] floating enable
 for_window [class="sun-awt-X11-XFramePeer"] floating enable
 for_window [class="gui"] floating enable
 for_window [class="Label"] floating enable
+for_window [class="ViberPC"] floating disable
+for_window [class="VirtualBox"] floating enable
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -261,7 +263,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 
 # set the wallpaper always
-exec_always feh --bg-scale /home/neymar/Desktop/solarized.png
+exec_always feh --bg-scale /home/neymar/Desktop/place.png
 
 # start compton also
 #exec_always --no-startup-id compton --config ~/.config/compton.conf -b --vsync opengl 

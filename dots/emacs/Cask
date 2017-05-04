@@ -44,3 +44,7 @@
 (depends-on "markdown-mode")
 (depends-on "markdown-preview-mode")
 (depends-on "ox-twbs")
+(depends-on "coffee-mode")
+(depends-on "discover")
+(depends-on "dark-mint-theme")
+(depends-on "doom-themes")
