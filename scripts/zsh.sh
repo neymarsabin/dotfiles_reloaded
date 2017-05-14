@@ -33,7 +33,10 @@ alias be='bundle exec'
 
 # some git aliases
 alias glol='git log --oneline --all --graph --decorate'
-
+# power options laptop
+alias gotosleep='sudo systemctl suspend'
+alias gotodie='shutdown -h'
+alias refresh='reboot'
 
 
 ### some environment variables #####

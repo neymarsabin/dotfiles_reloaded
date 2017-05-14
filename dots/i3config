@@ -211,6 +211,7 @@ client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
 #start rofi ( application launcher)
 bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -fullscreen -padding 200 -font "Monaco 18" -opacity 90
+bindsym $mod+shift+d exec rofi -show window -lines 3 -eh 2 -fullscreen -padding 200 -font "Monaco 18" -opacity 90
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
