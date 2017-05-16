@@ -53,7 +53,7 @@ export PATH="/home/neymar/.cask/bin:$PATH"
 export EDITOR="emacsclient -nw"
 # exporting path for jruby exectuionals
 export PATH="/mnt/hackit/codeds/jruby/jruby-9.1.8.0/bin:$PATH"
-
+export CLASSPATH="/home/neymar/Downloads/mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar:$CLASSPATH"
 #for rvm and stuffs
 
 
