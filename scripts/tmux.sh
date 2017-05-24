@@ -3,6 +3,7 @@
 # start tmux from here using the config file
 
 alias tmux='tmux -f $config_dir/tmux'
+cp $config_dir/tmux ~/.tmux.conf
 
 # started using ranger somedays ago,start a spearate tmux session with ranger and detach from it automatically
 function tmux_ranger {

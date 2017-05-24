@@ -211,7 +211,7 @@
  				))
 
 ;;load theme 
-(load-theme 'wombat t)
+(load-theme 'doom-molokai t)
 
 
 
