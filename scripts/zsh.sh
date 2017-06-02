@@ -71,3 +71,6 @@ function umount_usb {
 }
 
 
+# for gpu settings
+xrandr --setprovideroffloadsink 1 0
+DRI_PRIME=1 glxinfo 1> /dev/null
