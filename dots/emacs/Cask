@@ -48,3 +48,5 @@
 (depends-on "discover")
 (depends-on "dark-mint-theme")
 (depends-on "doom-themes")
+(depends-on "ace-window")
+(depends-on "use-package")

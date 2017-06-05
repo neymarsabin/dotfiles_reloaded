@@ -444,3 +444,11 @@
 ;; (setq org-export-filter-final-output-functions  '(my-final-filter) )
 
 
+;; setup ace-window mode
+;; dotfile from https://github.com/howardabrams/dot-files/blob/master/emacs.org#jumping-to-windows
+(use-package ace-window
+  :ensure t
+  :init
+    (setq aw-keys '(?a ?s ?d ?f ?j ?k ?l ?o))
+    (global-set-key (kbd "C-x o") 'ace-window)
+  :diminish ace-window-mode)
