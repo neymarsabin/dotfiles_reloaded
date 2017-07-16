@@ -50,3 +50,7 @@
 (depends-on "doom-themes")
 (depends-on "ace-window")
 (depends-on "use-package")
+(depends-on "persp-mode")
+(depends-on "smart-comment")
+(depends-on "smex")
+(depends-on "elpy")

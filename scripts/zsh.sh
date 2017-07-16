@@ -6,7 +6,6 @@
 
 # alias for Discord app
 alias discord='/mnt/hackit/codeds/Discord/Discord'
-
 #basic navigation of my folders to aliases 
 alias codeds='cd /mnt/hackit/codeds ' 
 alias suta='sudo systemctl start suspend.target'
@@ -21,7 +20,7 @@ alias ...= 'cd ../../'
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # copy command alias to set interactive copy
-alias cp='cp -i'
+alias cp='cp -i -v '
 # remove command made interactive
 alias rm='rm -i'
 #mv command with interactive
