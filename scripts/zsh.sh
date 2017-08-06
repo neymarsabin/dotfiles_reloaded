@@ -13,8 +13,8 @@ alias ngrok='/mnt/hackit/everything/ngrok/ngrok'
 alias hackit='/mnt/hackit/'
 
 #back made easy
-alias ..='cd ..'
-alias ...= 'cd ../../'
+# alias ..='cd ..'
+# alias ...= 'cd ../../'
 
 # screenfetch 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -28,7 +28,7 @@ alias mv='mv -i'
 # bundle to b
 alias b='bundle'
 alias be='bundle exec'
-
+alias ls='exa'
 
 # some git aliases
 alias glol='git log --oneline --all --graph --decorate'
@@ -73,3 +73,6 @@ function umount_usb {
 # for gpu settings
 xrandr --setprovideroffloadsink 1 0
 DRI_PRIME=1 glxinfo 1> /dev/null
+
+# start ibus for language selection
+ibus-daemon -drx 
