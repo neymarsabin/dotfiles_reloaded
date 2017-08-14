@@ -514,7 +514,7 @@ That is, a string used to represent it on the tab bar."
                        (length (tabbar-view
                                 (tabbar-current-tabset)))))))))
 
-(tabbar-mode 1)
+;;(tabbar-mode 1)
 
 ;; from rhoit dai's conf 
 (define-key global-map [(control tab)] 'tabbar-forward)
@@ -524,3 +524,31 @@ That is, a string used to represent it on the tab bar."
 
 ;; enabling python development environment
 (elpy-enable)
+
+;; highlight cursor whenever window scrolls
+;;(beacon-mode t)
+
+;; some smtp configurations
+;; '(send-mail-function (quote smtpmail-send-it))
+;; '(smtpmail-smtp-server "smtp.googlemail.com")
+;; '(smtpmail-smtp-service 25)
+
+;; gnus configurations 
+(setq user-mail-address "reddevil.sabin@gmail.com"
+      user-full-name "neymarsabin")
+
+(setq gnus-select-method
+      '(nnimap "gmail"
+	       (nnimap-address "imap.gmail.com")  ; it could also be imap.googlemail.com if that's your server.
+	       (nnimap-server-port "imaps")
+	       (nnimap-stream ssl)))
+
+(setq smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587
+      gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
+
+;; neotree modifications and key binding
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-smart-open t)
+(setq projectile-switch-project-action 'neotree-projectile-action)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))

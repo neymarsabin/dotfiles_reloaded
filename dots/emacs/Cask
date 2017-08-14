@@ -54,3 +54,5 @@
 (depends-on "smart-comment")
 (depends-on "smex")
 (depends-on "elpy")
+(depends-on "beacon")
+(depends-on "material-theme")

@@ -87,3 +87,9 @@ source-file "${HOME}/.tmux-themepack/powerline/double/green.tmuxtheme"
 
 # synchronize panes
 bind e set -g synchronize-panes
+
+# switching between panes made easy
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D

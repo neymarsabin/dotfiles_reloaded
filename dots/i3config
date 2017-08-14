@@ -94,15 +94,15 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # setting variables for workspaces
-set $workspace1 "1: Firefox "
-set $workspace2 "2: Emacs "
-set $workspace3 "3: Terminal "
-set $workspace4 "4: Ranger "
-set $workspace5 "5: Walker "
-set $workspace6 "6: Mplayer "
-set $workspace7 "7: Ruby "
-set $workspace8 "8: Bash"
-set $workspace9 "9: Telegram "
+set $workspace1 ""
+set $workspace2 ""
+set $workspace3 ""
+set $workspace4 ""
+set $workspace5 ""
+set $workspace6 ""
+set $workspace7 ""
+set $workspace8 ""
+set $workspace9 ""
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -210,19 +210,20 @@ client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
 
 #start rofi ( application launcher)
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -fullscreen -padding 200 -font "Monaco 18" -opacity 90
-bindsym $mod+shift+d exec rofi -show window -lines 3 -eh 2 -fullscreen -padding 200 -font "Monaco 18" -opacity 90
+bindsym $mod+shift+d exec rofi -show run -lines 3 -eh 2 -fullscreen -padding 200 -font "Monaco 18" -opacity 90
+bindsym $mod+d exec rofi -show window -lines 3 -eh 2 -fullscreen -padding 200 -font "Monaco 18" -opacity 90
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-				font pango:Monaco 7
-		status_command i3status # i3blocks -c /mnt/hackit/codeds/dotfiles/dots/i3blocks.conf 
-		#status_command ~/.config/i3/conky-i3bar.sh
-		tray_output eDP1
- 				mode hide
- 		 #		hidden_state hide
-				modifier Mod4
-				
+font pango:Monaco 11
+status_command i3status # i3blocks -c /mnt/hackit/codeds/dotfiles/dots/i3blocks.conf 
+#status_command ~/.config/i3/conky-i3bar.sh
+tray_output eDP1
+# mode hide
+#	hidden_state hide
+# 	modifier Mod4
+
 
 			#workspace_buttons yes
 										 
