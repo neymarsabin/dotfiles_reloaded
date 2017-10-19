@@ -13,7 +13,7 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:Sans Serif 11
-font pango:Sans 6
+font pango:Sans 1
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -209,24 +209,26 @@ client.unfocused #073642 #073642 #93a1a1 #586e75
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
 
-#start rofi ( application launcher)
-bindsym $mod+shift+d exec rofi -show run -lines 3 -eh 2 -fullscreen -padding 200 -font "Monaco 18" -opacity 90
-bindsym $mod+d exec rofi -show window -lines 3 -eh 2 -fullscreen -padding 200 -font "Monaco 18" -opacity 90
+# setting variables for rofi
+set $mclip /home/neymar/.scripts/rofi-clipboard-manager/mclip.py
 
+#start rofi ( application launcher)
+bindsym $mod+shift+d exec rofi -show run -lines 3 -eh 2 # -fullscreen -padding 200 -font "Monaco 18" -opacity 90
+bindsym $mod+d exec rofi -show window -lines 3 -eh 2 # -fullscreen -padding 200 -font "Monaco 18" -opacity 90
+bindsym $mod+shift+p exec rofi -modi "googleSearch:~/bin/search.sh" -show googleSearch -lines 3 -eh 2 # -fullscreen -padding 200 -font "Monaco 18"
+bindsym $mod+shift+y exec /home/neymar/.scripts/rofi-clipboard-manager/run.sh
+ 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-font pango:Monaco 11
-status_command i3status # i3blocks -c /mnt/hackit/codeds/dotfiles/dots/i3blocks.conf 
-#status_command ~/.config/i3/conky-i3bar.sh
-tray_output eDP1
-# mode hide
-#	hidden_state hide
-# 	modifier Mod4
-
-
+			font pango:Monaco 11
+			status_command i3status # i3blocks -c /mnt/hackit/codeds/dotfiles/dots/i3blocks.conf 
+			#status_command ~/.config/i3/conky-i3bar.sh
+			tray_output eDP1
+			mode hide
+			hidden_state hide
+			# 	modifier Mod4
 			#workspace_buttons yes
-										 
 			# colors {
 			# # background $bg-color
 	  	# # separator #757575
@@ -263,8 +265,7 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
 # increase and decrease brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
-#bindsym XF86TouchpadToggle exec /home/neymar/.config/i3/touchpad.sh
-
+#Bindsym XF86TouchpadToggle exec /home/neymar/.config/i3/touchpad.sh
 
 # set the wallpaper always
 exec_always feh --bg-scale /home/neymar/Desktop/place.png
@@ -296,5 +297,5 @@ focus_follows_mouse yes
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-
-
+# start the mclip daemon on login
+exec_always /home/neymar/.scripts/rofi-clipboard-manager/mclip daemon

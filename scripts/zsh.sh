@@ -6,8 +6,8 @@
 
 # alias for Discord app
 alias discord='/mnt/hackit/codeds/Discord/Discord'
-#basic navigation of my folders to aliases 
-alias codeds='cd /mnt/hackit/codeds ' 
+#basic navigation of my folders to aliases
+alias codeds='cd /mnt/hackit/codeds '
 alias suta='sudo systemctl start suspend.target'
 alias ngrok='/mnt/hackit/everything/ngrok/ngrok'
 alias hackit='/mnt/hackit/'
@@ -16,7 +16,7 @@ alias hackit='/mnt/hackit/'
 # alias ..='cd ..'
 # alias ...= 'cd ../../'
 
-# screenfetch 
+# screenfetch
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # copy command alias to set interactive copy
@@ -44,7 +44,7 @@ alias refresh='reboot'
 # export PATH=$PATH:/home/neymar/Android/Sdk/tools
 # export ANDROID_HOME=/home/neymar/Android/Sdk
 
-# for laravel 
+# for laravel
 # export PATH=$PATH:/home/neymar/.config/composer/vendor/bin
 
 #for emacs dependency manager cask
@@ -75,4 +75,4 @@ xrandr --setprovideroffloadsink 1 0
 DRI_PRIME=1 glxinfo 1> /dev/null
 
 # start ibus for language selection
-ibus-daemon -drx 
+ibus-daemon -drx

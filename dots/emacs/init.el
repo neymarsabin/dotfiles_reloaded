@@ -152,14 +152,14 @@
 ;;ERB hooks 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
-
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 
 ;;emmet mode and hooks 
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 (add-hook 'web-mode-hook 'emmet-mode) ;; enable emmet's abbreviation in web mode as well
 (add-hook 'php-mode-hook 'emmet-mode) ;; enable html mode and php mode alongside
-
 
 ;;Revealjs settings
 (require 'ox-reveal)
@@ -212,8 +212,6 @@
 
 ;;load theme 
 (load-theme 'doom-molokai t)
-
-
 
 ;;basic key bindings
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -318,12 +316,12 @@
 (powerline-default-theme )
 
 ;;thanks to whattheemacsd.com ;; now i can move into buffers more easily
-(global-set-key (kbd "C-S-n")
+(global-set-key (kbd "C-M-]")
                 (lambda ()
                   (interactive)
                   (ignore-errors (next-line 5))))
 
-(global-set-key (kbd "C-S-p")
+(global-set-key (kbd "C-M-[")
                 (lambda ()
                   (interactive)
                   (ignore-errors (previous-line 5))))
@@ -397,8 +395,8 @@
 
 
 ;; writing cover letters using emacs org mode and latex
-(add-to-list 'load-path "/home/neymar/.emacs.d/koma")
-(eval-after-load 'ox '(require 'ox-koma-letter))
+;;(add-to-list 'load-path "/home/neymar/.emacs.d/koma")
+;;(eval-after-load 'ox '(require 'ox-koma-letter))
 
 ;; for org mode latex
 (add-to-list 'org-latex-classes
@@ -552,3 +550,20 @@ That is, a string used to represent it on the tab bar."
 (setq neo-smart-open t)
 (setq projectile-switch-project-action 'neotree-projectile-action)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+;; for js-beautifying
+(setq web-mode-content-types-alist
+  '(("jsx" . "\\.js[x]?\\'")))
+(add-hook 'web-mode 'js-auto-beautify-mode)
+
+;; adding some custom variables settings for web mode 
+(custom-set-variables
+ '(web-mode-markup-indent-offset 2)
+ '(web-mode-css-indent-offset 2)
+ '(web-mode-code-indent-offset 2)
+ '(web-mode-enable-auto-pairing t)
+ '(web-mode-enable-auto-closing t)
+ '(web-mode-enable-css-colorization t)
+ '(web-mode-commet-style 2)
+ '(web-mode-enable-current-column-highlight t)
+ '(web-mode-enable-current-element-highlight t))
