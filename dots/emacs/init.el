@@ -15,7 +15,7 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
+;;(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x k") 'ido-kill-buffer)
 (global-set-key (kbd "C-c h g") 'helm-google-suggest)
 (global-set-key (kbd "C-c h c") 'helm-calcul-expression)
@@ -505,14 +505,14 @@ That is, a string used to represent it on the tab bar."
     ;; Unless the tab bar auto scrolls to keep the selected tab
     ;; visible, shorten the tab label to keep as many tabs as possible
     ;; in the visible area of the tab bar.
-(if tabbar-auto-scroll-flag
+		(if tabbar-auto-scroll-flag
         label
       (tabbar-shorten
        label (max 1 (/ (window-width)
                        (length (tabbar-view
                                 (tabbar-current-tabset)))))))))
 
-;;(tabbar-mode 1)
+;; (tabbar-mode 1)
 
 ;; from rhoit dai's conf 
 (define-key global-map [(control tab)] 'tabbar-forward)
@@ -521,7 +521,7 @@ That is, a string used to represent it on the tab bar."
 (define-key global-map (kbd "C-S-<iso-lefttab>") 'tabbar-backward)
 
 ;; enabling python development environment
-(elpy-enable)
+;; (elpy-enable)
 
 ;; highlight cursor whenever window scrolls
 ;;(beacon-mode t)
@@ -567,3 +567,6 @@ That is, a string used to represent it on the tab bar."
  '(web-mode-commet-style 2)
  '(web-mode-enable-current-column-highlight t)
  '(web-mode-enable-current-element-highlight t))
+
+;; which key mode
+(which-key-mode)
