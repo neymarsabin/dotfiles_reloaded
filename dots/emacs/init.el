@@ -91,7 +91,6 @@
 ;;expand region mode
 (global-set-key (kbd "C-o") 'er/expand-region)
 
-
 ;;activate ido mode
 (ido-mode 1)
 (ido-everywhere 1)
