@@ -58,7 +58,7 @@
 (setq x-select-enable-clipboard t)
 (setq x-select-enable-primary t)
 
-;;electric pair mode 
+;;electric pair mode
 (electric-pair-mode)
 
 ;; setting font sizes 
@@ -569,3 +569,5 @@ That is, a string used to represent it on the tab bar."
 
 ;; which key mode
 (which-key-mode)
+
+(global-set-key (kbd "M-g j") 'dumb-jump-go-other-window)

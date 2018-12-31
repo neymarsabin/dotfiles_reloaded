@@ -81,9 +81,10 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @themepack 'powerline/block/cyan'
 
 # to start tmux plugin manager 
-run '~/.tmux/plugins/tpm/tpm'
+# run '~/.tmux/plugins/tpm/tpm'
 # sourcing the tmux theme
-source-file "${HOME}/.tmux-themepack/powerline/double/green.tmuxtheme"
+# source-file "${HOME}/.tmux-themepack/powerline/double/green.tmuxtheme"
+# source-file "${HOME}/.tmux-themepack/powerline/double/green.tmuxtheme"
 
 # synchronize panes
 bind e set -g synchronize-panes
@@ -96,3 +97,6 @@ bind -n M-Down select-pane -D
 
 # keeping window name fixed
 set-option -g allow-rename off
+
+# mouse selection of panes
+# set -g mouse on

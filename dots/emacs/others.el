@@ -1,10 +1,6 @@
 ;;yasnippet loading
 (yas-global-mode t)
 
-;;expand region mode
-(global-set-key (kbd "C-o") 'er/expand-region)
-
-
 ;;multiple cursors
 (require  'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
