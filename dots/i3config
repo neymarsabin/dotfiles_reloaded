@@ -12,8 +12,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango:Sans Serif 11
-font pango:Monaco 0
+font pango:Monaco 8
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -94,15 +93,15 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # setting variables for workspaces
-set $workspace1 ""
-set $workspace2 ""
-set $workspace3 ""
-set $workspace4 ""
-set $workspace5 ""
-set $workspace6 ""
-set $workspace7 ""
-set $workspace8 ""
-set $workspace9 ""
+set $workspace1 "1: AwesomeBrave "
+set $workspace2 "2: Emacs "
+set $workspace3 "3: Terminal "
+set $workspace4 "4: Files "
+set $workspace5 "5: Slack "
+set $workspace6 "6: Mplayer"
+set $workspace7 "7: "
+set $workspace8 "8: "
+set $workspace9 "9: Telegram "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -129,26 +128,18 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # automatically load in specific workspace
-assign [class="Firefox "] $workspace1
-assign [class="Emacs"] $workspace2
-assign [class="Gnome-terminal"] $workspace3
+# assign [class="Firefox "] $workspace1
+# assign [class="Emacs"] $workspace2
+# assign [class="Gnome-terminal"] $workspace3
 #assign [class="Nautilus"] $workspace4
 #load telegram also in autostart feature 
-assign [class="Telegram"] $workspace9
-assign [class="discord"] $workspace8
-assign [class="Mplayer"] $workspace5
+# assign [class="Telegram"] $workspace9
+# assign [class="discord"] $workspace8
+# assign [class="Mplayer"] $workspace5
 
 # always start mplayer in floating mode(no tiling)
 for_window [class="MPlayer"] floating enable
-for_window [class="0/1 - DownThemAll"] floating enable
-for_window [class="Screengrab"] floating enable
-for_window [class="Lxappearance"] floating enable
-for_window [class="Simplescreenrecorder"] floating enable
-for_window [class="sun-awt-X11-XFramePeer"] floating enable
-for_window [class="gui"] floating enable
-for_window [class="Label"] floating enable
-for_window [class="ViberPC"] floating disable
-for_window [class="VirtualBox"] floating enable
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -212,48 +203,37 @@ client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 set $mclip /home/neymar/.scripts/rofi-clipboard-manager/mclip.py
 
 #start rofi ( application launcher)
-bindsym $mod+shift+d exec rofi -show run -lines 3 -eh 2 # -fullscreen -padding 200 -font "Monaco 18" -opacity 90
-bindsym $mod+d exec rofi -show window -lines 3 -eh 2 # -fullscreen -padding 200 -font "Monaco 18" -opacity 90
+bindsym $mod+shift+d exec rofi -show run -lines 5 -eh 2 -font "Monaco 14" # -fullscreen -padding 200 -font "Monaco 18" -opacity 90
+bindsym $mod+d exec rofi -show window -lines 5 -eh 2 -font "Monaco 14" # -fullscreen -padding 200 -font "Monaco 18" -opacity 90
 bindsym $mod+shift+p exec rofi -modi "googleSearch:~/bin/search.sh" -show googleSearch -lines 3 -eh 2 # -fullscreen -padding 200 -font "Monaco 18"
 bindsym $mod+shift+y exec /home/neymar/.scripts/rofi-clipboard-manager/run.sh
+bindsym $mod+shift+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -lines 5 -eh 2 -font "Monaco 14"
+#bindsym $mod+shift+x exec i3lock-fancy
  
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-			font pango:Monaco 9
-			status_command i3blocks -c /mnt/hackit/codeds/dotfiles/dots/i3blocks.conf 
+			font pango:Monaco 7
+			# status_command i3blocks -c /home/neymar/internals/dotfiles_reloaded/dots/i3blocks.conf
+			status_command i3status-rs /home/neymar/.config/i3/.i3status-rust.toml
 			#status_command ~/.config/i3/conky-i3bar.sh
-			tray_output eDP1
-			position top
-			#mode hide
-			#	hidden_state hide
-			# 	modifier Mod4
-			#workspace_buttons yes
-			# colors {
-			# # background $bg-color
-	  	# # separator #757575
-			# # #                  border             background         text
-			# focused_workspace  $bg-color          $bg-color          $text-color
-			# inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-			# urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	
-			# 			}
-						colors {
-								    separator #268bd2
-								    background #000000
-										statusline #839496
-										focused_workspace #fdf6e3 #6c71c4 #fdf6e3
-										active_workspace #fdf6e3 #6c71c4 #fdf6e3
-										inactive_workspace #002b36 #586e75 #002b36
-										urgent_workspace #d33682 #d33682 #fdf6e3
-						}
+			tray_output eDP-1
+			position bottom
+			# mode hide
+			# hidden_state hide
+			colors {
+						separator #268bd2
+						background #000000
+						statusline #839496
+						focused_workspace #fdf6e3 #6c71c4 #fdf6e3
+						active_workspace #fdf6e3 #6c71c4 #fdf6e3
+						inactive_workspace #002b36 #586e75 #002b36
+						urgent_workspace #d33682 #d33682 #fdf6e3
+				 }
 			}
 
-# exec firefox
-# exec emacs
-# exec gnome-terminal
-# exec nautilus
 exec_always nm-applet
+exec_always greenclip daemon
 
 # popup during fullscreen
 # popup_during_fullscreen leave_fullscreen
@@ -263,12 +243,12 @@ bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
 #bindsym $mod+shift+0 exec amixer -q set Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
 # increase and decrease brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
 #Bindsym XF86TouchpadToggle exec /home/neymar/.config/i3/touchpad.sh
 
 # set the wallpaper always
-exec_always feh --bg-scale /mnt/tutorials/mozilla-download/pink-floyd.jpg
+# exec_always feh --bg-scale /mnt/tutorials/mozilla-download/pink-floyd.jpg
 
 # start compton also
 #exec_always --no-startup-id compton --config ~/.config/compton.conf -b --vsync opengl 
@@ -288,6 +268,7 @@ bindsym $mod+Tab workspace back_and_forth
 # bindsym $mod+Next workspace next
 
 #move workspace to another screen
+# top move monitor upwards -> bindsym $mod+n move workspace to output up
 bindsym $mod+n move workspace to output up
 
 # focus follows mouse disable
@@ -298,4 +279,15 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # start the mclip daemon on login
-exec_always /home/neymar/.scripts/rofi-clipboard-manager/mclip daemon
+# exec_always /home/neymar/.scripts/rofi-clipboard-manager/mclip daemon
+
+# touchpad configurations
+# exec xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "296" 1
+
+# exec_always /usr/bin/pasystray
+
+# sticky window
+bindsym $mod+y sticky toggle
+
+# screen_capture(from my configuration)
+bindsym $mod+shift+b exec screen_capture

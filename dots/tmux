@@ -1,102 +1,106 @@
-# Enable UTF-8
-setw -g utf8 on
-set-option -g status-utf8 on
-set-option -g status on
-# Scrollback/History limit
-set -g history-limit 2048
+################################
+##      generic               ##
+################################
+# little bit of mouse does no harm
+set -g mouse on
 
-# Index Start
-set -g base-index 1
+# reload the tmux config
+bind r source-file ~/.tmux.conf \; display "!! config file reloaded Sir...  😸"
 
-# Mouse
-set-option -g mouse-select-pane on
+# binding the yet another awesome thing:
+# learnt on ruby_meet2016,jun17 from oozzal
+# send commad to all the panes
+bind e set-window-option synchronize-panes 
 
-# Force reload of config file
-bind r source-file ~/.tmux.conf ; display-message "Reloaded:"
+# Setting the correct term
+set -g default-terminal "screen-256color" 
+
+# limit hitory lines; i know that's a lot
+set -g history-limit 1000000
+
+#scrolling
+# bind -t emacs-copy WheelUpPane   page-up
+# bind -t emacs-copy WheelDownPane page-down
+
+#scrolling
+# bind-key -t emacs-copy M-w copy-pipe "xsel -i -p -b"
+bind-key C-y run "xsel -o | tmux load-buffer - ; tmux paste-buffer"
+
+# toggle the status bar
+bind-key C-Space set-option -g status
+
+################################
+##      Decorate              ##
+################################
+#-----borrowed from book--------
+# set the status line's colors
+set -g status-style fg=white,bg=black
+set -g mode-style fg=black,bg=green,blink
+
+# set the color of the window list
+setw -g window-status-style fg=white,bg=black
+
+# set colors for the active window
+setw -g window-status-current-style fg=green,bg=black,bright
+
+# set window activity
+setw -g window-status-activity-style fg=white,bg=black,bright
+
+# pane display number
+# set-option -g display-panes-active-colour colour33 # blue
+# set-option -g display-panes-colour colour166 #orange 
+
+# Command / message line
+set -g message-style fg=red,bg=black,bright
+
+# Status line left side
+set -g status-left-length 30
+set -g status-left " 💻 #[fg=brown]#[fg=green]#S #[fg=yellow]#I #[fg=cyan]#P"
 
 
+# Center the window list #beautify
+set -g status-justify centre
 
-### Theme
-###########################################################################
+# Update the status bar every sixty seconds
+set -g status-interval 60
 
-# Statusbar Color Palatte
-set-option -g status-justify left
-set-option -g status-bg black
-set-option -g status-fg white
-set-option -g status-left-length 150
-set-option -g status-right-length 160
-
-# Pane Border Color Palette
-set-option -g pane-active-border-fg green
-set-option -g pane-active-border-bg black
-set-option -g pane-border-fg white
-set-option -g pane-border-bg black
-
-# Message Color Palette
-set-option -g message-fg black
-set-option -g message-bg green
-
-# Window Status Color Palette
-setw -g window-status-bg black
-setw -g window-status-current-fg green
-setw -g window-status-bell-attr default
-setw -g window-status-bell-fg red
-setw -g window-status-activity-attr default
-setw -g window-status-activity-fg yellow
-
-
-### UI
-###########################################################################
-
-# Notification
+# notification, alerting the states
 setw -g monitor-activity on
 set -g visual-activity on
-set-option -g bell-action any
-set-option -g visual-bell off
+# setw automatic-rename off
 
-# Automatically set window titles
-set-option -g set-titles on
-set-option -g set-titles-string '#H:#S.#I.#P #W #T' # window number,program name,active (or not)
+# fix split preserve $PWD
+bind c neww -c '#{pane_current_path}'
+bind "\"" split-window -c '#{pane_current_path}'
+bind "\%" split-window -h -c '#{pane_current_path}'
 
-# Statusbar sssAdjustments
-#set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]" 
-set -g status-interval 4
-#set -g status-left "#(~/.battery/tmux-battery/Battery/battery -t)"
-#set -g status-right "" 
+# shortcuts rule the world, generic ones
+bind-key "~" split-window "exec htop~"
+# bind-key "@" split-window "exec dmesg -w"
+bind-key "@" split-window "exec journalctl -f -S '20 sec ago'|ccze"
 
-# navigate through windows 
- bind -n C-u  previous-window
- bind -n C-o next-window
- bind-key -n C-t new-window
- bind-key -n C-w kill-window
 
-# set status-keys as emacs
-set-option -g status-keys "emacs"
-set-option -g default-terminal "screen-256color"
-
-# plugin manager and plugins
+################################
+##      plugins               ##
+################################
+#plugins, they make things automatic
+set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'tmux-plugins/tmux-resurrect'
-set -g @themepack 'powerline/block/cyan'
+set -g @plugin 'tmux-plugins/tmux-copycat'
+set -g @plugin 'tmux-plugins/tmux-open'
 
-# to start tmux plugin manager 
-# run '~/.tmux/plugins/tpm/tpm'
-# sourcing the tmux theme
-# source-file "${HOME}/.tmux-themepack/powerline/double/green.tmuxtheme"
-# source-file "${HOME}/.tmux-themepack/powerline/double/green.tmuxtheme"
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
 
-# synchronize panes
-bind e set -g synchronize-panes
+# zsh as default shell
+set-option -g default-shell /bin/zsh
 
-# switching between panes made easy
-bind -n M-Left select-pane -L
-bind -n M-Right select-pane -R
-bind -n M-Up select-pane -U
-bind -n M-Down select-pane -D
+# wifi sside, status line at right side
+set-option -g status-right "#[fg=red,bright]🎧  charge: #(acpi | cut -d ',' -f2 | cut -d ' ' -f2)#[default] "
 
-# keeping window name fixed
-set-option -g allow-rename off
-
-# mouse selection of panes
-# set -g mouse on
+#####################
+# Testing
+#####################
+# save current envs
+# src: http://stackoverflow.com/a/9833996/2636474
+# set-option -ga update-environment ' DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY'

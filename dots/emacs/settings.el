@@ -42,7 +42,7 @@
 ;;supress start message 
 (setq inhibit-startup-message t)
 
-;;default tabe width 
+;;default tab width
 (setq-default tab-width 2)
 
 ;; expand region mode
