@@ -4,7 +4,6 @@
 #+AUTHOR: neymarsabin
 #+EMAIL: reddevil.sabin@gmail.com
 
-
 * Introduction
 	My Experiments with dotfiles continues.... \\
 	Folder Structure:
@@ -40,13 +39,10 @@
 	- *scripts* is the folder which contains the scripts which is source'd everytime shell reloads
 	- ~shellrc~ is script which runs the scripts inside */dotfiles/scripts* folder
 
-* IDEAS FROM
-	- [[https://github.com/thapakzi/kutto_kodalo][thapakazi(milan) dai]]'s configurations
-
 * How To 
 	- In your .zshrc or .bashrc 
 		#+BEGIN_SRC sh
-      export config_dir=/mnt/hackit/codeds/dotfiles/dots
+    export config_dir=/your_dir
 		#+END_SRC
 
 	- reload *shellrc* script file everytime configuration file changes or do:-
