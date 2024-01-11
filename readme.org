@@ -8,7 +8,7 @@
 I am on MacOS these days :( and the repo is broken!!!! Will be fixing these soon
 #+end_quote
 
-* Introduction
+* Workflow Setup
 	My Experiments with dotfiles continues.... \\
 	Folder Structure:
 	#+BEGIN_EXAMPLE
