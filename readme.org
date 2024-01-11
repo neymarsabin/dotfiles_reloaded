@@ -4,6 +4,10 @@
 #+AUTHOR: neymarsabin
 #+EMAIL: reddevil.sabin@gmail.com
 
+#+begin_quote
+I am on MacOS these days :( and the repo is broken!!!! Will be fixing these soon
+#+end_quote
+
 * Introduction
 	My Experiments with dotfiles continues.... \\
 	Folder Structure:

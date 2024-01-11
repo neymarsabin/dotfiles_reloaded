@@ -10,10 +10,10 @@ bind r source-file ~/.tmux.conf \; display "!! config file reloaded Sir...  😸
 # binding the yet another awesome thing:
 # learnt on ruby_meet2016,jun17 from oozzal
 # send commad to all the panes
-bind e set-window-option synchronize-panes 
+bind e set-window-option synchronize-panes
 
 # Setting the correct term
-set -g default-terminal "screen-256color" 
+set -g default-terminal "screen-256color"
 
 # limit hitory lines; i know that's a lot
 set -g history-limit 1000000
@@ -48,7 +48,7 @@ setw -g window-status-activity-style fg=white,bg=black,bright
 
 # pane display number
 # set-option -g display-panes-active-colour colour33 # blue
-# set-option -g display-panes-colour colour166 #orange 
+# set-option -g display-panes-colour colour166 #orange
 
 # Command / message line
 set -g message-style fg=red,bg=black,bright
@@ -56,7 +56,6 @@ set -g message-style fg=red,bg=black,bright
 # Status line left side
 set -g status-left-length 30
 set -g status-left " 💻 #[fg=brown]#[fg=green]#S #[fg=yellow]#I #[fg=cyan]#P"
-
 
 # Center the window list #beautify
 set -g status-justify centre
@@ -70,33 +69,32 @@ set -g visual-activity on
 # setw automatic-rename off
 
 # fix split preserve $PWD
-bind c neww -c '#{pane_current_path}'
+# bind c new -c '#{pane_current_path}'
 bind "\"" split-window -c '#{pane_current_path}'
 bind "\%" split-window -h -c '#{pane_current_path}'
 
 # shortcuts rule the world, generic ones
-bind-key "~" split-window "exec htop~"
+# bind-key "~" split-window "exec htop~"
 # bind-key "@" split-window "exec dmesg -w"
 bind-key "@" split-window "exec journalctl -f -S '20 sec ago'|ccze"
-
 
 ################################
 ##      plugins               ##
 ################################
 #plugins, they make things automatic
-set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-copycat'
-set -g @plugin 'tmux-plugins/tmux-open'
+#set -g @plugin 'tmux-plugins/tmux-yank'
+#set -g @plugin 'tmux-plugins/tpm'
+#set -g @plugin 'tmux-plugins/tmux-copycat'
+#set -g @plugin 'tmux-plugins/tmux-open'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run -b '~/.tmux/plugins/tpm/tpm'
+#run -b '~/.tmux/plugins/tpm/tpm'
 
 # zsh as default shell
 set-option -g default-shell /bin/zsh
 
 # wifi sside, status line at right side
-set-option -g status-right "#[fg=red,bright]🎧  charge: #(acpi | cut -d ',' -f2 | cut -d ' ' -f2)#[default] "
+set-option -g status-right "#[fg=red,bright]🎧  "
 
 #####################
 # Testing
