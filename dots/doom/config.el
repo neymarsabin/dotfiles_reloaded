@@ -6,7 +6,7 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Sabin Nepal"
+(setq user-full-name "neymarsabin"
       user-mail-address "reddevil.sabin@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;; (setq doom-theme 'doom-zenburn)
+(setq doom-theme 'wombat)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -40,8 +40,8 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-
+(setq org-directory "~/projects/mine/myself/the-new-org/doom/capture")
+(setq org-journal-dir "~/projects/mine/myself/the-new-org/doom/capture")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -99,32 +99,7 @@
 ;;   )
 
 ;; set org agenda files
-(setq org-agenda-files (list "~/org/index.org"))
-
-;; add to list
-(add-to-list 'load-path "~/.config/doom/ox-jekyll")
-
-;; my org mode blogging setup
-(after! org
-  (setq org-jekyll-directory "/Users/neymarsabin/projects/mine/myself/neymarsabin.github.io/neymarsabin.github.io/")
-  (setq org-jekyll-use-src-plugin t)
-  (setq org-publish-project-alist
-        `(("blog"
-           :base-directory ,(concat org-jekyll-directory "_org")
-           :base-extension "org"
-           :publishing-directory ,(concat org-jekyll-directory "_posts")
-           :publishing-function org-md-export-to-jekyll
-           :recursive t
-           :section-numbers nil
-           :with-toc nil
-           :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/styles.css\" />")
-          ("static"
-           :base-directory ,(concat org-jekyll-directory "_org")
-           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-           :publishing-directory ,(concat org-jekyll-directory "")
-           :publishing-function org-publish-attachment)))
-  (setq org-jekyll-preview-time 5))
-(add-hook! 'org-mode-hook 'org-jekyll-enable)
+(setq org-agenda-files (list "~/projects/mine/myself/the-new-org/doom/capture"))
 
 ;; set org agenda list
 (setq org-agenda-span 20)
@@ -171,6 +146,44 @@
 (global-set-key (kbd "C-S-j") 'move-line-down)
 (global-set-key (kbd "C-S-k") 'move-line-up)
 
+;; maximize the window upon startup
+(setq initial-frame-alist '((top . 1) (left . 1) (width . 114) (height . 32)))
 
-;; org mode designs
-;; (set-face-attribute 'org-level-1 nil :height 1.0 :background nil)
+;; enable variable and visual line mode in Org mode by default
+(add-hook! org-mode :append
+           #'visual-line-mode
+           #'variable-pitch-mode)
+
+;; org-capture configurations
+(defun zz/add-file-keybinding (key file &optional desc)
+  (let ((key key)
+        (file file)
+        (desc desc))
+    (map! :desc (or desc file)
+          key
+          (lambda () (interactive) (find-file file)))))
+
+(zz/add-file-keybinding "C-c z i" "~/projects/mine/myself/the-new-org/doom/capture/ideas.org" "ideas.org")
+
+;; disable global highlight line mode, irritating when using visual mode
+;; TODO: maybe best to uninstall the whole package hl-line-mode
+;; also for some reason, the config below does not work in Elisp files
+(setq hl-line-mode nil)
+
+;; wrap a word or region with something
+;; TODO: find some shortcuts to use these
+(defun insert-curves (&optional arg)
+  "Inserts {  } curves to the selected region.
+I wish I could say I wrote this function, copies everything of the function insert-parenthesis.
+Rely on your LSP for indentation, couldn't write a single thing on indenting."
+  (interactive "P")
+  (insert-pair arg ?\{ ?\}))
+;; (global-set-key (kbd "M-S-{") 'insert-curves)
+
+(defun insert-bigboots (&optional arg)
+  "Inserts [ ] curves to the selected region.
+Same here :D I wish I could say I wrote this function, copies everything of the function insert-parenthesis.
+Rely on your LSP for indentation, couldn't write a single thing on indenting."
+  (interactive "P")
+  (insert-pair arg ?\[ ?\]))
+;; (global-set-key (kbd "M-S-^") 'insert-bigboots)

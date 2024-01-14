@@ -59,7 +59,6 @@ export CLASSPATH="/home/neymar/Downloads/mysql-connector-java-5.1.42/mysql-conne
 # my configs directory
 export config_dir="/mnt/hackit/codeds/dotfiles/dots"
 
-
 ############ some useful functions #############
 function mount_usb {
 		sudo mount -o gid=users,fmask=113,dmask=002 $1 /mnt/pendrive_is_on_high

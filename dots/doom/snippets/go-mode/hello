@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: hello
+# uuid: hello
+# key: hello
+# condition: t
+# --
+fmt.Println("Printing Hello World! ")

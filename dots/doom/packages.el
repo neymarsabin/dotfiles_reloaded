@@ -49,6 +49,9 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
                                         ;(unpin! t)
 
-(package! org-jekyll)
 (package! lsp-mode)
-(package! ayu-theme)
+(package! jazz-theme)
+(package! atom-one-dark-theme)
+
+;; TODO: I don't why this package is behaving weird with vim keybindings in org-agenda mode, fix this later
+;; (package! org-super-agenda)
