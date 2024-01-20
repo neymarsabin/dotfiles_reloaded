@@ -1,5 +1,4 @@
 #+TITLE: Dotfiles Reloaded
-#+DESCRIPTION: My latest gathering of org-mode files
 #+DATE: 2017:01:25
 #+AUTHOR: neymarsabin
 #+EMAIL: reddevil.sabin@gmail.com
@@ -9,7 +8,7 @@ I am on MacOS these days :( and the repo is broken!!!! Will be fixing these soon
 #+end_quote
 
 * Workflow Setup
-	My Experiments with dotfiles continues.... \\
+My Experiments with dotfiles continues.... \\
 	Folder Structure:
 	#+BEGIN_EXAMPLE
 	| 0   |              |                    |         |

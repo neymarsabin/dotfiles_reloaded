@@ -52,6 +52,7 @@
 (package! lsp-mode)
 (package! jazz-theme)
 (package! atom-one-dark-theme)
+(package! kanagawa-theme)
 
 ;; TODO: I don't why this package is behaving weird with vim keybindings in org-agenda mode, fix this later
 ;; (package! org-super-agenda)

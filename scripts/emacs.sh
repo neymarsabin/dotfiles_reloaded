@@ -11,7 +11,6 @@ function cask_reload {
 		cd $current_dir
 }
 
-# j gareni emacs//// from milan dai's config
 alias eamcs='emacs'
 alias emasc='emacs'
 alias emcas='emacs'
