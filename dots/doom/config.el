@@ -103,7 +103,7 @@
 (setq org-agenda-files (list "~/projects/mine/myself/the-new-org/doom/capture"))
 
 ;; set org agenda list
-(setq org-agenda-span 20)
+(setq org-agenda-span 7)
 
 ;; lsp mode setup for golang
 (add-hook 'go-mode-hook #'lsp-deferred)
