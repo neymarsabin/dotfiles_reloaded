@@ -21,8 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Monaco" :size 15 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Monaco" :size 15))
+(setq doom-font (font-spec :family "Monaco" :size 20 :weight 'normal)
+      doom-variable-pitch-font (font-spec :family "Monaco" :size 20))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -76,28 +76,12 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; set go path in PATH env
-(require 'lsp-mode)
-(setenv "PATH"
-        (concat
-         "/Users/neymarsabin/go/bin" path-separator
-         (getenv "PATH")))
-
-;; tide node executable
-(setq tide-node-executable "/Users/neymarsabin/.nvm/versions/node/v18.9.1/bin/node")
-
 ;; enable LSP for Javascript
 (after! lsp-mode
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection "typescript-language-server")
                     :major-modes '(js2-mode typescript-mode web-mode typescript-tsx-mode)
                     :server-id 'ts-ls)))
-
-;; hook lsp mode for js files
-;; (after! lsp-mode
-;;   (add-to-list 'auto-mode-alist '("\\.tsx" . lsp))
-;;   (add-to-list 'auto-mode-alist '("\\.ts" . lsp))
-;;   )
 
 ;; set org agenda files
 (setq org-agenda-files (list "~/projects/mine/myself/the-new-org/doom/capture"))
@@ -106,11 +90,11 @@
 (setq org-agenda-span 7)
 
 ;; lsp mode setup for golang
-(add-hook 'go-mode-hook #'lsp-deferred)
-(defun lsp-go-install-save-hooks ()
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t))
-(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+;; (add-hook 'go-mode-hook #'lsp-deferred)
+;; (defun lsp-go-install-save-hooks ()
+;;   (add-hook 'before-save-hook #'lsp-format-buffer t t)
+;;   (add-hook 'before-save-hook #'lsp-organize-imports t t))
+;; (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
 ;; disable title bar
 (menu-bar-mode -1)

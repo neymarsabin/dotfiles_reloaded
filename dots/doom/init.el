@@ -22,9 +22,9 @@
        :ui
        (emoji +unicode)  ; 🙂
        indent-guides     ; highlighted indent columns
-       modeline          ; snazzy, Atom-inspired modeline, plus API
+       ;; modeline          ; snazzy, Atom-inspired modeline, plus API
        ophints           ; highlight the region an operation acts on
-       (popup +defaults)   ; tame sudden yet inevitable temporary windows
+       ;; (popup +defaults)   ; tame sudden yet inevitable temporary windows
        treemacs          ; a project drawer, like neotree but cooler
        (vc-gutter +pretty) ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
@@ -43,19 +43,19 @@
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
-       vterm             ; the best terminal emulation in Emacs
+       ;; vterm             ; the best terminal emulation in Emacs
 
        :checkers
 
        :tools
        docker
        (eval +overlay)     ; run code, run (also, repls)
-       gist              ; interacting with github gists
+       ;; gist              ; interacting with github gists
        lookup              ; navigate your code and its documentation
        lsp               ; M-x vscode
        magit             ; a git porcelain for Emacs
-       pass              ; password manager for nerds
-       terraform         ; infrastructure as code
+       ;; pass           ; password manager for nerds
+       ;; terraform         ; infrastructure as code
        tree-sitter       ; syntax and parsing, sitting in a tree...
 
        :os
@@ -63,10 +63,10 @@
 
        :lang
        emacs-lisp        ; drown in parentheses
-       (go +lsp)           ; the hipster dialect
+       (go +lsp)
        json              ; At least it ain't XML
-       (javascript + lsp)        ; all(hope(abandon(ye(who(enter(here))))))
-       ;;(typescript + lsp)
+       javascript
+       typescript
        lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        (org
@@ -75,19 +75,14 @@
         +dragndrop
         +present
         +hugo)              ; organize your plain life in plain text
-       (rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-       sh                ; she sells {ba,z,fi}sh shells on the C xor
-       solidity          ; do you need a blockchain? No.
+       rust
+       sh              ; she sells {ba,z,fi}sh shells on the C xor
+       solidity
        web               ; the tubes
-       (yaml :lang
-             (yaml :variables
-                   yaml-indent-offset 0
-                   yaml-enable-lsp t))
+       yaml
 
-       :email
        :app
        calendar
-       irc               ; how neckbeards socialize
 
        :config
        (default +bindings +smartparens))
