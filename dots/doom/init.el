@@ -22,7 +22,7 @@
        :ui
        (emoji +unicode)  ; 🙂
        indent-guides     ; highlighted indent columns
-       ;; modeline          ; snazzy, Atom-inspired modeline, plus API
+       modeline          ; snazzy, Atom-inspired modeline, plus API
        ophints           ; highlight the region an operation acts on
        ;; (popup +defaults)   ; tame sudden yet inevitable temporary windows
        treemacs          ; a project drawer, like neotree but cooler
@@ -65,8 +65,7 @@
        emacs-lisp        ; drown in parentheses
        (go +lsp)
        json              ; At least it ain't XML
-       javascript
-       typescript
+       (javascript +lsp)
        lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        (org

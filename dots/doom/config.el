@@ -21,8 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Monaco" :size 20 :weight 'normal)
-      doom-variable-pitch-font (font-spec :family "Monaco" :size 20))
+(setq doom-font (font-spec :family "Monaco" :size 12 :weight 'normal)
+      doom-variable-pitch-font (font-spec :family "Monaco" :size 12))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'jazz)
+;; (setq doom-theme ')
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -77,11 +77,11 @@
 ;; they are implemented.
 
 ;; enable LSP for Javascript
-(after! lsp-mode
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection "typescript-language-server")
-                    :major-modes '(js2-mode typescript-mode web-mode typescript-tsx-mode)
-                    :server-id 'ts-ls)))
+;; (after! lsp-mode
+;;   (lsp-register-client
+;;    (make-lsp-client :new-connection (lsp-stdio-connection "typescript-language-server --stdio")
+;;                     :major-modes '(js2-mode typescript-mode web-mode typescript-tsx-mode)
+;;                     :server-id 'ts-ls)))
 
 ;; set org agenda files
 (setq org-agenda-files (list "~/projects/mine/myself/the-new-org/doom/capture"))
@@ -172,3 +172,14 @@ Rely on your LSP for indentation, couldn't write a single thing on indenting."
 ;;   (interactive "P")
 ;;   (insert-pair arg ?\[ ?\]))
 ;; ;; (global-set-key (kbd "M-S-^") 'insert-bigboots)
+
+;; ChatGPT Configuration
+(defun get-openai-key-from-env ()
+  (getenv "OPENAI_API_KEY"))
+(setq chatgpt-shell-openai-key (get-openai-key-from-env))
+
+;; Elfeed RSS list
+(setq elfeed-feeds
+      '("https://alexwlchan.net/atom.xml"
+        "https://news.ycombinator.com/rss"
+        "http://feeds.feedburner.com/AlexSexton"))

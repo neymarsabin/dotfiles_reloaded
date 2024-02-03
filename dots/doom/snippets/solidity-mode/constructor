@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: constructor
+# uuid: constructor
+# key: constructor
+# condition: t
+# --
+constructor($1) ($2) {
+    $3
+    _mint(msg.sender, 100000000 * 10 ** decimals());
+}
