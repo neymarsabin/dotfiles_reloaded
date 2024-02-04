@@ -183,3 +183,11 @@ Rely on your LSP for indentation, couldn't write a single thing on indenting."
       '("https://alexwlchan.net/atom.xml"
         "https://news.ycombinator.com/rss"
         "http://feeds.feedburner.com/AlexSexton"))
+
+;; open my .zshrc file when I press these key strokes
+;; use evil-define-key from evil mode || docs link: https://evil.readthedocs.io/en/latest/keymaps.html#leader-keys
+(defun zshrc ()
+  (interactive)
+  (find-file "~/.zshrc")
+  (message "echo:: zshrc config file"))
+(evil-define-key 'normal 'global (kbd "SPC fz") 'zshrc)

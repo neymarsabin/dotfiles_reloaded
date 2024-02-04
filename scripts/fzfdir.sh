@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# I use sh, because I have aliases all over, which I don't want the script to take into consideration
 # Use at your own risk: I have seen bugs that create infinite tmux sessions :D
 # define the fzf command: ./.fzfdir.sh pet
 # syntax: ./.fzfdir.sh <working_directory>
@@ -16,24 +17,21 @@ RESULT=$(ls $find_dir | $FZF_COMMAND)
 
 # Do nothing if result is EMPTY
 # Works in case if you do not find something and press ESC
-if [[ -z "$RESULT" ]]; then
-   exit 1
+if [[ -n "$RESULT" ]]; then
+    # create a new tmux session and attach to it
+    window_name=$RESULT
+    session_name="$window_name"
+    workdir=$find_dir/$RESULT
+    send_command="cd $workdir"
+
+    if ! tmux has-session -t $session_name 2>/dev/null; then
+    ## create new session, provide SESSION and WINDOW name
+    new_session=$(TMUX= tmux new-session -A -d -s $session_name -n $window_name)
+
+    ## switch and cd into project
+    tmux switch-client -t $session_name
+    tmux send-keys -t $session_name:$window_name "$send_command; clear" C-m
+    else
+      tmux switch-client -t $session_name
+    fi
 fi
-
-# create a new tmux session and attach to it
-window_name=$RESULT
-session_name="neymarsabin/$window_name"
-workdir=$find_dir/$RESULT
-send_command="cd $workdir"
-
-if ! tmux has-session -t $session_name 2>/dev/null; then
-  ## create new session, provide SESSION and WINDOW name
-  new_session=$(TMUX= tmux new-session -A -d -s $session_name -n $window_name)
-
-  ## switch and cd into project
-  tmux switch-client -t $session_name
-  tmux send-keys -t $session_name:$window_name "$send_command; clear" C-m
-else
-  tmux switch-client -t $session_name
-fi
-

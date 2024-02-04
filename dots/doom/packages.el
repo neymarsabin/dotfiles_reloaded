@@ -50,13 +50,10 @@
                                         ;(unpin! t)
 
 (package! lsp-mode)
-(package! atom-one-dark-theme)
 (package! chatgpt-shell)
-(package! spacemacs-theme)
 (package! zenburn-theme)
 (package! elfeed)
 (package! elfeed-dashboard)
-(package! timu-rogue-theme)
 
 ;; TODO: I don't why this package is behaving weird with vim keybindings in org-agenda mode, fix this later
 ;; (package! org-super-agenda)
