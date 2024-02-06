@@ -186,7 +186,7 @@ Rely on your LSP for indentation, couldn't write a single thing on indenting."
 
 ;; open my .zshrc file when I press these key strokes
 ;; use evil-define-key from evil mode || docs link: https://evil.readthedocs.io/en/latest/keymaps.html#leader-keys
-(defun zshrc ()
+(defun zshrc()
   (interactive)
   (find-file "~/.zshrc")
   (message "echo:: zshrc config file"))
