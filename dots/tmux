@@ -76,7 +76,7 @@ bind "\%" split-window -h -c '#{pane_current_path}'
 # shortcuts rule the world, generic ones
 # bind-key "~" split-window "exec htop~"
 # bind-key "@" split-window "exec dmesg -w"
-bind-key "@" split-window "exec journalctl -f -S '20 sec ago'|ccze"
+bind-key "@" split-window "exec htop"
 
 ################################
 ##      plugins               ##
