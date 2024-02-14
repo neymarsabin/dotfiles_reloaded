@@ -10,7 +10,7 @@
  '(org-agenda-files
    '("~/projects/mine/myself/the-new-org/doom/dotfiles/dotfiles.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/enjoy/watch.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/heavyanime.com/heavyanime.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/enjoy/elisp.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/enjoy/books.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/enjoy/readme.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/codo.finance/codo.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/sack/sack.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/work/leads.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/portfolio/leetcode.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/portfolio/me.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/capture/ideas.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/capture/journal.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/capture/notes.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/capture/projects.org" "/Users/neymarsabin/projects/mine/myself/the-new-org/doom/capture/todo.org"))
  '(package-selected-packages
-   '(elfeed elfeed-dashboard elfeed-org spaceline-all-the-icons org-pomodoro org-link-beautify org-bullets jazz-theme helm-themes go-playground flatui-theme)))
+   '(anti-zenburn-theme elfeed elfeed-dashboard elfeed-org spaceline-all-the-icons org-pomodoro org-link-beautify org-bullets jazz-theme helm-themes go-playground flatui-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -191,3 +191,8 @@ Rely on your LSP for indentation, couldn't write a single thing on indenting."
   (find-file "~/.zshrc")
   (message "echo:: zshrc config file"))
 (evil-define-key 'normal 'global (kbd "SPC fz") 'zshrc)
+
+;; terraform issues
+(after! lsp-mode
+  ;; https://github.com/emacs-lsp/lsp-mode/issues/3577#issuecomment-1709232622
+  (delete 'lsp-terraform lsp-client-packages))
