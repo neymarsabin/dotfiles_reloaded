@@ -102,3 +102,9 @@ set-option -g status-right "#[fg=red,bright]🎧  "
 # save current envs
 # src: http://stackoverflow.com/a/9833996/2636474
 # set-option -ga update-environment ' DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY'
+
+## run my fzf scripts to find the right projects
+bind-key "s" run "~/.fzftmux.sh"
+bind-key "p" run "~/.fzfdir.sh pet"
+bind-key "y" run "~/.fzfdir.sh work"
+bind-key "t" run "~/.fzfdir.sh oss"
