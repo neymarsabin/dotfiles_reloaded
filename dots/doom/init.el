@@ -16,18 +16,17 @@
 
 (doom! :input
        :completion
-       company           ; the ultimate code completion backend
+       company            ; the ultimate code completion backend
        vertico           ; the search engine of the future
+       ;; (ivy +fuzzy +prescient +icons +childframe)
 
        :ui
        (emoji +unicode)  ; 🙂
        indent-guides     ; highlighted indent columns
-       modeline          ; snazzy, Atom-inspired modeline, plus API
+       (modeline +light)         ; snazzy, Atom-inspired modeline, plus API
        ophints           ; highlight the region an operation acts on
        ;; (popup +defaults)   ; tame sudden yet inevitable temporary windows
-       treemacs          ; a project drawer, like neotree but cooler
        (vc-gutter +pretty) ; vcs diff in the fringe
-       vi-tilde-fringe   ; fringe tildes to mark beyond EOB
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies
@@ -42,20 +41,13 @@
        undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 
-       :term
-       ;; vterm             ; the best terminal emulation in Emacs
-
-       :checkers
-
        :tools
        docker
        (eval +overlay)     ; run code, run (also, repls)
-       ;; gist              ; interacting with github gists
        lookup              ; navigate your code and its documentation
-       lsp                 ; M-x vscode
+       (lsp +peek)                ; M-x vscode
        magit             ; a git porcelain for Emacs
        ;; pass           ; password manager for nerds
-       ;; terraform         ; infrastructure as code
        tree-sitter       ; syntax and parsing, sitting in a tree...
 
        :os
@@ -66,21 +58,17 @@
        (go +lsp)
        json              ; At least it ain't XML
        (javascript +lsp)
-       lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        (org
         +pretty
         +journal
         +present
-        +hugo)              ; organize your plain life in plain text
-       rust
-       sh              ; she sells {ba,z,fi}sh shells on the C xor
+        +hugo
+        +lsp)              ; organize your plain life in plain text
+       ;; sh              ; she sells {ba,z,fi}sh shells on the C xor
        solidity
        web               ; the tubes
        yaml
-
-       :app
-       calendar
 
        :config
        (default +bindings +smartparens))

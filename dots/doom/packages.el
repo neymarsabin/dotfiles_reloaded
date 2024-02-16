@@ -54,6 +54,7 @@
 (package! zenburn-theme)
 (package! elfeed)
 (package! elfeed-dashboard)
+(package! jazz-theme)
 
 ;; TODO: I don't why this package is behaving weird with vim keybindings in org-agenda mode, fix this later
 ;; (package! org-super-agenda)

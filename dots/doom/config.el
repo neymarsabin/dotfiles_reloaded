@@ -196,3 +196,12 @@ Rely on your LSP for indentation, couldn't write a single thing on indenting."
 (after! lsp-mode
   ;; https://github.com/emacs-lsp/lsp-mode/issues/3577#issuecomment-1709232622
   (delete 'lsp-terraform lsp-client-packages))
+
+;; change cursor type in insert mode in terminal
+(add-hook 'evil-insert-state-entry-hook (lambda () (send-string-to-terminal "\033[5 q")))
+(add-hook 'evil-insert-state-exit-hook  (lambda () (send-string-to-terminal "\033[2 q")))
+
+;; add new custom org-capture templates for readme
+(setq org-capture-templates
+      '(("r" "Readme" entry (file+headline "~/.org/notes.org" "Readme")
+         "* TODO %?\n  %i\n DEADLINE: %t \n - [ ] url: \n %a")))

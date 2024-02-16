@@ -2,10 +2,7 @@
 
 if [[ -d ./scripts ]]
 then
-		for i in ./scripts/* ; do
-				source "$i"
-		done
+	for i in ./scripts/* ; do
+			source "$i"
+	done
 fi
-		
-
-	 
