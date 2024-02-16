@@ -192,7 +192,8 @@ Rely on your LSP for indentation, couldn't write a single thing on indenting."
   (message "echo:: zshrc config file"))
 (evil-define-key 'normal 'global (kbd "SPC fz") 'zshrc)
 
-;; terraform issues
+;; terraform lsp has issues with emacs30, does not allow other lsp's to work
+;; found this fix from the issue mentioned below
 (after! lsp-mode
   ;; https://github.com/emacs-lsp/lsp-mode/issues/3577#issuecomment-1709232622
   (delete 'lsp-terraform lsp-client-packages))
