@@ -4,7 +4,7 @@
 #+EMAIL: reddevil.sabin@gmail.com
 
 #+begin_quote
-I am on MacOS these days :( and the repo is broken!!!! Will be fixing these soon
+I am on MacOS these days :( and the repo is broken!!!! Will be fixing this soon
 #+end_quote
 
 * Workflow Setup
@@ -42,17 +42,14 @@ My Experiments with dotfiles continues.... \\
 	- *scripts* is the folder which contains the scripts which is source'd everytime shell reloads
 	- ~shellrc~ is script which runs the scripts inside */dotfiles/scripts* folder
 
+
 * How To 
-	- In your .zshrc or .bashrc 
-		#+BEGIN_SRC sh
-    export config_dir=/your_dir
-		#+END_SRC
+- In your .zshrc or .bashrc
+#+BEGIN_SRC sh
+export config_dir=/your_dir
+#+END_SRC
 
-	- reload *shellrc* script file everytime configuration file changes or do:-
-		#+BEGIN_SRC sh 
-		exec $SHELL
-		#+END_SRC
-
-
-		 	 	
-
+- reload *shellrc* script file everytime configuration file changes or do:-
+#+BEGIN_SRC sh
+exec $SHELL
+#+END_SRC

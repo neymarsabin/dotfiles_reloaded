@@ -78,15 +78,6 @@ bind "\%" split-window -h -c '#{pane_current_path}'
 # bind-key "@" split-window "exec dmesg -w"
 bind-key "@" split-window "exec htop"
 
-################################
-##      plugins               ##
-################################
-#plugins, they make things automatic
-#set -g @plugin 'tmux-plugins/tmux-yank'
-#set -g @plugin 'tmux-plugins/tpm'
-#set -g @plugin 'tmux-plugins/tmux-copycat'
-#set -g @plugin 'tmux-plugins/tmux-open'
-
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 #run -b '~/.tmux/plugins/tpm/tpm'
 
@@ -104,7 +95,7 @@ set-option -g status-right "#[fg=red,bright]🎧  "
 # set-option -ga update-environment ' DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY'
 
 ## run my fzf scripts to find the right projects
-bind-key "s" run "~/.fzftmux.sh"
-bind-key "p" run "~/.fzfdir.sh pet"
-bind-key "y" run "~/.fzfdir.sh work"
-bind-key "t" run "~/.fzfdir.sh oss"
+bind-key "s" run "~/projects/pet/dotfiles_reloaded/scripts/fzftmux.sh"
+bind-key "p" run "~/projects/pet/dotfiles_reloaded/scripts/fzfdir.sh pet"
+bind-key "y" run "~/projects/pet/dotfiles_reloaded/scripts/fzfdir.sh work"
+bind-key "t" run "~/projects/pet/dotfiles_reloaded/scripts/fzfdir.sh oss"
