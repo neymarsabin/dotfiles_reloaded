@@ -235,10 +235,11 @@ bar {
 # popup during fullscreen
 # popup_during_fullscreen leave_fullscreen
 
-#increase and decrease volume
-# bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
-#bindsym $mod+shift+0 exec amixer -q set Master 5%+ unmute
-# bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
+# works well with pipewire, pavucontrol -> command line version called ~pactl~
+# i am not using pulseaudio, because pipewire is a well maintained wrapper around pulseaudio
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec pactl set-sink-volume @DEFAULT_SINK@ 0
 
 # increase and decrease brightness
 bindsym XF86MonBrightnessUp exec $scripts_dir/brightness.sh inc
@@ -289,11 +290,3 @@ bindsym $mod+minus scratchpad show
 
 # # screen_capture(from my configuration)
 # bindsym $mod+shift+b exec screen_capture
-
-# exec once pipewire
-# exec_always /usr/bin/pipewire
-# exec_always /usr/bin/pipewire-media-session
-
-# fix display brightness problem
-# bindsym $mod+< exec xrandr --output eDP --brightness 0.7
-# bindsym $mod++> exec xrandr --output eDP --brightness 1.0
