@@ -8,9 +8,9 @@
  '(elfeed-feeds '("https://alexwlchan.net/atom.xml"))
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(org-agenda-files
-   '("/home/neymarsabin/projects/pet/the-new-org/doom/dotfiles/dotfiles.org" "/home/neymarsabin/projects/pet/the-new-org/doom/heavyanime.com/heavyanime.org" "/home/neymarsabin/projects/pet/the-new-org/doom/work/leads.org" "/home/neymarsabin/projects/pet/the-new-org/doom/enjoy/readme.org"))
+   '("~/projects/pet/the-new-org/doom/portfolio/budget.org" "/home/neymarsabin/projects/pet/the-new-org/doom/portfolio/leetcode.org" "/home/neymarsabin/projects/pet/the-new-org/doom/work/kubernetes.org" "/home/neymarsabin/projects/pet/the-new-org/doom/dotfiles/dotfiles.org" "/home/neymarsabin/projects/pet/the-new-org/doom/heavyanime.com/heavyanime.org" "/home/neymarsabin/projects/pet/the-new-org/doom/work/leads.org" "/home/neymarsabin/projects/pet/the-new-org/doom/enjoy/readme.org"))
  '(package-selected-packages
-   '(anti-zenburn-theme atom-dark-theme elfeed elfeed-dashboard elfeed-org flatui-theme go-playground helm-themes jazz-theme nord-theme org-bullets org-link-beautify org-pomodoro spaceline-all-the-icons)))
+   '(atom-one-dark-theme dracula-theme spacemacs-theme anti-zenburn-theme atom-dark-theme elfeed elfeed-dashboard elfeed-org flatui-theme go-playground helm-themes jazz-theme nord-theme org-bullets org-link-beautify org-pomodoro spaceline-all-the-icons)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

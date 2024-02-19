@@ -206,8 +206,8 @@ set $mclip /home/neymar/.scripts/rofi-clipboard-manager/mclip.py
 #start rofi ( application launcher)
 bindsym $mod+shift+d exec rofi -show run -lines 5 -eh 2 -font "Monaco 14" # -fullscreen -padding 200 -font "Monaco 18" -opacity 90
 bindsym $mod+d exec rofi -show window -lines 5 -eh 2 -font "Monaco 14" # -fullscreen -padding 200 -font "Monaco 18" -opacity 90
-bindsym $mod+shift+p exec rofi -modi "googleSearch:~/bin/search.sh" -show googleSearch -lines 3 -eh 2 # -fullscreen -padding 200 -font "Monaco 18"
-bindsym $mod+shift+y exec /home/neymar/.scripts/rofi-clipboard-manager/run.sh
+# bindsym $mod+shift+p exec rofi -modi "googleSearch:~/bin/search.sh" -show googleSearch -lines 3 -eh 2 # -fullscreen -padding 200 -font "Monaco 18"
+# bindsym $mod+shift+y exec /home/neymar/.scripts/rofi-clipboard-manager/run.sh
 bindsym $mod+shift+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -lines 5 -eh 2 -font "Monaco 14"
 #bindsym $mod+shift+x exec i3lock-fancy
  
