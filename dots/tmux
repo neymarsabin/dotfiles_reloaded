@@ -22,10 +22,6 @@ set -g history-limit 1000000
 # bind -t emacs-copy WheelUpPane   page-up
 # bind -t emacs-copy WheelDownPane page-down
 
-#scrolling
-# bind-key -t emacs-copy M-w copy-pipe "xsel -i -p -b"
-bind-key C-y run "xsel -o | tmux load-buffer - ; tmux paste-buffer"
-
 # toggle the status bar
 bind-key C-Space set-option -g status
 
@@ -85,7 +81,8 @@ bind-key "@" split-window "exec htop"
 set-option -g default-shell /bin/zsh
 
 # wifi sside, status line at right side
-set-option -g status-right "#[fg=red,bright]🎧  "
+set-option -g status-right "#[fg=red,bright]🎧 "
+set-option -ag status-right "#[fg=red,bright](%D-%r)"
 
 #####################
 # Testing
