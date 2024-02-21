@@ -5,7 +5,7 @@
 set -g mouse on
 
 # reload the tmux config
-bind r source-file ~/.tmux.conf \; display "!! config file reloaded Sir...  😸"
+bind r source-file ~/.tmux.conf \; display "!! config file reloaded...  😸"
 
 # binding the yet another awesome thing:
 # learnt on ruby_meet2016,jun17 from oozzal
@@ -16,7 +16,7 @@ bind e set-window-option synchronize-panes
 set -g default-terminal "screen-256color"
 
 # limit hitory lines; i know that's a lot
-set -g history-limit 1000000
+set -g history-limit 10000000
 
 #scrolling
 # bind -t emacs-copy WheelUpPane   page-up
@@ -69,27 +69,14 @@ set -g visual-activity on
 bind "\"" split-window -c '#{pane_current_path}'
 bind "\%" split-window -h -c '#{pane_current_path}'
 
-# shortcuts rule the world, generic ones
-# bind-key "~" split-window "exec htop~"
-# bind-key "@" split-window "exec dmesg -w"
+# open htop at once
 bind-key "@" split-window "exec htop"
-
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-#run -b '~/.tmux/plugins/tpm/tpm'
 
 # zsh as default shell
 set-option -g default-shell /bin/zsh
 
-# wifi sside, status line at right side
-set-option -g status-right "#[fg=red,bright]🎧 "
-set-option -ag status-right "#[fg=red,bright](%D-%r)"
-
-#####################
-# Testing
-#####################
-# save current envs
-# src: http://stackoverflow.com/a/9833996/2636474
-# set-option -ga update-environment ' DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY'
+# show time at right
+set-option -g status-right "#[fg=red,bright]%r "
 
 ## run my fzf scripts to find the right projects
 bind-key "s" run "~/projects/pet/dotfiles_reloaded/scripts/fzftmux.sh"

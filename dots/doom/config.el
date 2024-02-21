@@ -206,3 +206,6 @@ Rely on your LSP for indentation, couldn't write a single thing on indenting."
 (setq org-capture-templates
       '(("r" "Readme" entry (file+headline "~/.org/notes.org" "Readme")
          "* TODO %?\n  %i\n DEADLINE: %t \n - [ ] url: \n %a")))
+
+;; xclip will allow us to copy paste from emacs to outside
+(xclip-mode 1)

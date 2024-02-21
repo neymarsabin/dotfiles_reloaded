@@ -71,10 +71,6 @@ export PATH=$PATH:/usr/local/go/bin
 # alias ls into exa
 alias ls='exa -lhSHgi --git'
 
-echo 'ulimit -n 12288' >> ~/.bash_profile
-export PATH=$PATH:/Users/neymarsabin/Documents/mongo/bin
-export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
-
 # chatgpt command line interface
 export PATH=$PATH:/Users/neymarsabin/.config/emacs/bin
 

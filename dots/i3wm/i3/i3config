@@ -145,8 +145,6 @@ for_window [class="MPlayer"] floating enable
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'exit?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -209,15 +207,12 @@ bindsym $mod+d exec rofi -show window -lines 5 -eh 2 -font "Monaco 14" # -fullsc
 # bindsym $mod+shift+p exec rofi -modi "googleSearch:~/bin/search.sh" -show googleSearch -lines 3 -eh 2 # -fullscreen -padding 200 -font "Monaco 18"
 # bindsym $mod+shift+y exec /home/neymar/.scripts/rofi-clipboard-manager/run.sh
 bindsym $mod+shift+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -lines 5 -eh 2 -font "Monaco 14"
-#bindsym $mod+shift+x exec i3lock-fancy
- 
+
 bar {
     font pango:Monaco 12
     status_command i3status -c /home/neymarsabin/projects/pet/dotfiles_reloaded/dots/i3wm/i3/i3status.conf
     tray_output eDP1
     position bottom
-    # mode hide
-    # hidden_state hide
     colors {
         separator #268bd2
         background #000000
@@ -253,7 +248,7 @@ bindsym XF86MonBrightnessDown exec $scripts_dir/brightness.sh dec
 #exec_always --no-startup-id compton --config ~/.config/compton.conf -b --vsync opengl 
 #exec_always  compton
 # i3lock status
-bindsym $mod+shift+x exec i3lock-fancy -t 'neymarsabin' # -i /home/neymar/Desktop/linux.png
+# bindsym $mod+shift+x exec i3lock-fancy -t 'neymarsabin' # -i /home/neymar/Desktop/linux.png
 
 # execute touch pad click
 #exec --no-startup-id xinput set-props 13 "Synaptics Tap Time" 1
