@@ -10,7 +10,7 @@
  '(org-agenda-files
    '("~/projects/pet/the-new-org/doom/work/youtube.org" "/home/neymarsabin/projects/pet/the-new-org/doom/portfolio/budget.org" "/home/neymarsabin/projects/pet/the-new-org/doom/portfolio/leetcode.org" "/home/neymarsabin/projects/pet/the-new-org/doom/work/kubernetes.org" "/home/neymarsabin/projects/pet/the-new-org/doom/dotfiles/dotfiles.org" "/home/neymarsabin/projects/pet/the-new-org/doom/heavyanime.com/heavyanime.org" "/home/neymarsabin/projects/pet/the-new-org/doom/work/leads.org" "/home/neymarsabin/projects/pet/the-new-org/doom/enjoy/readme.org"))
  '(package-selected-packages
-   '(atom-one-dark-theme dracula-theme spacemacs-theme anti-zenburn-theme atom-dark-theme elfeed elfeed-dashboard elfeed-org flatui-theme go-playground helm-themes jazz-theme nord-theme org-bullets org-link-beautify org-pomodoro spaceline-all-the-icons)))
+   '(doom-themes doom atom-one-dark-theme dracula-theme spacemacs-theme anti-zenburn-theme atom-dark-theme elfeed elfeed-dashboard elfeed-org flatui-theme go-playground helm-themes jazz-theme nord-theme org-bullets org-link-beautify org-pomodoro spaceline-all-the-icons)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

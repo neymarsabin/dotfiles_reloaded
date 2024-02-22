@@ -49,6 +49,7 @@
        magit             ; a git porcelain for Emacs
        ;; pass           ; password manager for nerds
        tree-sitter       ; syntax and parsing, sitting in a tree...
+       (terraform )
 
        :os
        (:if IS-MAC macos)  ; improve compatibility with macOS
