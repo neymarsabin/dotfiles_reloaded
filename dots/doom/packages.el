@@ -57,5 +57,7 @@
 (package! jazz-theme)
 (package! xclip)
 
-;; TODO: I don't why this package is behaving weird with vim keybindings in org-agenda mode, fix this later
-;; (package! org-super-agenda)
+;; trying copilot
+(package! copilot
+  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist")))
+

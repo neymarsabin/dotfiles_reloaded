@@ -209,3 +209,12 @@ Rely on your LSP for indentation, couldn't write a single thing on indenting."
 
 ;; xclip will allow us to copy paste from emacs to outside
 (xclip-mode 1)
+
+;; copilot configuration
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))
