@@ -76,10 +76,9 @@ bind-key "@" split-window "exec htop"
 set-option -g default-shell /bin/zsh
 
 # show time at right
-set-option -g status-right "#[fg=red,bright]%r "
+set-option -g status-right "#[fg=white,bright]%r "
 
 ## run my fzf scripts to find the right projects
 bind-key "s" run "~/projects/pet/dotfiles_reloaded/scripts/fzftmux.sh"
 bind-key "p" run "~/projects/pet/dotfiles_reloaded/scripts/fzfdir.sh pet"
-bind-key "y" run "~/projects/pet/dotfiles_reloaded/scripts/fzfdir.sh work"
 bind-key "t" run "~/projects/pet/dotfiles_reloaded/scripts/fzfdir.sh oss"
