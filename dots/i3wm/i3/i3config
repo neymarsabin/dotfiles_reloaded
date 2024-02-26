@@ -36,7 +36,6 @@ bindsym $mod+Shift+q kill
 # open firefox 
 #bindsym $mod+shift+f firefox
 
-
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -285,3 +284,6 @@ bindsym $mod+minus scratchpad show
 
 # # screen_capture(from my configuration)
 # bindsym $mod+shift+b exec screen_capture
+
+### set ace on login
+exec feh --bg-scale ~/Downloads/ace.1.jpg

@@ -70,6 +70,7 @@
        solidity
        web               ; the tubes
        yaml
+       (lua +lsp)
 
        :config
        (default +bindings +smartparens))

@@ -3,7 +3,6 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "neymarsabin"
@@ -214,7 +213,14 @@ Rely on your LSP for indentation, couldn't write a single thing on indenting."
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
   :bind (:map copilot-completion-map
-              ("<tab>" . 'copilot-accept-completion)
-              ("TAB" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)))
+              ("<tab>" . 'copilot-accept-completion-by-paragraph)
+              ("TAB" . 'copilot-accept-completion-by-paragraph)
+              ("C-TAB" . 'copilot-accept-completion-by-paragraph)
+              ("C-<tab>" . 'copilot-accept-completion-by-paragraph)))
+
+;; set the default browser to firefox
+(setq browse-url-browser-function 'browse-url-firefox)
+
+;; configuration to display relative line numbers
+(setq display-line-numbers-type 'relative)
+(setq doom-line-numbers-style 'relative)

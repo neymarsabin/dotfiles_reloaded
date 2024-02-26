@@ -56,6 +56,7 @@
 (package! elfeed-dashboard)
 (package! jazz-theme)
 (package! xclip)
+(package! kanagawa-theme)
 
 ;; trying copilot
 (package! copilot
