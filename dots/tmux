@@ -1,26 +1,15 @@
-################################
-##      generic               ##
-################################
-# little bit of mouse does no harm
 set -g mouse on
 
 # reload the tmux config
 bind r source-file ~/.tmux.conf \; display "!! config file reloaded...  😸"
 
-# synchronize-panes to send command to all panes
 bind e set-window-option synchronize-panes
 
-# Setting the correct term
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 set -g default-terminal "screen-256color"
 
-# history
 set -g history-limit 10000000
 
-################################
-##      Decorate              ##
-################################
-#-----borrowed from book--------
 # set the status line's colors
 set -g status-style fg=white,bg=black
 set -g mode-style fg=black,bg=green,blink
