@@ -7,23 +7,15 @@ set -g mouse on
 # reload the tmux config
 bind r source-file ~/.tmux.conf \; display "!! config file reloaded...  😸"
 
-# binding the yet another awesome thing:
-# learnt on ruby_meet2016,jun17 from oozzal
-# send commad to all the panes
+# synchronize-panes to send command to all panes
 bind e set-window-option synchronize-panes
 
 # Setting the correct term
+set-option -ga terminal-overrides ",xterm-256color:Tc"
 set -g default-terminal "screen-256color"
 
-# limit hitory lines; i know that's a lot
+# history
 set -g history-limit 10000000
-
-#scrolling
-# bind -t emacs-copy WheelUpPane   page-up
-# bind -t emacs-copy WheelDownPane page-down
-
-# toggle the status bar
-bind-key C-Space set-option -g status
 
 ################################
 ##      Decorate              ##
@@ -42,10 +34,6 @@ setw -g window-status-current-style fg=green,bg=black,bright
 # set window activity
 setw -g window-status-activity-style fg=white,bg=black,bright
 
-# pane display number
-# set-option -g display-panes-active-colour colour33 # blue
-# set-option -g display-panes-colour colour166 #orange
-
 # Command / message line
 set -g message-style fg=red,bg=black,bright
 
@@ -59,17 +47,12 @@ set -g status-justify centre
 # Update the status bar every sixty seconds
 set -g status-interval 60
 
-# notification, alerting the states
-setw -g monitor-activity on
-set -g visual-activity on
-# setw automatic-rename off
-
 # fix split preserve $PWD
 # bind c new -c '#{pane_current_path}'
 bind "\"" split-window -c '#{pane_current_path}'
 bind "\%" split-window -h -c '#{pane_current_path}'
 
-# open htop at once
+# htop
 bind-key "@" split-window "exec htop"
 
 # zsh as default shell
