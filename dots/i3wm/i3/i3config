@@ -224,7 +224,7 @@ bar {
 }
 
 # exec_always nm-applet
-# exec_always greenclip daemon
+exec_always greenclip daemon
 
 # popup during fullscreen
 # popup_during_fullscreen leave_fullscreen
