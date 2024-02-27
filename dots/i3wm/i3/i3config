@@ -224,7 +224,8 @@ bar {
 }
 
 # exec_always nm-applet
-exec_always greenclip daemon
+exec --no-startup-id greenclip daemon > /dev/null
+# exec_always greenclip daemon
 
 # popup during fullscreen
 # popup_during_fullscreen leave_fullscreen
@@ -238,27 +239,15 @@ bindsym XF86AudioMute exec pactl set-sink-volume @DEFAULT_SINK@ 0
 # increase and decrease brightness
 bindsym XF86MonBrightnessUp exec $scripts_dir/brightness.sh inc
 bindsym XF86MonBrightnessDown exec $scripts_dir/brightness.sh dec
-# Bindsym XF86TouchpadToggle exec /home/neymar/.config/i3/touchpad.sh
 
-# set the wallpaper always
-# exec_always feh --bg-scale /mnt/tutorials/mozilla-download/pink-floyd.jpg
-
-# start compton also
-#exec_always --no-startup-id compton --config ~/.config/compton.conf -b --vsync opengl 
-#exec_always  compton
 # i3lock status
-# bindsym $mod+shift+x exec i3lock-fancy -t 'neymarsabin' # -i /home/neymar/Desktop/linux.png
+bindsym $mod+shift+x exec i3lock-fancy-multimonitor -n -p
 
-# execute touch pad click
-#exec --no-startup-id xinput set-props 13 "Synaptics Tap Time" 1
-
-# new window 1 pixel or disabling title bar 
+# new window 1 pixel or disabling title bar
 new_window pixel 0
 
 # workspace back and forth
 bindsym $mod+Tab workspace back_and_forth
-# bindsym $mod+Prior workspace prev
-# bindsym $mod+Next workspace next
 
 #move workspace to another screen
 # top move monitor upwards -> bindsym $mod+n move workspace to output up
@@ -271,19 +260,11 @@ focus_follows_mouse yes
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-# start the mclip daemon on login
-# exec_always /home/neymar/.scripts/rofi-clipboard-manager/mclip daemon
-
-# touchpad configurations
-# exec xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "296" 1
-
-# exec_always /usr/bin/pasystray
-
 # sticky window
-# bindsym $mod+y sticky toggle
-
-# # screen_capture(from my configuration)
-# bindsym $mod+shift+b exec screen_capture
+bindsym $mod+y sticky toggle
 
 ### set ace on login
 exec feh --bg-scale ~/Downloads/ace.1.jpg
+
+### bind XF86Messenger to screenshot
+bindsym XF86Messenger exec $scripts_dir/screenshot.sh
