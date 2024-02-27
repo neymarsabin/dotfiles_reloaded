@@ -3,7 +3,6 @@
 #+AUTHOR: neymarsabin
 #+EMAIL: reddevil.sabin@gmail.com
 
-* Repo Consists of:
 	Folder Structure:
         #+begin_example
         | /home/neymarsabin/projects/pet/dotfiles_reloaded/dots |                    |               |          |
