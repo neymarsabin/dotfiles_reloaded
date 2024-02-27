@@ -4,9 +4,6 @@
 alias ..='cd ..'
 alias ...= 'cd ../../'
 
-# screenfetch
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # copy command alias to set interactive copy
 alias cp='cp -i -v '
 # remove command made interactive
