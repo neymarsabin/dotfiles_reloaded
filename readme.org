@@ -3,53 +3,61 @@
 #+AUTHOR: neymarsabin
 #+EMAIL: reddevil.sabin@gmail.com
 
-#+begin_quote
-I am on MacOS these days :( and the repo is broken!!!! Will be fixing this soon
-#+end_quote
-
-* Workflow Setup
-My Experiments with dotfiles continues.... \\
+* Repo Consists of:
 	Folder Structure:
-	#+BEGIN_EXAMPLE
-	| 0   |              |                    |         |
-	| ├── | dots         |                    |         |
-	| │   | ├──          | emacs              |         |
-	| │   | │            | ├──                | Cask    |
-	| │   | │            | └──                | init.el |
-	| │   | ├──          | i3blocks.conf      |         |
-	| │   | ├──          | i3config           |         |
-	| │   | ├──          | mplayer.conf       |         |
-	| │   | ├──          | mplayer_input.conf |         |
-	| │   | ├──          | tmux               |         |
-	| │   | └──          | Xresources         |         |
-	| ├── | readme.org   |                    |         |
-	| ├── | scripts      |                    |         |
-	| │   | ├──          | emacs.sh           |         |
-	| │   | ├──          | i3.sh              |         |
-	| │   | ├──          | mplayer.sh         |         |
-	| │   | ├──          | pacman.sh          |         |
-	| │   | ├──          | sendemail.sh       |         |
-	| │   | ├──          | tmux.sh            |         |
-	| │   | ├──          | touch-and-key.sh   |         |
-	| │   | ├──          | Xresources.sh      |         |
-	| │   | └──          | zsh.sh             |         |
-	| └── | shellrc      |                    |         |
-	|     |              |                    |         |
-	| 3   | directories, | 19                 | files   |
-	#+END_EXAMPLE
+        #+begin_example
+        | /home/neymarsabin/projects/pet/dotfiles_reloaded/dots |                    |               |          |
+        | ├──                                                   | doom               |               |          |
+        | │                                                     | ├──                | config.el     |          |
+        | │                                                     | ├──                | custom.el     |          |
+        | │                                                     | ├──                | init.el       |          |
+        | │                                                     | ├──                | packages.el   |          |
+        | │                                                     | └──                | snippets      |          |
+        | │                                                     | ├──                | go-mode       |          |
+        | │                                                     | │                  | ├──           | func     |
+        | │                                                     | │                  | └──           | hello    |
+        | │                                                     | ├──                | org-mode      |          |
+        | │                                                     | │                  | └──           | hugohead |
+        | │                                                     | └──                | solidity-mode |          |
+        | │                                                     | └──                | constructor   |          |
+        | ├──                                                   | i3wm               |               |          |
+        | │                                                     | └──                | i3            |          |
+        | │                                                     | ├──                | i3blocks.conf |          |
+        | │                                                     | ├──                | i3config      |          |
+        | │                                                     | └──                | i3status.conf |          |
+        | ├──                                                   | mplayer.conf       |               |          |
+        | ├──                                                   | mplayer_input.conf |               |          |
+        | ├──                                                   | tmux               |               |          |
+        | └──                                                   | Xresources         |               |          |
+        |                                                       |                    |               |          |
+        | 8                                                     | directories,       | 15            | files    |
+        #+end_example
 
-	- *dots* is the folder which contains configurations files for the applications.
-	- *scripts* is the folder which contains the scripts which is source'd everytime shell reloads
-	- ~shellrc~ is script which runs the scripts inside */dotfiles/scripts* folder
+	- *dots* -> has all the configuration for the apps I am using
+	- *scripts* -> this folder makes Arch Linux usable
 
+* How To?
+- symlink essentials like ~i3config~, ~tmux~ etc into $HOME directory. I am not going to write commands to do symlinks here!!
+- I am using ~Doom Emacs~, export ~$DOOMDIR~ environment variable in your .zshrc
+- I recommend setting up ~.zshrc~ with ~oh-my-zsh~ if you want to have themes and plugins written and maintained by awesome people
 
-* How To 
-- In your .zshrc or .bashrc
-#+BEGIN_SRC sh
-export config_dir=/your_dir
-#+END_SRC
+* Laptop and OS
+- Lenovo Thinkpad e14 ryzen 7 with AMD Graphics [linux works much better in AMD processors]
+- Arch Linux with ~pacman~ and ~yay~ package managers
 
-- reload *shellrc* script file everytime configuration file changes or do:-
-#+BEGIN_SRC sh
-exec $SHELL
-#+END_SRC
+* Apps and Dependencies
+- i3 window manager [ best if you are working with multiple monitors and use less mouse ]
+- EMACS [ emacs-nativecomp in terminal, the GUI is not working ]
+- alacritty + tmux [ alacritty has config file, tmux is awesome ]
+- rofi [ replacing dmenu for everything - commands, windows, clipboard ]
+- xclip and greenclip [ xclip is native clipboard manager of X11 and greenclip is too good with rofi ]
+- mplayer [ I don't use this very much ]
+- scrot for screenshots [ ~scrot -s <date>.png~ ]
+- ranger [ terminal file manager, plus supports vim motions ]
+- firefox [ only because it has vimium ]
+
+* TODOs for fridays
+- [ ] bluetooth mouse is not working, fix this for Arch Linux
+- [ ] have screen tearing, I don't care much about this yet, till I get irritated
+- [ ] fix EMACS GUI version
+- [ ] thinkpad - tap to click is not working
