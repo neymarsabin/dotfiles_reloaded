@@ -26,7 +26,7 @@
        (modeline +light)         ; snazzy, Atom-inspired modeline, plus API
        ophints           ; highlight the region an operation acts on
        ;; (popup +defaults)   ; tame sudden yet inevitable temporary windows
-       (vc-gutter +pretty) ; vcs diff in the fringe
+       ;; (vc-gutter +pretty) ; vcs diff in the fringe
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies

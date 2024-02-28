@@ -115,7 +115,6 @@
     (save-excursion
       (forward-line)
       (transpose-lines 1))
-    (forward-line)
     (move-to-column col)))
 
 (defun move-line-up ()
@@ -127,8 +126,8 @@
     (forward-line -1)
     (move-to-column col)))
 
-(global-set-key (kbd "C-S-j") 'move-line-down)
-(global-set-key (kbd "C-S-k") 'move-line-up)
+(global-set-key (kbd "M-k") 'move-line-up)
+(global-set-key (kbd "M-j") 'move-line-down)
 
 ;; maximize the window upon startup
 (setq initial-frame-alist '((top . 1) (left . 1) (width . 114) (height . 32)))
@@ -157,9 +156,7 @@
 ;; wrap a word or region with something
 ;; TODO: find some shortcuts to use these
 (defun insert-curves (&optional arg)
-  "Inserts {  } curves to the selected region.
-I wish I could say I wrote this function, copies everything of the function insert-parenthesis.
-Rely on your LSP for indentation, couldn't write a single thing on indenting."
+  "Inserts {  } curves to the selected region."
   (interactive "P")
   (insert-pair arg ?\{ ?\}))
 (global-set-key (kbd "M-S-{") 'insert-curves)
@@ -185,11 +182,11 @@ Rely on your LSP for indentation, couldn't write a single thing on indenting."
 
 ;; open my .zshrc file when I press these key strokes
 ;; use evil-define-key from evil mode || docs link: https://evil.readthedocs.io/en/latest/keymaps.html#leader-keys
-(defun zshrc()
+(defun neymar/open-zshrc ()
   (interactive)
   (find-file "~/.zshrc")
-  (message "echo:: zshrc config file"))
-(evil-define-key 'normal 'global (kbd "SPC fz") 'zshrc)
+  (message "echo:: zshrc"))
+(evil-define-key 'normal 'global (kbd "SPC fz") 'neymar/open-zshrc)
 
 ;; terraform lsp has issues with emacs30, does not allow other lsp's to work
 ;; found this fix from the issue mentioned below
@@ -223,4 +220,15 @@ Rely on your LSP for indentation, couldn't write a single thing on indenting."
 
 ;; configuration to display relative line numbers
 (setq display-line-numbers-type 'relative)
-(setq doom-line-numbers-style 'relative)
+
+;; wrap a word or region with something
+(defun neymar/wrap-word (char)
+  "Inserts the character at the front and end of the selected word.
+   Very useful in org mode files to wrap a word with * or ~ or +"
+  (interactive "c")
+  (let ((word (buffer-substring-no-properties (mark) (point))))
+    (delete-region (region-beginning) (region-end))
+    (insert (concat (char-to-string char) word (char-to-string char)))))
+
+;; bind the function to a key
+(global-set-key (kbd "C-c w") 'neymar/wrap-word)
