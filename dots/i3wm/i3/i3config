@@ -16,10 +16,10 @@ set $scripts_dir $HOME/projects/pet/dotfiles_reloaded/scripts/
 # font pango:Monaco 8
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+# font pango:DejaVu Sans Mono 8
 
 # Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
@@ -93,15 +93,15 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # setting variables for workspaces
-set $workspace1 "1: Firefox "
-set $workspace2 "2: Emacs "
-set $workspace3 "3: Terminal "
-set $workspace4 "4: Files "
-set $workspace5 "5: Slack "
-set $workspace6 "6: Mplayer"
-set $workspace7 "7: "
-set $workspace8 "8: "
-set $workspace9 "9: Telegram "
+set $workspace1 "1:  "
+set $workspace2 "2:  "
+set $workspace3 "3:  "
+set $workspace4 "4:  "
+set $workspace5 "5:  "
+set $workspace6 "6:  "
+set $workspace7 "7:  "
+set $workspace8 "8:  "
+set $workspace9 "9:  "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -268,3 +268,6 @@ exec feh --bg-scale ~/Downloads/ace.1.jpg
 
 ### bind XF86Messenger to screenshot
 bindsym XF86Messenger exec $scripts_dir/screenshot.sh
+
+# ### start picom at boot time
+# exec_always --no-startup-id picom --config ~/.config/picom/load.conf > /dev/null

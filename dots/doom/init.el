@@ -16,7 +16,7 @@
 
 (doom! :input
        :completion
-       (company +childframe)            ; the ultimate code completion backend
+       (company +childframe +icons)            ; the ultimate code completion backend
        vertico           ; the search engine of the future
        ;; (ivy +fuzzy +prescient +icons +childframe)
 

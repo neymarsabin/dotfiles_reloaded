@@ -57,6 +57,7 @@
 (package! jazz-theme)
 (package! xclip)
 (package! kanagawa-theme)
+(package! go-playground)
 
 ;; trying copilot
 (package! copilot
