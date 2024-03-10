@@ -52,11 +52,12 @@
 - xclip and greenclip [ xclip is native clipboard manager of X11 and greenclip is too good with rofi ]
 - mplayer [ I don't use this very much ]
 - scrot for screenshots [ ~scrot -s <date>.png~ ]
-- ranger [ terminal file manager, plus supports vim motions ]
-- firefox [ only because it has vimium ]
+- ranger [ terminal file manager, plus supports vim motions, but rarely use browsers ]
+- firefox [ only because it has good vimium support ]
 
 * TODOs for fridays
 - [ ] bluetooth mouse is not working, fix this for Arch Linux
 - [ ] have screen tearing, I don't care much about this yet, till I get irritated
 - [ ] fix EMACS GUI version
 - [ ] thinkpad - tap to click is not working
+- [ ] keychron K2 does is not working both wired/wireless mode
