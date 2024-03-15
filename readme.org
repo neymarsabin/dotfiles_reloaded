@@ -55,9 +55,34 @@
 - ranger [ terminal file manager, plus supports vim motions, but rarely use browsers ]
 - firefox [ only because it has good vimium support ]
 
+* Troubleshooting
+*** Keychron K2 is not working in wired mode
+**** What is the issue?
+the module ~hid-apple~ was not loaded and udev rules were not triggered.
+
+**** solution||
+	- get some info on ~hid-apple~ kernel module with the help of ~modinfo~
+	  #+begin_src shell
+			modinfo hid-apple
+	  #+end_src
+	  - you will see a bunch of information displayed, if not there is something wrong
+
+	- loading modules with ~modeprobe~
+	  #+begin_src shell
+			sudo modeprobe hid-apple
+	  #+end_src
+
+	- ~/sys/module/hid_apple/parameters/fnmode~ check if this file exists?
+	- add ~udev~ rules to ~/etc/udev/rules.d/70-keychron.rules~
+	  #+begin_src shell
+			ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="0220", RUN+="/bin/sh -c 'echo 2 > /sys/module/hid_apple/parameters/fnmode'"
+	  #+end_src
+
+**** bluetooth connection with K2 is not working yet!!!
+
 * TODOs for fridays
 - [ ] bluetooth mouse is not working, fix this for Arch Linux
 - [ ] have screen tearing, I don't care much about this yet, till I get irritated
 - [ ] fix EMACS GUI version
 - [ ] thinkpad - tap to click is not working
-- [ ] keychron K2 does is not working both wired/wireless mode
+
