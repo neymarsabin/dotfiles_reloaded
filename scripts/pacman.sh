@@ -13,6 +13,3 @@ alias pacmanqi='pacman -Qi'
 alias pacmanl='pacman -Ql'
 #packages that are no longer needed
 alias pacmand='pacman -Qdt'
-
-
-
