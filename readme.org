@@ -37,7 +37,7 @@
 
 * How To?
 - symlink essentials like ~i3config~, ~tmux~ etc into $HOME directory. I am not going to write commands to do symlinks here!!
-- I am using ~Doom Emacs~, export ~$DOOMDIR~ environment variable in your .zshrc
+- I am using +Doom Emacs+ ~neovim~ these days, +export ~$DOOMDIR~ environment variable in your .zshrc+
 - I recommend setting up ~.zshrc~ with ~oh-my-zsh~ if you want to have themes and plugins written and maintained by awesome people
 
 * Laptop and OS
@@ -83,7 +83,6 @@ ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="022
 * TODOs for fridays
 - [ ] bluetooth mouse is not working, fix this for Arch Linux
 - [ ] have screen tearing, I don't care much about this yet, till I get irritated
-- [ ] fix EMACS GUI version
 - [ ] thinkpad - tap to click is not working
 - [X] keychron K2 wired mode is not working -> fixed
 
