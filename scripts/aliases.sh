@@ -39,3 +39,9 @@ alias du='du -h'
 alias free='free -h'
 alias top='htop'
 alias psg='ps aux | grep '
+
+# alias for pandoc
+alias pandoc='docker run --rm --volume "`pwd`:/data" --user `id -u`:`id -g` pandoc/core'
+
+# bunch of nmcli aliases
+alias nmdx='nmcli dev wifi connect'
