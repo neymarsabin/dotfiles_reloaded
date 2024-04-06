@@ -46,8 +46,9 @@
 
 * Apps and Dependencies
 - i3 window manager [ best if you are working with multiple monitors and use less mouse ]
-- EMACS [ emacs-nativecomp in terminal, the GUI is not working ]
-- alacritty + tmux [ alacritty has config file, tmux is awesome ]
+- +EMACS [ emacs-nativecomp in terminal, the GUI is not working ]+
+- neovim with some lua
+- wezterm + tmux [ wezterm has lua, tmux is awesome ]
 - rofi [ replacing dmenu for everything - commands, windows, clipboard ]
 - xclip and greenclip [ xclip is native clipboard manager of X11 and greenclip is too good with rofi ]
 - mplayer [ I don't use this very much ]

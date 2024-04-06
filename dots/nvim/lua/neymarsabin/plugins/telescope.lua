@@ -58,6 +58,9 @@ return {
 		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 		vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
+		-- use telescope to find commands
+		vim.keymap.set("n", "<leader>cc", builtin.commands, { desc = "[S]earch [C]ommands" })
+
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>ss", function()
 			-- You can pass additional configuration to telescope to change theme, layout, etc.
