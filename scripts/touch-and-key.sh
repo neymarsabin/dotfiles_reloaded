@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# modify the caps key to control key // from milan dai's config
+
+# modify the caps key to control key
 setxkbmap -option ctrl:nocaps
 
-# enable the touchpad click 
-# synclient to apply touchpad options
-synclient TapButton1=1 TapButton2=3 TapButton3=2
+#### swap alt <-> super in my external keyboard
+setxkbmap -option altwin:swap_alt_win
