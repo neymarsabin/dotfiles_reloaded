@@ -48,18 +48,18 @@ return {
 
 		-- See `:help telescope.builtin`
 		local builtin = require("telescope.builtin")
-		vim.keymap.set("n", "<leader>hf", builtin.help_tags, { desc = "[S]earch [H]elp" })
-		vim.keymap.set("n", "<leader>hk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-		vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "[s]earch [f]iles" })
-		vim.keymap.set("n", "<leader>ps", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-		vim.keymap.set("n", "<leader>p/", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-		vim.keymap.set("n", "<leader>pg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-		vim.keymap.set("n", "<leader>ds", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-		vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = "[ ] Find existing buffers" })
+		vim.keymap.set("n", "<leader>hf", builtin.help_tags, {})
+		vim.keymap.set("n", "<leader>hk", builtin.keymaps, {})
+		vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
+		vim.keymap.set("n", "<leader>pg", builtin.git_files, {})
+		vim.keymap.set("n", "<leader>ps", builtin.builtin, {})
+		vim.keymap.set("n", "<leader>p/", builtin.live_grep, {})
+		vim.keymap.set("n", "<leader>ds", builtin.diagnostics, {})
+		vim.keymap.set("n", "<leader>sr", builtin.resume, {})
+		vim.keymap.set("n", "<leader>bb", builtin.buffers, {})
 
 		-- use telescope to find commands
-		vim.keymap.set("n", "<leader>cc", builtin.commands, { desc = "[S]earch [C]ommands" })
+		vim.keymap.set("n", "<leader>cc", builtin.commands, {})
 
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>ss", function()
