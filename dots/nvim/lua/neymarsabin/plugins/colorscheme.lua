@@ -1,22 +1,11 @@
 return {
 	{
-		"rose-pine/neovim",
-		name = "rose-pine",
+		"bluz71/vim-moonfly-colors",
+		name = "moonfly",
+		lazy = false,
+		priority = 1000,
 		config = function()
-			require("rose-pine").setup({
-				styles = {
-					bold = true,
-					italic = false,
-					transparency = false,
-				},
-				enable = {
-					terminal = true,
-					legacy_highlights = true,
-					migrations = true,
-				},
-			})
-			vim.cmd.colorscheme("rose-pine-moon")
+			vim.cmd.colorscheme("moonfly")
 		end,
-		opts = {},
 	},
 }

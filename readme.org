@@ -83,7 +83,7 @@ ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="022
 
 * TODOs for fridays
 - [ ] bluetooth mouse is not working, fix this for Arch Linux
-- [ ] have screen tearing, I don't care much about this yet, till I get irritated
+- [ ] fix screen tearing
 - [ ] thinkpad - tap to click is not working
 - [X] keychron K2 wired mode is not working -> fixed
 

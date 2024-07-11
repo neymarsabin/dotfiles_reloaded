@@ -8,6 +8,8 @@ vim.opt.shiftwidth = 4
 vim.opt.foldmethod = "indent"
 vim.opt.foldenable = false
 vim.opt.clipboard = "unnamedplus"
+vim.opt.termguicolors = true
+vim.opt.colorcolumn = "80"
 
 -- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.hlsearch = true
@@ -36,12 +38,12 @@ vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<CR>", { desc = "Create a new wind
 vim.keymap.set("n", "<leader>wq", "<cmd>close<CR>", { desc = "Close the window " })
 
 -- move line up or down
-vim.keymap.set("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "move line up", noremap = true })
-vim.keymap.set("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "move line down", noremap = true })
+vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 
--- -- move visual block up or down
--- vim.keymap.set("v", "<A-j>", "<cmd>m '>+1<cr>gv=gv", { desc = "move visual block down", noremap = true })
--- vim.keymap.set("v", "<A-k>", "<cmd>m '<-2<cr>gv=gv", { desc = "move visual block up", noremap = true })
+-- navigate page and center focus
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- install lazy vim plugins manager ---
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
