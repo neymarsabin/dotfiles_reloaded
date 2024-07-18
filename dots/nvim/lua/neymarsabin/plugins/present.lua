@@ -1,6 +1,6 @@
 return {
-	"Chaitanyabsprip/present.nvim",
-	config = function()
-		require("present").setup({})
-	end,
+	-- "Chaitanyabsprip/present.nvim",
+	-- config = function()
+	-- 	require("present").setup({})
+	-- end,
 }
