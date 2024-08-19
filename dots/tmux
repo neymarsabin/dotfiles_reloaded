@@ -2,11 +2,7 @@ set -g mouse on
 
 # reload the tmux config
 bind r source-file ~/.tmux.conf \; display "!! config file reloaded...  😸"
-
 bind e set-window-option synchronize-panes
-
-# set-option -ga terminal-overrides ",xterm-256color:Tc"
-set -g default-terminal "xterm-256color"
 
 set -g history-limit 10000000
 
@@ -54,3 +50,10 @@ set-option -g status-right "#[fg=white,bright]%c "
 bind-key "s" run "~/projects/pet/dotfiles_reloaded/scripts/fzftmux.sh"
 bind-key "p" run "~/projects/pet/dotfiles_reloaded/scripts/fzfdir.sh pet"
 bind-key "t" run "~/projects/pet/dotfiles_reloaded/scripts/fzfdir.sh oss"
+
+## suggestions from nvim
+set-option -sg escape-time 10
+set-option -g focus-events on
+
+# set default terminal
+set -g default-terminal "xterm-256color"

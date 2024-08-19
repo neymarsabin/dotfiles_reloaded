@@ -10,6 +10,8 @@ vim.opt.foldenable = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80"
+vim.opt.wrap = true
+vim.opt.linebreak = true
 
 -- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.hlsearch = true

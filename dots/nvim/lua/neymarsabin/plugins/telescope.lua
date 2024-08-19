@@ -52,7 +52,6 @@ return {
 		vim.keymap.set("n", "<leader>hk", builtin.keymaps, {})
 		vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
 		vim.keymap.set("n", "<leader>pg", builtin.git_files, {})
-		vim.keymap.set("n", "<leader>ps", builtin.builtin, {})
 		vim.keymap.set("n", "<leader>p/", builtin.live_grep, {})
 		vim.keymap.set("n", "<leader>ds", builtin.diagnostics, {})
 		vim.keymap.set("n", "<leader>sr", builtin.resume, {})
