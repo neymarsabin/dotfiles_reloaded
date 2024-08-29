@@ -78,12 +78,3 @@ sudo modeprobe hid-apple
 #+begin_src shell
 ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="0220", RUN+="/bin/sh -c 'echo 2 > /sys/module/hid_apple/parameters/fnmode'"
 #+end_src
-
-**** bluetooth connection with K2 is not working yet!!!
-
-* TODOs for fridays
-- [ ] bluetooth mouse is not working, fix this for Arch Linux
-- [ ] fix screen tearing
-- [ ] thinkpad - tap to click is not working
-- [X] keychron K2 wired mode is not working -> fixed
-
