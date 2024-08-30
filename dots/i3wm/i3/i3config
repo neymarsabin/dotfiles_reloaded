@@ -128,14 +128,9 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # automatically load in specific workspace
-# assign [class="Firefox "] $workspace1
-# assign [class="Emacs"] $workspace2
-# assign [class="Gnome-terminal"] $workspace3
-#assign [class="Nautilus"] $workspace4
-#load telegram also in autostart feature 
-# assign [class="Telegram"] $workspace9
-# assign [class="discord"] $workspace8
-# assign [class="Mplayer"] $workspace5
+assign [class="Firefox"] $workspace1
+assign [class="Wezterm"] $workspace3
+assign [class="Telegram"] $workspace9
 
 # always start mplayer in floating mode(no tiling)
 for_window [class="MPlayer"] floating enable
@@ -171,54 +166,31 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# color codes
-# set $bg-color 	         #2f343f 
-# set $inactive-bg-color   #2f343f
-# set $text-color          #f3f4f5
-# set $inactive-text-color #676E7D
-# set $urgent-bg-color #E53935
-
-set $bg-color 	         #002b36
-set $inactive-bg-color   #002b36
-set $text-color          #6c71c4
-set $inactive-text-color #eee8d5
-set $urgent-bg-color #E53935
-
-# window colors
-#                       border              background         text                 indicator
-# client.focused          $bg-color           $bg-color          $text-color          #00ff00
-# client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-# client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-# client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
-
 client.focused #6c71c4 #6c71c4 #fdf6e3 #6c71c4
 client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
 client.unfocused #073642 #073642 #93a1a1 #586e75
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
-
 # setting variables for rofi
 set $mclip /home/neymar/.scripts/rofi-clipboard-manager/mclip.py
 
 #start rofi ( application launcher)
-bindsym $mod+shift+d exec rofi -show run -lines 5 -eh 2 -font "Monaco 14" # -fullscreen -padding 200 -font "Monaco 18" -opacity 90
-bindsym $mod+d exec rofi -show window -lines 5 -eh 2 -font "Monaco 14" # -fullscreen -padding 200 -font "Monaco 18" -opacity 90
-# bindsym $mod+shift+p exec rofi -modi "googleSearch:~/bin/search.sh" -show googleSearch -lines 3 -eh 2 # -fullscreen -padding 200 -font "Monaco 18"
-# bindsym $mod+shift+y exec /home/neymar/.scripts/rofi-clipboard-manager/run.sh
+bindsym $mod+shift+d exec rofi -show drun 
+bindsym $mod+d exec rofi -show window 
 bindsym $mod+shift+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -lines 5 -eh 2 -font "Monaco 14"
 
 bar {
-    font pango:Monaco 12
+    font pango:Monaco 10
     status_command i3status -c /home/neymarsabin/projects/pet/dotfiles_reloaded/dots/i3wm/i3/i3status.conf
     tray_output eDP1
-    position bottom
+    position top
     colors {
-        separator #268bd2
+        separator #000000
         background #000000
-        statusline #839496
-        focused_workspace #fdf6e3 #6c71c4 #fdf6e3
-        active_workspace #fdf6e3 #6c71c4 #fdf6e3
-        inactive_workspace #002b36 #586e75 #002b36
+        statusline #000
+        focused_workspace #3C2A21 #D5CEA3 #3C2A21
+        active_workspace #000 #DCF2F1 #000
+        inactive_workspace #000 #0F1035 #000
         urgent_workspace #d33682 #d33682 #fdf6e3
     }
 }
