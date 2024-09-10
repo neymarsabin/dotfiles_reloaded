@@ -184,6 +184,8 @@ bar {
     status_command i3status -c /home/neymarsabin/projects/pet/dotfiles_reloaded/dots/i3wm/i3/i3status.conf
     tray_output eDP1
     position top
+	mode invisible
+	hidden_state hide
     colors {
         separator #000000
         background #000000
