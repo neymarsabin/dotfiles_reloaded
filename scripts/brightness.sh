@@ -2,7 +2,7 @@
 ### dependecies: xrandr, bc, xargs, cut
 ### control brightness with xrandr
 ### display name
-output=eDP
+output=eDP-1
 
 ## find current brightness level using xrandr
 current_brightness=$(xrandr --verbose | grep Brightness | xargs | cut -d ' ' -f2)
