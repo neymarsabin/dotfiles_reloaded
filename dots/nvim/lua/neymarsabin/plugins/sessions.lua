@@ -6,11 +6,7 @@ return {
 		-- setup neovim-project plugin
 		require("neovim-project").setup({
 			projects = { -- define project roots
-				"~/projects/oss/*",
-				"~/projects/work/*",
-				"~/projects/pet/*",
-				"~/projects/mine/*",
-				"~/.config/nvim/",
+				"~/bucks/cat/*",
 			},
 		})
 		vim.keymap.set(

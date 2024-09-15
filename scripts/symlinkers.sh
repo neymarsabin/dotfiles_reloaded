@@ -1,0 +1,2 @@
+# symlinks required
+# neovim :D

@@ -10,7 +10,7 @@ return {
 			workspaces = {
 				{
 					name = "the-new-org",
-					path = "~/projects/pet/the-new-org/markdown/",
+					path = "~/bucks/cat/the-new-org/markdown/",
 				},
 			},
 			daily_notes = {
@@ -20,7 +20,7 @@ return {
 				template = nil,
 			},
 			ui = {
-				enable = true, -- set to false to disable all additional syntax features
+				enable = false, -- set to false to disable all additional syntax features
 				update_debounce = 200, -- update delay after a text change (in milliseconds)
 				checkboxes = {
 					[" "] = { char = "󰄱", hl_group = "ObsidianTodo" },

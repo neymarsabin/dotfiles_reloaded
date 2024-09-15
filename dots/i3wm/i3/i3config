@@ -9,7 +9,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $scripts_dir $HOME/projects/pet/dotfiles_reloaded/scripts/
+set $scripts_dir $HOME/bucks/cat/dotfiles_reloaded/scripts/
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -179,26 +179,27 @@ bindsym $mod+shift+d exec rofi -show drun
 bindsym $mod+d exec rofi -show window 
 bindsym $mod+shift+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -lines 5 -eh 2 -font "Monaco 14"
 
-bar {
-    font pango:Monaco 10
-    status_command i3status -c /home/neymarsabin/projects/pet/dotfiles_reloaded/dots/i3wm/i3/i3status.conf
-    tray_output eDP1
-    position top
-	mode invisible
-	hidden_state hide
-    colors {
-        separator #000000
-        background #000000
-        statusline #000
-        focused_workspace #3C2A21 #D5CEA3 #3C2A21
-        active_workspace #000 #DCF2F1 #000
-        inactive_workspace #000 #0F1035 #000
-        urgent_workspace #d33682 #d33682 #fdf6e3
-    }
-}
+# bar {
+#    font pango:Monaco 10
+#    status_command polybar
+#    tray_output eDP1
+#    position top
+#    colors {
+#        separator #000000
+#        background #000000
+#        statusline #000
+#        focused_workspace #3C2A21 #D5CEA3 #3C2A21
+#        active_workspace #000 #DCF2F1 #000
+#        inactive_workspace #000 #0F1035 #000
+#        urgent_workspace #d33682 #d33682 #fdf6e3
+#    }
+# }
 
 # exec_always nm-applet
 exec --no-startup-id greenclip daemon > /dev/null
+
+# exec polybar
+exec_always --no-startup-id polybar
 # exec_always greenclip daemon
 
 # popup during fullscreen
@@ -244,4 +245,4 @@ exec feh --bg-scale ~/Downloads/ace.jpg
 bindsym XF86Messenger exec $scripts_dir/screenshot.sh
 
 ### start picom at boot time
-exec_always --no-startup-id picom --config ~/.config/picom/load.conf > /dev/null
+# exec_always --no-startup-id picom --config ~/.config/picom/load.conf > /dev/null

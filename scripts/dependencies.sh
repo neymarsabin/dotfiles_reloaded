@@ -3,7 +3,6 @@
 # existing system can use sudo pacman -Syu
 
 packages=(
-    "alacritty"
     "bc"
     "blueman"
     "bluez"
@@ -11,25 +10,18 @@ packages=(
     "docker"
     "docker-compose"
     "dunst"
-    "emacs-nativecomp"
-    "font-manager"
     "fzf"
-    "go"
     "greenclip"
-    "helvum"
     "hugo"
     "jq"
-    "k9s"
-    "kubectl"
     "man"
     "mplayer"
-	"nvtop"
+    "nvtop"
     "pavucontrol"
     "pdflatex"
     "pipewire-audio"
     "pipewire-media-session"
     "pipewire-pulse"
-    "postgresql-libs"
     "ranger"
     "ripgrep"
     "rofi"
@@ -41,7 +33,6 @@ packages=(
     "unzip"
     "vlc"
     "xbindkeys"
-    "yaourt"
 )
 
 # install packages one by one
