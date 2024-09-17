@@ -1,0 +1,22 @@
+- hosts: localhost
+  tasks:
+    - debug:
+        msg: main ansible playbook
+
+- name: start with dotfiles setup
+  import_playbook: dotfiles.yml
+
+- name: install utils
+  import_playbook: utilities.yml
+
+- name: setup i3wm window management
+  import_playbook: i3.yml
+
+- name: setup wezterm, tmux and neovim and symlink them
+  import_playbook: terminal.yml
+
+- name: programming setup
+  import_playbook: programming.yml
+
+- name: socials setup
+  import_playbook: socials.yml
