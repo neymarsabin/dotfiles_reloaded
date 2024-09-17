@@ -1,5 +1,5 @@
 username: "neymarsabin"
 home: "/home/{{ username }}"
-workplace: "{{ home }}/dev/cat"
+workplace: "{{ home }}/bucks/cat"
 dotfiles: "{{ workplace }}/dotfiles_reloaded"
 hostname: "acidrain"
