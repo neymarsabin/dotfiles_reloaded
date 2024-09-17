@@ -1,0 +1,30 @@
+# setup basic packages
+- hosts: localhost
+  tasks:
+  - name: Install Dependencies
+    become: true
+    pacman:
+      update_cache: yes
+      name: 
+        - dunst
+        - fzf
+        - jq
+        - man
+        - ripgrep
+        - rofi
+        - unzip
+        - zip
+        - xbindkeys
+        - arandr
+        - xorg-xrandr
+        - ranger
+        - openssh
+      state: present
+
+  # only use this if you want to remove dependencies
+  - name: Remove Dependencies
+    become: true
+    pacman:
+      update_cache: yes
+      name:
+      state: absent

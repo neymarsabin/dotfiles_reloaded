@@ -1,0 +1,26 @@
+# setup desktop i3wm desktop environment with polybar
+- hosts: localhost
+  tasks:
+  - include_vars: vars.yml
+  - name: Install i3wm DE dependencies
+    become: true
+    pacman:
+      update_cache: yes
+      name:
+        # some of the dependencies are for my thinkpad video graphics card, use at your own risk:
+        - xorg-server
+        - xorg-xinit
+        - mesa
+        - xf86-video-amdgpu
+        - xf86-video-ati
+        - libva-mesa-driver
+        - vulkan-radeon
+        - i3-wm
+      state: present
+
+  - name: Copy .xinitrc from my dotfiles to home
+    file:
+      src: "{{ dotfiles }}/dots/xinitrc"
+      dest: "{{ home }}/.xinitrc"
+      state: link
+

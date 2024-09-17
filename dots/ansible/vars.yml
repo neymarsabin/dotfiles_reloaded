@@ -1,0 +1,4 @@
+username: "neymarsabin"
+home: "/home/{{ username }}"
+workplace: "{{ home }}/dev/cat"
+dotfiles: "{{ workplace }}/dotfiles_reloaded"

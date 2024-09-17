@@ -9,7 +9,7 @@ FZF_COMMAND="fzf-tmux -p --with-nth 1"
 
 # find in directories
 workdir=$1
-base_dir=~/projects
+base_dir=~/bucks
 find_dir=$base_dir/$1
 
 # Execute Command

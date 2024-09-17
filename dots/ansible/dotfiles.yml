@@ -1,0 +1,16 @@
+# Tasks to setup dotfiles repository
+- hosts: localhost
+  tasks:
+    - include_vars: vars.yml
+    - name: create workplace in home folder
+      file:
+        path: "{{ workplace }}"
+        state: directory
+
+    - name: clone dotfiles_reloaded from github
+      git:
+        dest: "{{ workplace }}/dotfiles_reloaded"
+        repo: 'git@github.com:neymarsabin/dotfiles_reloaded.git'
+        clone: yes
+        update: yes
+
