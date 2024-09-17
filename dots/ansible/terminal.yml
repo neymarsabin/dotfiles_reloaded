@@ -1,0 +1,32 @@
+# setup wezterm, tmux and symlink configuration
+- hosts: localhost
+  tasks:
+  - include_vars: vars.yml
+  - name: install wezterm and tmux
+    become: true
+    pacman:
+      update_cache: yes
+      name:
+        - ttf-nerd-fonts-symbols-mono
+        - wezterm
+        - tmux
+        - neovim
+      state: present
+
+  - name: symlink wezterm configuration
+    file:
+      src: "{{ dotfiles }}/dots/wezterm/wezterm.lua"
+      dest: "{{ home }}/.wezterm.lua"
+      state: link
+
+  - name: symlink tmux configuration
+    file:
+      src: "{{ dotfiles }}/dots/tmux"
+      dest: "{{ home }}/.tmux.conf"
+      state: link
+
+  - name: symlink neovim configuration
+    file:
+      src: "{{ dotfiles }}/dots/nvim"
+      dest: "{{ home }}/.config/nvim"
+      state: link

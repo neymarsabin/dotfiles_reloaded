@@ -18,9 +18,34 @@
         - i3-wm
       state: present
 
-  - name: Copy .xinitrc from my dotfiles to home
+  - name: copy xinitrc from my dotfiles to home
     file:
       src: "{{ dotfiles }}/dots/xinitrc"
       dest: "{{ home }}/.xinitrc"
+      state: link
+
+  - name: i3wm config symlinks
+    file:
+      src: "{{ dotfiles }}/dots/i3wm/i3/i3config"
+      dest: "{{ home }}/.config/i3/config"
+      state: link
+
+  - name: install polybar
+    become: true
+    pacman:
+      update_cache: true
+      name:
+        - polybar
+      state: present
+
+  - name: create polybar config directory
+    file:
+      path: "{{ home }}/.config/polybar"
+      state: directory
+
+  - name: symlink polybar configuration
+    file:
+      src: "{{ dotfiles }}/dots/i3wm/i3/polybar.config.ini"
+      dest: "{{ home }}/.config/polybar/config.ini"
       state: link
 

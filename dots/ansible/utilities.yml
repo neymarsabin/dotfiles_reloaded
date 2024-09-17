@@ -1,6 +1,7 @@
 # setup basic packages
 - hosts: localhost
   tasks:
+  - include_vars: vars.yml
   - name: Install Dependencies
     become: true
     pacman:
@@ -15,8 +16,8 @@
         - unzip
         - zip
         - xbindkeys
-        - arandr
         - xorg-xrandr
+        - arandr
         - ranger
         - openssh
       state: present
@@ -28,3 +29,16 @@
       update_cache: yes
       name:
       state: absent
+
+  - name: clone yay
+    git:
+      dest: "{{ workplace }}/yay"
+      repo: 'https://aur.archlinux.org/yay.git'
+      clone: yes
+      update: yes
+
+  - name: build yay
+    args:
+      chdir: "{{ workplace }}/yay/"
+    command: 
+      cmd: makepkg -si --noconfirm

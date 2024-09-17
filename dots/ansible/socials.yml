@@ -1,0 +1,15 @@
+- hosts: localhost
+  tasks:
+    - include_vars: vars.yml
+    - name: Install socials
+      become: true
+      pacman:
+        update_cache: yes
+        name:
+          - firefox
+          - telegram-desktop
+
+    - name: install slack-desktop
+      become: true
+      command: yay -S slack-desktop
+
