@@ -8,8 +8,3 @@
         name:
           - firefox
           - telegram-desktop
-
-    - name: install slack-desktop
-      become: true
-      command: yay -S slack-desktop
-

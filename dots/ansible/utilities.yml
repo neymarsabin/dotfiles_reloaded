@@ -20,6 +20,9 @@
         - arandr
         - ranger
         - openssh
+        - wget
+        - curl
+        - libnotify
       state: present
 
   # only use this if you want to remove dependencies

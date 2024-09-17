@@ -11,6 +11,7 @@
         - wezterm
         - tmux
         - neovim
+        - zsh
       state: present
 
   - name: symlink wezterm configuration
@@ -30,3 +31,16 @@
       src: "{{ dotfiles }}/dots/nvim"
       dest: "{{ home }}/.config/nvim"
       state: link
+
+  - name: setup oh-my-zsh
+    git:
+      repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
+      dest: ~/.oh-my-zsh/
+      depth: 1
+
+  - name: change user shell to zsh
+    become: true
+    user:
+      name: "{{ username }}"
+      shell: /bin/zsh
+

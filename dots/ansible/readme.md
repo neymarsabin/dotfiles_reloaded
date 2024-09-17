@@ -6,3 +6,4 @@
 - setup window manager, symlink window manager config from dotfiles repo to home folder
 - setup wezterm, tmux and neovim, symlink configurations
 - install other comms like firefox, slack, telegram-desktop
+- install nvm, rvm, gvm for programming languages
