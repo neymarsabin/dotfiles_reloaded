@@ -7,6 +7,7 @@ return {
 		require("neovim-project").setup({
 			projects = { -- define project roots
 				"~/bucks/cat/*",
+				"~/bucks/work/*",
 			},
 		})
 		vim.keymap.set(

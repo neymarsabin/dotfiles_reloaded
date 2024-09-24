@@ -23,6 +23,7 @@
         - wget
         - curl
         - libnotify
+        - zathura
       state: present
 
   # only use this if you want to remove dependencies
