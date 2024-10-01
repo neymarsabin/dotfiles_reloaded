@@ -10,10 +10,10 @@ FZF_COMMAND="fzf-tmux -p --with-nth 1"
 # find in directories
 workdir=$1
 base_dir=~/bucks
-find_dir=$base_dir/$1
+find_dir=$base_dir/*/*
 
 # Execute Command
-RESULT=$(ls $find_dir | $FZF_COMMAND)
+RESULT=$(ls -d $find_dir | $FZF_COMMAND)
 
 # Do nothing if result is EMPTY
 # Works in case if you do not find something and press ESC
@@ -21,7 +21,7 @@ if [[ -n "$RESULT" ]]; then
     # create a new tmux session and attach to it
     window_name=$RESULT
     session_name="$window_name"
-    workdir=$find_dir/$RESULT
+    workdir=$RESULT
     send_command="cd $workdir"
 
     if ! tmux has-session -t $session_name 2>/dev/null; then
