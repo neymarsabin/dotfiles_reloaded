@@ -45,6 +45,7 @@ return {
 		-- Enable telescope extensions, if they are installed
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
+		pcall(require("telescope").load_extension, "harpoon")
 
 		-- See `:help telescope.builtin`
 		local builtin = require("telescope.builtin")
@@ -82,5 +83,8 @@ return {
 		vim.keymap.set("n", "<leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
 		end, { desc = "[S]earch [N]eovim files" })
+
+		-- open harpoon with telescope search enabled
+		vim.keymap.set("n", "<leader>mm", ":Telescope harpoon marks <CR>", { desc = "[S]earch [N]eovim files" })
 	end,
 }

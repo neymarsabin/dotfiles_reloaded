@@ -3,19 +3,23 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.foldmethod = "indent"
-vim.opt.foldenable = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80"
 vim.opt.wrap = true
 vim.opt.linebreak = true
+vim.opt.foldenable = false
+
+--- indentation ---
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.shiftwidth = 2 -- Indent size is 2 spaces
+vim.opt.softtabstop = 2 -- Tab key inserts 2 spaces
+vim.opt.tabstop = 2 -- Tab is displayed as 2 spaces
+vim.opt.smartindent = true -- Smart indentation
 
 -- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.hlsearch = true
--- vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- exit modes with <C-g> ----
 vim.keymap.set("n", "<leader>fs", "<cmd>w<CR>", { desc = "Save file...", noremap = true })
