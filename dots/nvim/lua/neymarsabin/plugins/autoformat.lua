@@ -3,8 +3,8 @@ return {
 	opts = {
 		notify_on_error = false,
 		format_on_save = {
-			timeout_ms = 200,
-			lsp_fallback = true,
+			timeout_ms = 500,
+			lsp_fallback = "fallback",
 		},
 		formatters_by_ft = {
 			lua = { "stylua" },
