@@ -6,7 +6,7 @@ return {
 			position = "bottom",
 			height = 10,
 			width = 50,
-			icons = true,
+			icons = {},
 			group = true,
 			padding = true,
 			cycle_list = true,
