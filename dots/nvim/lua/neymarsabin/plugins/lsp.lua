@@ -69,6 +69,7 @@ return {
 			docker_compose_language_service = {},
 			terraformls = {},
 			solargraph = {},
+			r_language_server = {},
 			lua_ls = {
 				settings = {
 					Lua = {
