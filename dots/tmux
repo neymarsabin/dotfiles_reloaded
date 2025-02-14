@@ -48,7 +48,7 @@ set-option -g status-right "#[fg=white,bright]%c "
 
 ## run my fzf scripts to find the right projects
 bind-key "s" run "~/bucks/cat/dotfiles_reloaded/scripts/fzftmux.sh"
-bind-key "p" run "~/bucks/cat/dotfiles_reloaded/scripts/fzfdir.sh cat work"
+bind-key "p" run "~/bucks/cat/dotfiles_reloaded/scripts/fzfdir.sh cat"
 
 ## suggestions from nvim
 set-option -sg escape-time 10
