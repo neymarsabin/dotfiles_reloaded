@@ -9,11 +9,12 @@ return {
 		},
 		formatters_by_ft = {
 			lua = { "stylua" },
-			javascript = { { "prettier", "prettierd" } },
-			typescript = { { "prettier", "prettierd" } },
-			typescriptreact = { { "prettier", "prettierd" } },
-			javascriptreact = { { "prettierd", "prettier" } },
-			go = { { "gofmt" }, { "goimports" } },
+			javascript = { "prettier", "prettierd", stop_after_first = true },
+			typescript = { "prettier", "prettierd", stop_after_first = true },
+			typescriptreact = { "prettier", "prettierd", stop_after_first = true },
+			javascriptreact = { "prettier", "prettierd", stop_after_first = true },
+			go = { "gofmt", "goimports", stop_after_first = false },
+			python = { "python" },
 		},
 	},
 }

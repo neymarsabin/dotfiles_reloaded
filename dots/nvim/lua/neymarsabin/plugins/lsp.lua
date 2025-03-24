@@ -70,6 +70,7 @@ return {
 			terraformls = {},
 			solargraph = {},
 			r_language_server = {},
+			pyright = {},
 			lua_ls = {
 				settings = {
 					Lua = {
