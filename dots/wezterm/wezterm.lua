@@ -5,11 +5,11 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 config.enable_tab_bar = false
 config.audible_bell = "Disabled"
-config.color_scheme = "Glacier"
 config.warn_about_missing_glyphs = false
 config.font = wezterm.font("JetBrains Mono")
 config.cursor_blink_rate = 800
 config.force_reverse_video_cursor = true
+config.color_scheme = "Batman"
 
 -- and finally, return the configuration to wezterm
 return config

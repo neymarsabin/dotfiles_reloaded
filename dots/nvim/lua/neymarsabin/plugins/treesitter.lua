@@ -19,6 +19,7 @@ return {
 				"tsx",
 				"markdown",
 				"terraform",
+				"python",
 			},
 			auto_install = true,
 			sync_install = false,

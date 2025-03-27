@@ -29,3 +29,4 @@ if [[ -n "$RESULT" ]]; then
 
     tmux switch-client -t "$session_name"
 fi
+
