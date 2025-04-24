@@ -9,7 +9,7 @@ config.warn_about_missing_glyphs = false
 config.font = wezterm.font("JetBrains Mono")
 config.cursor_blink_rate = 800
 config.force_reverse_video_cursor = true
-config.color_scheme = "Batman"
+config.color_scheme = "Tokyo Night"
 
 -- and finally, return the configuration to wezterm
 return config
