@@ -195,7 +195,7 @@ bindsym $mod+shift+v exec rofi -modi "clipboard:greenclip print" -show clipboard
 #    }
 # }
 
-# exec_always nm-applet
+exec_always nm-applet
 exec --no-startup-id greenclip daemon > /dev/null
 
 # exec polybar

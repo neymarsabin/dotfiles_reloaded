@@ -78,3 +78,6 @@ export PATH="${PATH}:${GOPATH}/bin"
 # load doom config from dotfiles repo, !home folder
 dotfile_location=projects/pet/dotfiles_reloaded
 export DOOMDIR=$HOME/$dotfile_location/dots/doom
+
+# alias setxkbalt
+alias setxkbalt=setxkbmap -option altwin:swap_alt_win
