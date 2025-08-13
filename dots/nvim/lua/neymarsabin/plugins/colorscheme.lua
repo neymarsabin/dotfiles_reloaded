@@ -1,3 +1,42 @@
+--
+-- Using Lazy
+-- return {
+-- 	"navarasu/onedark.nvim",
+-- 	priority = 1000, -- make sure to load this before all the other start plugins
+-- 	config = function()
+-- 		require("onedark").setup({
+-- 			style = "deep",
+-- 		})
+-- 		-- Enable theme
+-- 		require("onedark").load()
+-- 	end,
+-- }
+-- return {
+-- 	{
+-- 		"ellisonleao/gruvbox.nvim",
+-- 		config = function()
+-- 			require("gruvbox").setup({
+-- 				undercurl = true,
+-- 				underline = true,
+-- 				bold = true,
+-- 				italic = {
+-- 					strings = true,
+-- 					comments = true,
+-- 					operators = false,
+-- 					folds = false,
+-- 				},
+-- 				strikethrough = true,
+-- 				invert_selection = false,
+-- 				invert_signs = false,
+-- 				invert_tabline = false,
+-- 				invert_intend_guides = false,
+-- 				contrast = "hard", -- can be "hard", "soft" or "medium"
+-- 				overrides = {},
+-- 			})
+-- 		end,
+-- 	},
+-- }
+--
 return {
 	{
 		"rose-pine/neovim",
