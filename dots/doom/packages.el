@@ -49,6 +49,9 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
                                         ;(unpin! t)
 
+;; ============================================================================
+;; Existing packages (preserved)
+;; ============================================================================
 (package! lsp-mode)
 (package! chatgpt-shell)
 (package! zenburn-theme)
@@ -56,10 +59,40 @@
 (package! elfeed-dashboard)
 (package! jazz-theme)
 (package! xclip)
-(package! kanagawa-theme)
+(package! kanagawa-themes)  ;; MELPA recipe is plural; old declaration was a typo
 (package! go-playground)
 
-;; trying copilot
+;; GitHub Copilot (inline completion)
 (package! copilot
   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist")))
+
+;; ============================================================================
+;; Neovim-parity additions
+;; ============================================================================
+
+;; Catppuccin Mocha — matches Neovim colorscheme
+(package! catppuccin-theme)
+
+;; Claude Code integration — parity with claudecode.nvim
+;; Runs the `claude` CLI in a side panel; supports toggle/resume/continue/send-region.
+(package! claude-code
+  :recipe (:host github :repo "stevemolitor/claude-code.el"
+           :files ("*.el")))
+
+;; Multi-provider AI chat with streaming + markdown — parity with avante.nvim
+(package! gptel)
+
+;; Modern Dired replacement — parity with oil.nvim (edit directories as buffers)
+(package! dirvish)
+
+;; Harpoon — quick file marks, parity with ThePrimeagen/harpoon
+(package! harpoon
+  :recipe (:host github :repo "otavioschwanck/harpoon.el"))
+
+;; Project-wide find & replace — parity with nvim-spectre
+(package! deadgrep)
+
+;; REPL send-to — parity with iron.nvim
+;; (doom's `:tools eval +overlay` covers elisp; this adds python/other REPL support)
+(package! code-cells)
 

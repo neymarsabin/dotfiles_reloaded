@@ -28,10 +28,13 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-;; (setq doom-theme ')
+;; Theme — Catppuccin Mocha (matches Neovim colorscheme).
+;; Must require the package so `load-theme 'catppuccin` finds it.
+;; Latte is the light variant: (setq catppuccin-flavor 'latte) + M-x doom/reload-theme.
+(use-package! catppuccin-theme
+  :demand t
+  :init (setq catppuccin-flavor 'mocha))
+(setq doom-theme 'catppuccin)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -206,14 +209,32 @@
 ;; xclip will allow us to copy paste from emacs to outside
 (xclip-mode 1)
 
-;; copilot configuration
+;; copilot configuration — only activate when the language server exists.
+;; Without this guard, copilot-mode throws on prog-mode-hook and cascades,
+;; killing font-lock, LSP, and company activation for every code buffer.
+;; To enable: upgrade Node ≥ 20, then `M-x copilot-install-server`.
+(defun +my/copilot-server-available-p ()
+  "Return non-nil when the Copilot language server is installed."
+  (or (executable-find "copilot-language-server")
+      (and (boundp 'copilot-install-dir)
+           copilot-install-dir
+           (file-exists-p copilot-install-dir))
+      (file-exists-p (expand-file-name "copilot/dist/language-server.js"
+                                       (or (bound-and-true-p doom-cache-dir)
+                                           user-emacs-directory)))))
+
 (use-package! copilot
-  :hook (prog-mode . copilot-mode)
+  :defer t
+  :init
+  (add-hook! 'prog-mode-hook
+    (defun +my/copilot-maybe-enable-h ()
+      (when (+my/copilot-server-available-p)
+        (copilot-mode +1))))
   :bind (:map copilot-completion-map
-              ("<tab>" . 'copilot-accept-completion-by-paragraph)
-              ("TAB" . 'copilot-accept-completion-by-paragraph)
-              ("C-TAB" . 'copilot-accept-completion-by-paragraph)
-              ("C-<tab>" . 'copilot-accept-completion-by-paragraph)))
+              ("<tab>"   . #'copilot-accept-completion-by-paragraph)
+              ("TAB"     . #'copilot-accept-completion-by-paragraph)
+              ("C-TAB"   . #'copilot-accept-completion-by-paragraph)
+              ("C-<tab>" . #'copilot-accept-completion-by-paragraph)))
 
 ;; set the default browser to firefox
 (setq browse-url-browser-function 'browse-url-firefox)
@@ -232,3 +253,169 @@
 
 ;; bind the function to a key
 (global-set-key (kbd "C-c w") 'neymar/wrap-word)
+
+
+;; ============================================================================
+;; NEOVIM PARITY LAYER
+;; Mirrors keybinds/theme/AI-integration from ~/.config/nvim/
+;; ============================================================================
+
+;; ---- Ensure ~/.local/bin is on PATH so claude-code.el finds the `claude` CLI
+(let ((local-bin (expand-file-name "~/.local/bin")))
+  (when (file-directory-p local-bin)
+    (add-to-list 'exec-path local-bin)
+    (setenv "PATH" (concat local-bin ":" (getenv "PATH")))))
+
+;; ---- Tree-sitter (Emacs 30 native treesit) ---------------------------------
+;; Doom's `+tree-sitter` flag per-lang module handles `set-tree-sitter!` and
+;; `major-mode-remap-alist` already (see modules/lang/*/config.el). We only
+;; need to bump font-lock detail and declare extra grammar sources for
+;; languages not covered by Doom out-of-the-box, so `M-x treesit-install-
+;; language-grammar` works for all of them.
+;; Python grammar is auto-pinned by Doom to v0.23.6 on Emacs 30 (ABI v14).
+;; Ref: https://github.com/doomemacs/doomemacs/issues/8503
+(setq treesit-font-lock-level 4)  ; max decoration (decorators, dunders, etc)
+
+(after! treesit
+  (dolist (src '((bash       "https://github.com/tree-sitter/tree-sitter-bash")
+                 (json       "https://github.com/tree-sitter/tree-sitter-json")
+                 (yaml       "https://github.com/ikatyang/tree-sitter-yaml")
+                 (toml       "https://github.com/tree-sitter/tree-sitter-toml")
+                 (html       "https://github.com/tree-sitter/tree-sitter-html")
+                 (css        "https://github.com/tree-sitter/tree-sitter-css")
+                 (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")
+                 (markdown   "https://github.com/ikatyang/tree-sitter-markdown")))
+    (add-to-list 'treesit-language-source-alist src)))
+
+;; Helper: install all declared grammars in one shot.
+;; Usage:  M-x my/install-all-treesit-grammars
+(defun my/install-all-treesit-grammars ()
+  "Install every grammar listed in `treesit-language-source-alist'."
+  (interactive)
+  (dolist (entry treesit-language-source-alist)
+    (let ((lang (car entry)))
+      (unless (treesit-language-available-p lang)
+        (message "Installing tree-sitter grammar: %s" lang)
+        (condition-case err
+            (treesit-install-language-grammar lang)
+          (error (message "  ✗ %s: %s" lang (error-message-string err))))))))
+
+;; ---- Which-key group descriptions — matches Neovim groups where possible.
+;; SPC m stays as Doom's localleader (mode-specific); harpoon moves to SPC j.
+(after! which-key
+  (which-key-add-key-based-replacements
+    "SPC a"  "ai/claude"
+    "SPC j"  "jump/harpoon"))
+
+;; ---- Claude Code — parity with claudecode.nvim
+(use-package! claude-code
+  :defer t
+  :config
+  (setq claude-code-terminal-backend 'vterm)
+  (claude-code-mode +1))
+
+;; ---- gptel — multi-provider AI chat, parity with avante.nvim
+(use-package! gptel
+  :defer t
+  :config
+  (setq gptel-default-mode 'markdown-mode))
+
+;; All SPC a (ai/claude) bindings in ONE prefix block — mixing prefix and
+;; non-prefix forms on the same leader key crashes map!.
+(map! :leader
+      (:prefix-map ("a" . "ai/claude")
+       ;; Claude Code
+       :desc "Toggle Claude Code"    "c" #'claude-code-toggle
+       :desc "Start (or switch)"     "S" #'claude-code
+       :desc "Send region"           "s" #'claude-code-send-region
+       :desc "Add current buffer"    "b" #'claude-code-send-buffer-file
+       :desc "Fix error at point"    "e" #'claude-code-fix-error-at-point
+       :desc "Continue (/continue)"  "C" #'claude-code-continue
+       :desc "Resume session"        "r" #'claude-code-resume
+       :desc "Cycle edit mode"       "m" #'claude-code-cycle-mode
+       :desc "Select Claude buffer"  "B" #'claude-code-select-buffer
+       :desc "Transient menu"        "t" #'claude-code-transient
+       ;; gptel (avante parity)
+       :desc "gptel chat buffer"     "G" #'gptel
+       :desc "gptel send"            "g" #'gptel-send
+       :desc "gptel menu"            "M" #'gptel-menu))
+
+;; ---- Harpoon — parity with ThePrimeagen/harpoon
+(use-package! harpoon
+  :defer t)
+
+;; Harpoon under SPC j (jump) — SPC m is Doom's localleader, can't override.
+(map! :leader
+      (:prefix-map ("j" . "jump/harpoon")
+       :desc "Add file"         "a" #'harpoon-add-file
+       :desc "Quick menu"       "m" #'harpoon-quick-menu-hydra
+       :desc "Slot 1"           "s" #'harpoon-go-to-1
+       :desc "Slot 2"           "d" #'harpoon-go-to-2
+       :desc "Slot 3"           "f" #'harpoon-go-to-3
+       :desc "Slot 4"           "g" #'harpoon-go-to-4
+       :desc "Slot 5"           "h" #'harpoon-go-to-5))
+
+;; ---- File tree: treemacs — parity with nvim-tree (SPC e toggle)
+(map! :leader :desc "Toggle file tree" "e" #'+treemacs/toggle)
+
+;; ---- Dirvish — parity with oil.nvim (open parent dir buffer via `-`)
+(use-package! dirvish
+  :init (dirvish-override-dired-mode)
+  :config
+  (setq dirvish-attributes '(vc-state subtree-state all-the-icons file-time file-size)))
+
+(map! :nv "-" #'dirvish-dwim)
+
+;; ---- Project / file search — parity with telescope
+(map! :leader
+      :desc "Find files in project" "p f" #'projectile-find-file
+      :desc "Grep in project"       "p /" #'+default/search-project
+      :desc "Git-tracked files"     "p g" #'projectile-find-file-in-known-projects
+      :desc "Switch project"        "p p" #'projectile-switch-project
+      :desc "Resume last search"    "s r" #'vertico-repeat
+      :desc "Buffers"               "b b" #'consult-buffer
+      :desc "Commands"              "c c" #'execute-extended-command
+      :desc "Buffer line search"    "s s" #'consult-line
+      :desc "Grep open buffers"     "s /" #'consult-line-multi
+      :desc "Symbol outline"        "s o" #'consult-imenu
+      :desc "Find in Doom config"   "s n" (lambda ()
+                                            (interactive)
+                                            (doom-project-find-file doom-user-dir))
+      :desc "Project find/replace"  "s R" #'deadgrep
+      :desc "Help (function)"       "h f" #'describe-function
+      :desc "Keymaps"               "h k" #'describe-keymap)
+
+;; ---- Diagnostics cycling — parity with Neovim ]d / [d + SPC d [ / SPC d ]
+(map! :n "]d" #'flycheck-next-error
+      :n "[d" #'flycheck-previous-error
+      :leader
+      :desc "Next diagnostic"   "d ]" #'flycheck-next-error
+      :desc "Prev diagnostic"   "d [" #'flycheck-previous-error
+      :desc "List diagnostics"  "d l" #'flycheck-list-errors)
+
+;; ---- Window — Doom's default SPC w already maps to evil-window-map:
+;; SPC w v/s/c/h/j/k/l work out of the box. No custom bindings needed.
+
+;; ---- File group — SPC f s = save
+(map! :leader :desc "Save file" "f s" #'save-buffer)
+
+;; ---- Auto-reload buffers when changed on disk (Claude Code edits externally)
+(global-auto-revert-mode 1)
+(setq auto-revert-use-notify t
+      auto-revert-verbose nil
+      global-auto-revert-non-file-buffers t)
+
+;; ---- Center scroll on C-d / C-u (nvim parity)
+(map! :nv "C-d" (lambda () (interactive) (evil-scroll-down nil) (evil-scroll-line-to-center nil))
+      :nv "C-u" (lambda () (interactive) (evil-scroll-up nil)   (evil-scroll-line-to-center nil)))
+
+;; ---- Clear highlight on Esc (nvim parity)
+(map! :n "<escape>" #'evil-ex-nohighlight)
+
+;; ---- Move selected lines up/down with Ctrl-j / Ctrl-k in visual mode
+(map! :v "C-j" #'drag-stuff-down
+      :v "C-k" #'drag-stuff-up)
+
+;; ---- Exit insert/terminal mode with C-g (already default in Emacs, confirmed here)
+;; C-g is already bound globally; no override needed.
+
