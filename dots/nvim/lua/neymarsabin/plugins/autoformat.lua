@@ -14,7 +14,7 @@ return {
 			typescriptreact = { "prettier", "prettierd", stop_after_first = true },
 			javascriptreact = { "prettier", "prettierd", stop_after_first = true },
 			go = { "gofmt", "goimports", stop_after_first = false },
-			python = { "python" },
+			python = { "ruff_format", "ruff_fix" },
 		},
 	},
 }
