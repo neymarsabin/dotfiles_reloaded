@@ -6,34 +6,38 @@ bind e set-window-option synchronize-panes
 
 set -g history-limit 10000000
 
-# set the status line's colors
-set -g status-style fg=white,bg=black
-set -g mode-style fg=black,bg=green,blink
+# status bar
+set -g status-style "fg=white,bg=#1a1a1a"
+set -g status-position bottom
+set -g status-justify left
+set -g status-interval 5
 
-# set the color of the window list
-setw -g window-status-style fg=white,bg=black
+# left: session name
+set -g status-left-length 40
+set -g status-left "#[fg=black,bg=green,bold] #S #[fg=green,bg=#1a1a1a]  "
 
-# set colors for the active window
-setw -g window-status-current-style fg=green,bg=black,bright
+# window list
+setw -g window-status-format         "#[fg=colour250] #I #W "
+setw -g window-status-current-format "#[fg=green,bold] #I #W #[fg=colour240]│"
+setw -g window-status-activity-style "fg=yellow"
 
-# set window activity
-setw -g window-status-activity-style fg=white,bg=black,bright
+# right: date and time
+set -g status-right-length 60
+set -g status-right "#[fg=colour240]│ #[fg=white]%a %d %b #[fg=colour240]│ #[fg=green,bold]%H:%M "
 
-# Command / message line
-set -g message-style fg=red,bg=black,bright
+# message / command line
+set -g message-style "fg=black,bg=green,bright"
+set -g mode-style "fg=black,bg=green"
 
-# Status line left side
-set -g status-left-length 30
-set -g status-left " 💻 #[fg=brown]#[fg=green]#S #[fg=yellow]#I #[fg=cyan]#P"
+# pane borders — active pane is bright green, inactive are dim
+set -g pane-border-style "fg=colour240"
+set -g pane-active-border-style "fg=green,bold"
 
-# Center the window list #beautify
-set -g status-justify centre
-
-# Update the status bar every sixty seconds
-set -g status-interval 60
+# pane title bar — shows pane number and running command, active is highlighted
+set -g pane-border-status top
+set -g pane-border-format "#{?pane_active,#[fg=black]#[bg=green]#[bold] #P · #{pane_current_command} #[default],#[fg=colour240] #P · #{pane_current_command} }"
 
 # fix split preserve $PWD
-# bind c new -c '#{pane_current_path}'
 bind "\"" split-window -c '#{pane_current_path}'
 bind "\%" split-window -h -c '#{pane_current_path}'
 
@@ -43,16 +47,25 @@ bind-key "@" split-window "exec htop"
 # zsh as default shell
 set-option -g default-shell /bin/zsh
 
-# show time at right
-set-option -g status-right "#[fg=white,bright]%c "
-
 ## run my fzf scripts to find the right projects
-bind-key "s" run "~/bucks/cat/dotfiles_reloaded/scripts/fzftmux.sh"
-bind-key "p" run "~/bucks/cat/dotfiles_reloaded/scripts/fzfdir.sh cat"
+bind-key "s" run "~/projects/pet/dotfiles_reloaded/scripts/fzftmux.sh"
+bind-key "p" run "~/projects/pet/dotfiles_reloaded/scripts/fzfdir.sh cat"
 
 ## suggestions from nvim
 set-option -sg escape-time 10
 set-option -g focus-events on
 
-# set default terminal
-set -g default-terminal "xterm-256color"
+# set default terminal with true color (24-bit) support
+set -g default-terminal "tmux-256color"
+# RGB/truecolor for ANY outer terminal (wezterm, etc.) — fixes themes that
+# degrade to 256-color (catppuccin/kanagawa looked broken; tokyonight only
+# survived because it has a 256 fallback). tmux 3.2+ syntax.
+set -as terminal-features ",*:RGB"
+set -as terminal-features ",*:usstyle"          # undercurl + colored underlines
+# undercurl escape sequences (for LSP diagnostics squiggles)
+set -as terminal-overrides ",*:Smulx=\\E[4::%p1%dm"
+set -as terminal-overrides ",*:Setulc=\\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m"
+
+## fix option+v, option+d in macOS inside wezterm
+bind -T copy-mode-vi M-v send -X page-up
+bind -T copy-mode-vi M-d send -X page-down
