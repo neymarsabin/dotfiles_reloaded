@@ -1,14 +1,20 @@
---- vim related configurations --[[ ---- ]]
+-- leader key must be set before lazy loads plugins
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+-- display
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.clipboard = "unnamedplus"
-vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80"
 vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.foldenable = false
+
+-- use system clipboard for all yank/paste operations
+vim.opt.clipboard = "unnamedplus"
+
+-- enable 24-bit color (required for themes like catppuccin)
+vim.opt.termguicolors = true
 
 --- indentation ---
 vim.opt.expandtab = true -- Use spaces instead of tabs
@@ -21,12 +27,31 @@ vim.opt.smartindent = true -- Smart indentation
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- auto-reload buffers when files change on disk (e.g. Claude Code edits)
+vim.opt.autoread = true
+vim.opt.updatetime = 500
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+	pattern = "*",
+	callback = function()
+		if vim.fn.mode() ~= "c" then
+			vim.cmd("checktime")
+		end
+	end,
+})
+
 -- exit modes with <C-g> ----
 vim.keymap.set("n", "<leader>fs", "<cmd>w<CR>", { desc = "Save file...", noremap = true })
-vim.keymap.set("i", "<C-g>", "<ESC>", { noremap = true })
+vim.keymap.set("i", "<C-g>", function()
+	if vim.bo.filetype == "TelescopePrompt" then
+		require("telescope.actions").close(vim.api.nvim_get_current_buf())
+	else
+		vim.cmd("stopinsert")
+	end
+end, { noremap = true, nowait = true })
 vim.keymap.set("n", "<C-g>", "<ESC>", { noremap = true })
 vim.keymap.set("v", "<C-g>", "<ESC>", { noremap = true })
 vim.keymap.set("c", "<C-g>", "<ESC>", { noremap = true })
+vim.keymap.set("t", "<C-g>", "<C-\\><C-n>", { noremap = true, desc = "Exit terminal mode" })
 
 -- code diagnostics provided by nvim ---
 vim.keymap.set("n", "<leader>d[", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
@@ -50,6 +75,22 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 -- navigate page and center focus
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- yank selection and paste into the tmux pane running claude
+vim.keymap.set("v", "<leader>tp", function()
+	vim.cmd("normal! y")
+	local text = vim.fn.getreg('"')
+	text = text:gsub("'", "'\\''")
+	-- find the pane running claude
+	local pane = vim.fn.system("tmux list-panes -t :. -F '#{pane_id} #{pane_title}' | grep -i claude | head -1 | awk '{print $1}'")
+	pane = vim.trim(pane)
+	if pane == "" then
+		vim.notify("No tmux pane running claude found", vim.log.levels.WARN)
+		return
+	end
+	vim.fn.system("tmux send-keys -t " .. pane .. " '" .. text .. "'")
+	vim.fn.system("tmux select-pane -t " .. pane)
+end, { desc = "Yank and paste to Claude tmux pane" })
 
 -- install lazy vim plugins manager ---
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

@@ -1,6 +1,8 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	branch = "0.1.x",
+	-- master, not 0.1.x: old branch calls nvim-treesitter's removed ft_to_lang()
+	-- in previewers and errors on the treesitter `main` branch
+	branch = "master",
 	priority = 10000000,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -15,21 +17,22 @@ return {
 		{ "nvim-tree/nvim-web-devicons" },
 	},
 	config = function()
-		local layout_config_telescope = {
-			bottom_pane = {
-				height = 10,
-				preview_cutoff = 120,
-				prompt_position = "bottom",
-			},
-		}
 		require("telescope").setup({
 			defaults = {
 				layout_strategy = "bottom_pane",
-				layout_config = layout_config_telescope,
-				mappings = {
-					i = {
-						["<C-g>"] = require("telescope.actions").close,
+				layout_config = {
+					bottom_pane = {
+						height = 15,
+						preview_cutoff = 80,
+						prompt_position = "bottom",
 					},
+				},
+				path_display = { "truncate" },
+				previewer = true,
+				file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+				grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+				qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+				mappings = {
 					n = {
 						["<C-g>"] = require("telescope.actions").close,
 					},
@@ -64,10 +67,7 @@ return {
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>ss", function()
 			-- You can pass additional configuration to telescope to change theme, layout, etc.
-			builtin.current_buffer_fuzzy_find({
-				layout_config = layout_config_telescope,
-				preview_cutoff = false,
-			})
+			builtin.current_buffer_fuzzy_find({})
 		end, { desc = "Fuzzily search in current buffer" })
 
 		-- Also possible to pass additional configuration options.

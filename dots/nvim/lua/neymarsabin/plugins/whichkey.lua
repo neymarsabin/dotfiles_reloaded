@@ -1,0 +1,26 @@
+return {
+	"folke/which-key.nvim",
+	event = "VeryLazy",
+	opts = {
+		preset = "helix",
+		delay = 300,
+		spec = {
+			{ "<leader>a", group = "AI/Claude" },
+			{ "<leader>b", group = "Buffer" },
+			{ "<leader>c", group = "Commands" },
+			{ "<leader>d", group = "Diagnostics/Debug" },
+			{ "<leader>f", group = "File" },
+			{ "<leader>g", group = "Git" },
+			{ "<leader>i", group = "REPL" },
+			{ "<leader>h", group = "Help/Hunks" },
+			{ "<leader>m", group = "Marks/Harpoon" },
+			{ "<leader>n", group = "Noice/Notify" },
+			{ "<leader>p", group = "Project/Find" },
+			{ "<leader>r", group = "Rename/Ranger" },
+			{ "<leader>s", group = "Search" },
+			{ "<leader>t", group = "Tmux/Test" },
+			{ "<leader>u", group = "UI/Toggle" },
+			{ "<leader>w", group = "Window" },
+		},
+	},
+}
