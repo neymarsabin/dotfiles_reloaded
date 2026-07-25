@@ -1,0 +1,177 @@
+config-version = 2
+
+# ─── Auto-start aerospace on login ───────────────────────────────────────────
+start-at-login = true
+
+# ─── Launch pinned apps on aerospace startup ─────────────────────────────────
+# Each app routed to workspace by on-window-detected rules below.
+after-startup-command = [
+    'exec-and-forget open -a "Zen"',
+    'exec-and-forget open -a "Google Chrome"',
+    'exec-and-forget open -a "Ghostty"',
+    'exec-and-forget open -a "Slack"',
+    'exec-and-forget open -a "Messages"',
+    'exec-and-forget open -a "WhatsApp"',
+    'exec-and-forget open -a "Telegram"',
+    'exec-and-forget open -a "Signal"',
+]
+
+# ─── Normalization ────────────────────────────────────────────────────────────
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# ─── Main mode ───────────────────────────────────────────────────────────────
+[mode.main.binding]
+
+# ---- Launch terminal (like i3: mod+Return)
+alt-enter = 'exec-and-forget open -na Alacritty'
+
+# ---- Focus (vim-style, like i3: mod+hjkl)
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# ---- Move windows (like i3: mod+shift+hjkl)
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# ---- Move workspace to next monitor (like i3: mod+n → move workspace to output up)
+alt-n = 'move-workspace-to-monitor --wrap-around next'
+
+# ---- Move focused window to next monitor
+alt-shift-n = 'move-node-to-monitor --wrap-around next'
+
+# ---- Workspace back and forth (like i3: mod+Tab)
+alt-tab = 'workspace-back-and-forth'
+
+# ---- Layout controls
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+alt-f     = 'fullscreen'                     # aerospace fullscreen (stays in current Space)
+alt-shift-f = 'macos-native-fullscreen'      # escape hatch: toggle native fullscreen off
+
+# ---- Floating toggle (like i3: mod+shift+space)
+alt-shift-space = 'layout floating tiling'
+
+# ---- Workspace switching (numbers only, no A–Z)
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+alt-0 = 'workspace 10'
+
+# ---- Send window to workspace (like i3: mod+shift+1..9)
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-0 = 'move-node-to-workspace 10'
+
+# ---- Close window (like i3: mod+shift+q)
+alt-shift-q = 'close'
+
+# ---- Reload config (like i3: mod+shift+c)
+alt-shift-c = 'reload-config'
+
+# ---- Toggle macOS menu bar visibility
+alt-shift-m = 'exec-and-forget /Users/neymarsabin/projects/pet/dotfiles_reloaded/dots/scripts/toggle-menubar.sh'
+
+# ---- Rofi-like window switcher (fzf in floating Alacritty popup)
+alt-p = 'exec-and-forget /Users/neymarsabin/projects/pet/dotfiles_reloaded/dots/scripts/window-switcher-launch.sh'
+
+# ---- Resize mode (like i3: mod+r)
+alt-r = 'mode resize'
+
+# ─── Resize mode (like i3's resize block) ────────────────────────────────────
+[mode.resize.binding]
+h   = 'resize width -50'
+l   = 'resize width +50'
+k   = 'resize height -50'
+j   = 'resize height +50'
+
+left  = 'resize width -50'
+right = 'resize width +50'
+up    = 'resize height -50'
+down  = 'resize height +50'
+
+enter = 'mode main'
+esc   = 'mode main'
+
+# ─── Floating window rules (like i3's for_window) ────────────────────────────
+
+# System Settings — always float
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+# Finder — float popups/dialogs (exclude the main browser window by title)
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+if.window-title-regex-substring = '^(?!.*— Finder$).*'
+run = 'layout floating'
+
+# Slack — float the Huddle panel
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+if.window-title-regex-substring = '[Hh]uddle'
+run = 'layout floating'
+
+# Window switcher popup — always float and center
+[[on-window-detected]]
+if.app-id = 'org.alacritty'
+if.window-title-regex-substring = 'aerospace-switcher'
+run = 'layout floating'
+
+# ─── Pinned app → workspace assignments ──────────────────────────────────────
+# Workspace 1 — Zen browser
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+run = 'move-node-to-workspace 1'
+
+# Workspace 2 — Google Chrome
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace 2'
+
+# Workspace 3 — Ghostty terminal
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'move-node-to-workspace 3'
+
+# Workspace 5 — Slack (all windows)
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 5'
+
+# Workspace 6 — Messages
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'move-node-to-workspace 6'
+
+# Workspace 8 — WhatsApp
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace 8'
+
+# Workspace 9 — Telegram
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = 'move-node-to-workspace 9'
+
+# Workspace 10 (alt-0) — Signal
+[[on-window-detected]]
+if.app-id = 'org.whispersystems.signal-desktop'
+run = 'move-node-to-workspace 10'
