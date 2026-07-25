@@ -35,6 +35,8 @@
 	- *dots* -> has all the configuration for the apps I am using
 	- *scripts* -> this folder makes Arch Linux usable
 
+* Setup
+
 * How To?
 - symlink essentials like ~i3config~, ~tmux~ etc into $HOME directory. I am not going to write commands to do symlinks here!!
 - I am using +Doom Emacs+ ~neovim~ these days, +export ~$DOOMDIR~ environment variable in your .zshrc+
@@ -43,6 +45,8 @@
 * Laptop and OS
 - Lenovo Thinkpad e14 ryzen 7 with AMD Graphics [linux works much better in AMD processors]
 - Arch Linux with ~pacman~ and ~yay~ package managers
+- Also using macOS with WezTerm + tmux for the same setup
+- Primary editor: neovim with lazy.nvim plugin manager
 
 * Apps and Dependencies
 - i3 window manager [ best if you are working with multiple monitors and use less mouse ]

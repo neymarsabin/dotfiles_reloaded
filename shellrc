@@ -1,8 +1,21 @@
 #!/usr/bin/env bash
+#
+# shellrc - shared shell configuration loader
+#
+# Usage:
+#   Source this file from your .zshrc or .bashrc:
+#     source /path/to/shellrc
+#
+#   Place any shell scripts you want auto-loaded inside a ./scripts directory
+#   relative to where this file is sourced from.
+#
 
+# source all scripts in the ./scripts directory
 if [[ -d ./scripts ]]
 then
 	for i in ./scripts/* ; do
 			source "$i"
 	done
 fi
+# notify when done
+echo "Shellrc: scripts loaded successfully"

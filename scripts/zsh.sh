@@ -81,3 +81,7 @@ export DOOMDIR=$HOME/$dotfile_location/dots/doom
 
 # alias setxkbalt
 alias setxkbalt=setxkbmap -option altwin:swap_alt_win
+
+# raise open-file limit: macOS launchd default soft limit is 256, which makes
+# nvim's LSP file-watcher die with EMFILE in larger (node_modules) projects
+ulimit -n 65536 2>/dev/null
