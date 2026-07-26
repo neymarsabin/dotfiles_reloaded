@@ -1,0 +1,158 @@
+// Zed keymaps - leader=<space>, vim normal mode
+// Docs: https://zed.dev/docs/key-bindings
+[
+  // ── leader chords (vim NORMAL mode) ──────────────────────────────
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      // file / save
+      "space f s": "workspace::Save",
+
+      // project / find
+      "space p f": "file_finder::Toggle",
+      "space p g": "file_finder::Toggle",
+      "space p /": "pane::DeploySearch",
+      "space p p": "projects::OpenRecent",
+      "space b b": "tab_switcher::Toggle",
+      "space c c": "command_palette::Toggle",
+      "space s s": "buffer_search::Deploy",
+      "space s /": "pane::DeploySearch",
+      "space s n": ["task::Spawn", { "task_name": "Open Zed config" }],
+      "space s w": "editor::SelectAllMatches",
+      "space s p": "buffer_search::Deploy",
+      "space s t": ["task::Spawn", { "task_name": "TODO search" }],
+      "space s o": "outline::Toggle",
+
+      // file tree / explorer
+      "space e": "project_panel::ToggleFocus",
+
+      // diagnostics
+      "space t t": "diagnostics::Deploy",
+      "space d s": "diagnostics::Deploy",
+      "space d e": "editor::Hover",
+      "space d [": "editor::GoToPreviousDiagnostic",
+      "space d ]": "editor::GoToDiagnostic",
+      "space d q": "diagnostics::Deploy",
+
+      // LSP
+      "space r n": "editor::Rename",
+      "space c a": "editor::ToggleCodeActions",
+      "space p d": "editor::GoToDefinition",
+      "space D":   "editor::GoToTypeDefinition",
+      "space w s": "project_symbols::Toggle",
+      "space g e": "editor::Hover",
+
+      // git
+      "space g g": "git_panel::ToggleFocus",
+      "space h s": "git::StageAndNext",
+      "space h r": "git::Restore",
+      "space h S": "git::StageAll",
+      "space h R": "git::RestoreFile",
+      "space h u": "git::Restore",
+      "space h p": "git::Diff",
+      "space h P": "git::Diff",
+      "space h b": "git::Blame",
+      "space h d": "git::Diff",
+
+      // agent / claude
+      "space a c": "agent::ToggleFocus",
+      "space a f": "agent::ToggleFocus",
+      "space a r": "agents_sidebar::ToggleThreadHistory",
+      "space a C": "agent::NewThread",
+      "space a m": "agent::ToggleModelSelector",
+      "space a b": "agent::AddSelectionToThread",
+      "space a a": "agent::KeepAll",
+      "space a d": "agent::RejectAll",
+
+      // windows / panes
+      "space w h": "workspace::ActivatePaneLeft",
+      "space w l": "workspace::ActivatePaneRight",
+      "space w j": "workspace::ActivatePaneDown",
+      "space w k": "workspace::ActivatePaneUp",
+      "space w v": "pane::SplitRight",
+      "space w n": "pane::SplitDown",
+      "space w q": "pane::CloseActiveItem",
+
+      // marks / harpoon (bookmarks fallback)
+      "space m a": "editor::ToggleBookmark",
+      "space m m": "outline::Toggle",
+
+      // help
+      "space h f": "command_palette::Toggle",
+      "space h k": "command_palette::Toggle",
+
+      // marp / tmux / tests (tasks)
+      "space M T": ["task::Spawn", { "task_name": "Marp Serve" }],
+      "space M S": ["task::Spawn", { "task_name": "Marp Status" }],
+      "space t p": ["task::Spawn", { "task_name": "Send Selection to tmux Claude" }],
+      "space t n": ["task::Spawn", { "task_name": "Pytest nearest" }],
+      "space t f": ["task::Spawn", { "task_name": "Pytest current file" }],
+
+      // undo (no native equivalent)
+      "space u": "git::Diff",
+
+      // navigation extras
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+      "] t": "editor::GoToDiagnostic",
+      "[ t": "editor::GoToPreviousDiagnostic"
+    }
+  },
+
+  // ── visual mode leader ──────────────────────────────────────────
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "space a s": "agent::AddSelectionToThread",
+      "space a b": "agent::AddSelectionToThread",
+      "space t p": ["task::Spawn", { "task_name": "Send Selection to tmux Claude" }]
+    }
+  },
+
+  // ── agent: send selection (replaces default cmd->, dead on this layout) ──
+  // shadows editor::ScrollCursorCenter; vim zz covers that
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-l": "agent::AddSelectionToThread"
+    }
+  },
+
+  // ── ctrl-g universal escape (insert/visual/normal/terminal) ─────
+  {
+    "context": "vim_mode == insert",
+    "bindings": { "ctrl-g": ["workspace::SendKeystrokes", "escape"] }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": { "ctrl-g": ["workspace::SendKeystrokes", "escape"] }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": { "ctrl-g": ["workspace::SendKeystrokes", "escape"] }
+  },
+  {
+    "context": "Terminal",
+    "bindings": { "ctrl-g": ["workspace::SendKeystrokes", "escape"] }
+  },
+
+  // ── ctrl-d / ctrl-u half-page + center ──────────────────────────
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-d": ["workspace::SendKeystrokes", "ctrl-d z z"],
+      "ctrl-u": ["workspace::SendKeystrokes", "ctrl-u z z"]
+    }
+  },
+
+  // ── visual line move ────────────────────────────────────────────
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "ctrl-j": "editor::MoveLineDown",
+      "ctrl-k": "editor::MoveLineUp"
+    }
+  }
+]

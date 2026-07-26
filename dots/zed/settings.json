@@ -1,0 +1,181 @@
+// Zed settings
+// Ported from neovim config (leader=<space>, catppuccin-mocha, full LSP/format/git)
+// Docs: https://zed.dev/docs/configuring-zed
+{
+  // theme
+  "agent_servers": {
+    "claude-acp": {
+      "default_config_options": {
+        "mode": "auto",
+        "fast": false
+      },
+      "type": "registry"
+    }
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "Vercel Light",
+    "dark": "Vercel Dark"
+  },
+  "icon_theme": "Zed (Default)",
+
+  // ui / fonts
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "cursor_blink": false,
+  "relative_line_numbers": true,
+  "vertical_scroll_margin": 8,
+  "scroll_beyond_last_line": "off",
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+  "use_autoclose": true,
+  "show_whitespaces": "selection",
+  "soft_wrap": "none",
+  "tab_size": 2,
+  "hard_tabs": false,
+  "format_on_save": "on",
+  "auto_save": "off",
+
+  // panels
+  "project_panel": { "dock": "left" },
+  "outline_panel": { "dock": "left" },
+  "collaboration_panel": { "dock": "left" },
+  "git_panel": { "dock": "left" },
+  "agent": {
+    "dock": "right",
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "claude-code",
+      "model": "claude-sonnet-4-5"
+    },
+    "version": "2",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "terminal": {
+    "dock": "bottom",
+    "blinking": "off",
+    "env": { "EDITOR": "zed --wait" }
+  },
+
+  // vim
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true
+  },
+
+  // languages
+  "languages": {
+    "TypeScript": {
+      "formatter": {
+        "external": {
+          "command": "prettierd",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "format_on_save": "on"
+    },
+    "TSX": {
+      "formatter": {
+        "external": {
+          "command": "prettierd",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "format_on_save": "on"
+    },
+    "JavaScript": {
+      "formatter": {
+        "external": {
+          "command": "prettierd",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "format_on_save": "on"
+    },
+    "JSX": {
+      "formatter": {
+        "external": {
+          "command": "prettierd",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "format_on_save": "on"
+    },
+    "Python": {
+      "language_servers": ["pyright", "ruff"],
+      "formatter": { "language_server": { "name": "ruff" } },
+      "format_on_save": "on",
+      "code_actions_on_format": {
+        "source.fixAll.ruff": true,
+        "source.organizeImports.ruff": true
+      }
+    },
+    "Go": {
+      "formatter": [
+        { "external": { "command": "goimports", "arguments": [] } },
+        { "external": { "command": "gofmt", "arguments": [] } }
+      ],
+      "format_on_save": "on"
+    },
+    "Rust": { "format_on_save": "on" },
+    "Lua": {
+      "formatter": {
+        "external": { "command": "stylua", "arguments": ["-"] }
+      },
+      "format_on_save": "on"
+    },
+    "Shell Script": { "format_on_save": "on" },
+    "Terraform": { "format_on_save": "on" },
+    "Ruby": { "language_servers": ["solargraph"] },
+    "R": { "language_servers": ["r-language-server"] },
+    "HTML": { "format_on_save": "on" },
+    "CSS": {
+      "formatter": {
+        "external": {
+          "command": "prettierd",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "Markdown": {
+      "format_on_save": "off",
+      "soft_wrap": "editor_width"
+    }
+  },
+
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python": {
+          "analysis": {
+            "autoSearchPaths": true,
+            "useLibraryCodeForTypes": true,
+            "diagnosticMode": "openFilesOnly"
+          }
+        }
+      }
+    }
+  },
+
+  "telemetry": { "diagnostics": false, "metrics": false },
+
+  // auto-install on next Zed launch
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "catppuccin-icons": true,
+    "terraform": true,
+    "dockerfile": true,
+    "docker-compose": true,
+    "ruby": true,
+    "r": true,
+    "toml": true,
+    "marksman": true,
+    "git-firefly": true
+  }
+}

@@ -1,0 +1,63 @@
+// Zed tasks - pytest, marp, claude CLI fallback, tmux Claude bridge, TODO search
+// Docs: https://zed.dev/docs/tasks
+[
+  {
+    "label": "Open Zed config",
+    "command": "zed ~/.config/zed",
+    "use_new_terminal": false,
+    "reveal": "never"
+  },
+
+  {
+    "label": "Pytest current file",
+    "command": "pytest \"$ZED_FILE\" -v",
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "Pytest nearest",
+    "command": "pytest \"$ZED_FILE::$ZED_SYMBOL\" -v",
+    "reveal": "always"
+  },
+
+  {
+    "label": "Marp Serve",
+    "command": "marp -s \"$ZED_WORKTREE_ROOT\" -p 8898",
+    "reveal": "always"
+  },
+  {
+    "label": "Marp Status",
+    "command": "lsof -i :8898 || echo 'marp not running'",
+    "reveal": "always"
+  },
+
+  {
+    "label": "Claude CLI (fallback)",
+    "command": "claude",
+    "use_new_terminal": true,
+    "reveal": "always"
+  },
+  {
+    "label": "Claude Resume",
+    "command": "claude --resume",
+    "use_new_terminal": true
+  },
+  {
+    "label": "Claude Continue",
+    "command": "claude --continue",
+    "use_new_terminal": true
+  },
+
+  {
+    "label": "TODO search",
+    "command": "rg -n --hidden --glob '!.git' '\\b(TODO|FIXME|HACK|NOTE|WARNING)\\b' \"$ZED_WORKTREE_ROOT\"",
+    "reveal": "always"
+  },
+
+  {
+    "label": "Send Selection to tmux Claude",
+    "command": "pane=$(tmux list-panes -F '#{pane_id} #{pane_title}' | grep -i claude | head -1 | awk '{print $1}'); if [ -z \"$pane\" ]; then echo 'no tmux pane named claude'; exit 1; fi; printf '%s' \"$ZED_SELECTED_TEXT\" | tmux load-buffer -; tmux paste-buffer -t \"$pane\"; tmux select-pane -t \"$pane\"",
+    "hide": "always",
+    "allow_concurrent_runs": true
+  }
+]
