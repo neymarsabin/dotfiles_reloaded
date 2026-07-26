@@ -24,20 +24,29 @@
   "buffer_font_size": 16,
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "cursor_blink": false,
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "vertical_scroll_margin": 8,
   "scroll_beyond_last_line": "off",
+  "scrollbar": { "show": "never" },
+  "sticky_scroll": { "enabled": true },
   "indent_guides": {
     "enabled": true,
     "coloring": "indent_aware"
   },
+  "tabs": { "show_diagnostics": "errors" },
   "use_autoclose": true,
   "show_whitespaces": "selection",
   "soft_wrap": "none",
   "tab_size": 2,
   "hard_tabs": false,
   "format_on_save": "on",
-  "auto_save": "off",
+  "autosave": "off",
+  "use_smartcase_search": true,
+  "redact_private_values": true,
+  "inlay_hints": { "enabled": true },
+  "diagnostics": {
+    "inline": { "enabled": true }
+  },
 
   // panels
   "project_panel": { "dock": "left" },
