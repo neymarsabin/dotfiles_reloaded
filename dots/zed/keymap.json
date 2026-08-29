@@ -10,7 +10,7 @@
 
       // project / find
       "space p f": "file_finder::Toggle",
-      "space p g": "file_finder::Toggle",
+      "space p g": "pane::DeploySearch",
       "space p /": "pane::DeploySearch",
       "space p p": "projects::OpenRecent",
       "space b b": "tab_switcher::Toggle",
@@ -26,8 +26,10 @@
       // file tree / explorer
       "space e": "project_panel::ToggleFocus",
 
+      // terminal
+      "space t t": "terminal_panel::Toggle",
+
       // diagnostics
-      "space t t": "diagnostics::Deploy",
       "space d s": "diagnostics::Deploy",
       "space d e": "editor::Hover",
       "space d [": "editor::GoToPreviousDiagnostic",
@@ -44,6 +46,10 @@
 
       // git
       "space g g": "git_panel::ToggleFocus",
+      "space g c": "git::Commit",
+      "space g p": "git::Pull",
+      "space g P": "git::Push",
+      "space g b": "git::Branch",
       "space h s": "git::StageAndNext",
       "space h r": "git::Restore",
       "space h S": "git::StageAll",
@@ -64,6 +70,21 @@
       "space a a": "agent::KeepAll",
       "space a d": "agent::RejectAll",
 
+      // agent / claude - review loop
+      "space a v": "agent::OpenAgentDiff",
+      "space a k": "agent::Keep",
+      "space a x": "agent::Reject",
+      "space a u": "agent::UndoLastReject",
+      "space a F": "agent::Follow",
+      "space a t": "agent::CycleThinkingEffort",
+
+      // agent / claude - permissions + queue (may need agent panel focus)
+      "space a y": "agent::AllowOnce",
+      "space a Y": "agent::AllowAlways",
+      "space a n": "agent::RejectOnce",
+      "space a q": "agent::SendNextQueuedMessage",
+      "space a e": "agent::EditFirstQueuedMessage",
+
       // windows / panes
       "space w h": "workspace::ActivatePaneLeft",
       "space w l": "workspace::ActivatePaneRight",
@@ -72,14 +93,13 @@
       "space w v": "pane::SplitRight",
       "space w n": "pane::SplitDown",
       "space w q": "pane::CloseActiveItem",
+      "space w m": "workspace::ToggleZoom",
+      "space w o": "workspace::CloseInactiveTabsAndPanes",
+      "space w d": "workspace::ToggleAllDocks",
 
       // marks / harpoon (bookmarks fallback)
       "space m a": "editor::ToggleBookmark",
       "space m m": "outline::Toggle",
-
-      // help
-      "space h f": "command_palette::Toggle",
-      "space h k": "command_palette::Toggle",
 
       // marp / tmux / tests (tasks)
       "space M T": ["task::Spawn", { "task_name": "Marp Serve" }],
@@ -87,9 +107,6 @@
       "space t p": ["task::Spawn", { "task_name": "Send Selection to tmux Claude" }],
       "space t n": ["task::Spawn", { "task_name": "Pytest nearest" }],
       "space t f": ["task::Spawn", { "task_name": "Pytest current file" }],
-
-      // undo (no native equivalent)
-      "space u": "git::Diff",
 
       // navigation extras
       "] h": "editor::GoToHunk",

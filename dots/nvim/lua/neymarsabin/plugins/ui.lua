@@ -5,20 +5,6 @@ return {
 	"folke/which-key.nvim", -- piggyback an already-present plugin so this file loads
 	optional = true,
 	init = function()
-		-- the dark themes installed in colorscheme.lua
-		local themes = {
-			"tokyonight-night",
-			"tokyonight-storm",
-			"tokyonight-moon",
-			"catppuccin-mocha",
-			"catppuccin-frappe",
-			"kanagawa-wave",
-			"kanagawa-dragon",
-			"rose-pine-moon",
-			"rose-pine-main",
-			"gruvbox-material",
-		}
-
 		-- persist the active colorscheme whenever it changes, so it survives restart
 		vim.api.nvim_create_autocmd("ColorScheme", {
 			callback = function(args)
@@ -34,16 +20,23 @@ return {
 		local map = vim.keymap.set
 
 		-- ── theme switcher ──────────────────────────────────────────────────────
+		-- telescope previews each scheme live as you move through the list, and
+		-- the ColorScheme autocmd above persists whichever one you land on
 		map("n", "<leader>ut", function()
-			vim.ui.select(themes, { prompt = "Colorscheme:" }, function(choice)
-				if choice then
-					local ok = pcall(vim.cmd.colorscheme, choice)
-					if not ok then
-						vim.notify("Theme not available: " .. choice, vim.log.levels.WARN)
-					end
+			-- lazy themes are not on the runtimepath until something loads them,
+			-- so the picker would only list the handful already in use; pull in
+			-- every plugin that ships a colors/ dir before opening it
+			for name, spec in pairs(require("lazy.core.config").plugins) do
+				if spec.dir and vim.fn.isdirectory(spec.dir .. "/colors") == 1 then
+					pcall(require("lazy").load, { plugins = { name } })
 				end
-			end)
-		end, { desc = "Switch theme (persists)" })
+			end
+
+			require("telescope.builtin").colorscheme({
+				enable_preview = true,
+				ignore_builtins = true,
+			})
+		end, { desc = "Switch theme (live preview, persists)" })
 
 		-- ── toggles ───────────────────────────────────────────────────────────
 		map("n", "<leader>uw", function()

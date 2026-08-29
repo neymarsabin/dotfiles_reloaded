@@ -3,26 +3,26 @@
 // Docs: https://zed.dev/docs/configuring-zed
 {
   // theme
+  "disable_ai": false,
+  "proxy": "",
   "agent_servers": {
     "claude-acp": {
       "default_config_options": {
+        "effort": "default",
+        "model": "claude-fable-5[1m]",
         "mode": "auto",
         "fast": false
       },
       "type": "registry"
     }
   },
-  "theme": {
-    "mode": "dark",
-    "light": "Vercel Light",
-    "dark": "Vercel Dark"
-  },
-  "icon_theme": "Zed (Default)",
+  "theme": "GitHub Dark",
+  "icon_theme": "Base Charmed Icons",
 
   // ui / fonts
   "ui_font_size": 16,
   "buffer_font_size": 16,
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "Monaco",
   "cursor_blink": false,
   "relative_line_numbers": "enabled",
   "vertical_scroll_margin": 8,
@@ -43,31 +43,64 @@
   "autosave": "off",
   "use_smartcase_search": true,
   "redact_private_values": true,
+  "seed_search_query_from_cursor": "selection",
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/node_modules",
+    "**/.venv",
+    "**/venv",
+    "**/__pycache__",
+    "**/.mypy_cache",
+    "**/.pytest_cache",
+    "**/.ruff_cache",
+    "**/target",
+    "**/dist",
+    "**/.next"
+  ],
+  "edit_predictions": {
+    "provider": "zed",
+    "disabled_globs": ["**/.env*", "**/*.pem", "**/*.key", "**/secrets/**"]
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 500,
+      "show_commit_summary": true
+    }
+  },
+  "preview_tabs": {
+    "enabled": true,
+    "enable_preview_from_file_finder": false
+  },
   "inlay_hints": { "enabled": true },
   "diagnostics": {
     "inline": { "enabled": true }
   },
 
   // panels
-  "project_panel": { "dock": "left" },
+  "project_panel": {
+    "dock": "left",
+    "auto_reveal_entries": false,
+    "git_status": true
+  },
   "outline_panel": { "dock": "left" },
   "collaboration_panel": { "dock": "left" },
   "git_panel": { "dock": "left" },
   "agent": {
+    "sidebar_side": "right",
     "dock": "right",
-    "default_profile": "ask",
-    "default_model": {
-      "provider": "claude-code",
-      "model": "claude-sonnet-4-5"
-    },
-    "version": "2",
-    "favorite_models": [],
-    "model_parameters": []
+    "version": "2"
   },
   "terminal": {
     "dock": "bottom",
     "blinking": "off",
-    "env": { "EDITOR": "zed --wait" }
+    "env": { "EDITOR": "zed --wait" },
+    "detect_venv": {
+      "on": {
+        "directories": [".venv", "venv"],
+        "activate_script": "default"
+      }
+    }
   },
 
   // vim

@@ -1,3 +1,4 @@
+-- wezterm config, symlinked to ~/.wezterm.lua; hot-reloads on save
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local act = wezterm.action
@@ -10,7 +11,7 @@ local config = wezterm.config_builder()
 -- WezTerm passes truecolor by default, so neovim owns its own colors. This
 -- scheme only styles the *terminal* (ANSI palette + the padding background) so
 -- there is no visible seam around the nvim window. Matches tokyonight-night.
-config.color_scheme = "Tokyo Night"
+config.color_scheme = "Deafened (terminal.sexy)"
 
 -- ─── Font ─────────────────────────────────────────────────────────────────────
 config.font = wezterm.font("JetBrains Mono", { weight = "Regular" })
@@ -21,8 +22,14 @@ config.cell_width = 1.0
 -- ─── Cursor ───────────────────────────────────────────────────────────────────
 config.cursor_blink_rate = 800
 config.default_cursor_style = "BlinkingBlock"
--- Let catppuccin control cursor color instead of reverse video
 config.force_reverse_video_cursor = false
+-- the active scheme leaves cursor_bg unset, so wezterm falls back to its own
+-- default, which is green (#52ad70); set it explicitly instead
+config.colors = {
+	cursor_bg = "#ffffff",
+	cursor_fg = "#000000",
+	cursor_border = "#ffffff",
+}
 
 -- ─── Window ───────────────────────────────────────────────────────────────────
 config.window_decorations = "RESIZE"

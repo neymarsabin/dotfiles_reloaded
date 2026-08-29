@@ -76,21 +76,19 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
--- yank selection and paste into the tmux pane running claude
+-- send text to the claude code pane in the same tmux window
 vim.keymap.set("v", "<leader>tp", function()
-	vim.cmd("normal! y")
-	local text = vim.fn.getreg('"')
-	text = text:gsub("'", "'\\''")
-	-- find the pane running claude
-	local pane = vim.fn.system("tmux list-panes -t :. -F '#{pane_id} #{pane_title}' | grep -i claude | head -1 | awk '{print $1}'")
-	pane = vim.trim(pane)
-	if pane == "" then
-		vim.notify("No tmux pane running claude found", vim.log.levels.WARN)
-		return
-	end
-	vim.fn.system("tmux send-keys -t " .. pane .. " '" .. text .. "'")
-	vim.fn.system("tmux select-pane -t " .. pane)
-end, { desc = "Yank and paste to Claude tmux pane" })
+	require("neymarsabin.claude_tmux").send_selection()
+end, { desc = "Send selection to Claude pane" })
+vim.keymap.set("n", "<leader>tp", function()
+	require("neymarsabin.claude_tmux").send_clipboard()
+end, { desc = "Send clipboard to Claude pane" })
+
+-- inline diff overlay, opened by claude's Stop hook when it changed code
+require("neymarsabin.claude_diff").listen()
+vim.keymap.set("n", "<leader>hv", function()
+	require("neymarsabin.claude_diff").toggle()
+end, { desc = "Toggle Claude inline diff" })
 
 -- install lazy vim plugins manager ---
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

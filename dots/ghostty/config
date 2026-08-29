@@ -1,0 +1,24 @@
+# ─── Theme ───────────────────────────────────────────────────────────────────
+# Matches the neovim colorscheme (tokyonight-storm) so nvim, tmux and the claude
+# code pane all sit on one palette. Previously this was background=000000 /
+# foreground=ffffff, a 21:1 pure-black-on-white that reads as glare rather
+# than contrast, and left claude code with no palette to follow.
+theme = tokyonight-storm
+
+# ─── Font ─────────────────────────────────────────────────────────────────────
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 14
+
+# ─── Window ───────────────────────────────────────────────────────────────────
+window-decoration = false
+window-padding-x = 0
+window-padding-y = 0
+
+# ─── Cursor ───────────────────────────────────────────────────────────────────
+cursor-style = block
+cursor-style-blink = true
+
+# ─── Misc ─────────────────────────────────────────────────────────────────────
+scrollback-limit = 10000000
+# option sends Alt, matching the M-v / M-d copy-mode bindings in tmux
+macos-option-as-alt = true
